@@ -20,7 +20,7 @@ const Preview = ({ isVisible, place, closePreview }: any) => {
       ></div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>
-        <div className="preview__description">{place?.description}</div>
+        <div className="preview__description">{place?.short_description}</div>
         <div style={{display: 'flex'}}>
           <a className="preview__button" href={place?.seeMoreLink} target="_blank" rel="noreferrer">See more</a>
         </div>

@@ -10,7 +10,7 @@ import { loadAllPlace } from "./store/actions";
 import { Place } from "./store/models";
 
 const fetchData = async () => {
-  const res = await fetch('http://localhost:5000/')
+  const res = await fetch("http://localhost:5000/address")
   const json = await res.json()
   return json
 }

@@ -19,7 +19,7 @@ export interface IState {
 
 export interface Place {
   title: string;
-  description: string;
+  short_description: string;
   position: LatLngExpression;
   picture?: string;     //?: use to declare as optional.
   seeMoreLink?: string;
