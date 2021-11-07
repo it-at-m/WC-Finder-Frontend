@@ -69,7 +69,7 @@ const Map = ({
     <div className="map__container">
       <MapContainer
         center={defaultPosition}
-        zoom={12}
+        zoom={17}
         scrollWheelZoom={false}
         style={{ height: "100vh" }}
         zoomControl={false}
