@@ -2,3 +2,9 @@
 .map__container {
   width: 100vw;
 }
+
+.zoom_control{
+  position: fixed;
+  background-color: bisque;
+  background-position: 20%;
+}

@@ -1,13 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { LatLngExpression } from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMapEvents, ZoomControl, useMap } from "react-leaflet";
 import { connect } from "react-redux";
 import { setPlacePreviewVisibility, setSelectedPlace } from "../../store/actions";
 import { IState, Place } from "../../store/models";
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
-
+import { GeoSearchControl } from 'leaflet-geosearch';
 import "./Map.css";
+import "leaflet-geosearch/dist/geosearch.css";
 
+var count = 0;
+
+const SearchControl = (props) => {
+  const map = useMap()
+  useEffect(() => {
+    const searchControl = GeoSearchControl({
+        provider: props.provider,
+        ...props,
+      });
+      // TODO: Find another way to remove this logic
+      if (count === 0) {
+        map.addControl(searchControl); 
+        count++;
+      } 
+  }, [map, props])
+  return null;
+}
 
 const Map = ({
   isVisible,
@@ -18,6 +37,7 @@ const Map = ({
 }: any) => {
   const defaultPosition: LatLngExpression = [48.1351, 11.5820]; // Munich
   const [polyLinePops, setPolyLineProps] = useState([]);
+  const prov = new OpenStreetMapProvider();
   
    useEffect(() => {
     setPolyLineProps(places.reduce((prev: LatLngExpression[], curr: Place) => {
@@ -69,8 +89,8 @@ const Map = ({
     <div className="map__container">
       <MapContainer
         center={defaultPosition}
-        zoom={17}
-        scrollWheelZoom={false}
+        zoom={16}
+        scrollWheelZoom={true}
         style={{ height: "100vh" }}
         zoomControl={false}
       >
@@ -78,6 +98,21 @@ const Map = ({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <SearchControl
+          provider={prov}
+          showMarker={true}
+          showPopup={false}
+          maxMarkers={15}
+          retainZoomLevel={true}
+          animateZoom={true}
+          autoClose={false}
+          searchLabel={"Enter address, please"}
+          keepResult={true}
+          // eslint-disable-next-line react/style-prop-object
+          style={"bar"}
+          popupFormat={( result: { label: any; }) => result.label}
+        />
+        <ZoomControl position="topright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
             key={place.title}

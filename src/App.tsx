@@ -3,7 +3,6 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
-import Search from "./components/Search/Search";
 import Preview from "./components/Preview/Preview";
 import { connect } from "react-redux";
 import { loadAllPlace } from "./store/actions";
@@ -25,7 +24,7 @@ function App({loadAllPlaces}: any) {
         <Header />
       </nav>
       <main>
-        <Search />
+        {/* <Search /> */}
         <Map />
         <Preview />
       </main>
