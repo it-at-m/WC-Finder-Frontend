@@ -27,7 +27,7 @@ jobs:
     - name: Deploy to Google App Engine
       uses: google-github-actions/deploy-appengine@v0.4.0
       with:
-       project_id: hm-14-dps
+       project_id: lhm-14-dps
        # working_directory: optional
        # deliverables: # optional
        credentials: ${{ secrets.gcp_credentials }}
