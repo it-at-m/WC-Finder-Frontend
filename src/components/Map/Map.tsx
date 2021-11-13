@@ -36,7 +36,7 @@ const Map = ({
   setPlaceForPreview, 
 }: any) => {
   const defaultPosition: LatLngExpression = [48.1351, 11.5820]; // Munich
-  const [polyLinePops, setPolyLineProps] = useState([]);
+  const [, setPolyLineProps] = useState([]);
   const prov = new OpenStreetMapProvider();
   
    useEffect(() => {
