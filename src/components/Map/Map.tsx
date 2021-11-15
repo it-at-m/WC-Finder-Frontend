@@ -60,7 +60,7 @@ const Map = ({
 
     return position === null ? null : (
       <Marker position={position}>
-        <Popup>You are here</Popup>
+        <Popup>You are here - {position}</Popup>
       </Marker>
     )
   }
