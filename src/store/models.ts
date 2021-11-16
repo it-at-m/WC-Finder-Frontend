@@ -21,6 +21,9 @@ export interface Place {
   title: string;
   short_description: string;
   position: LatLngExpression;
-  picture?: string;     //?: use to declare as optional.
+  photo?: string;     //?: use to declare as optional.
   seeMoreLink?: string;
+  eurokey?: string;
+  ramp_steepness?: string;
+  door_width?: string;
 }

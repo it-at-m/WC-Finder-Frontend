@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { LatLngExpression } from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMapEvents, ZoomControl, useMap } from "react-leaflet";
+import { LatLngExpression} from "leaflet";
+import { MapContainer, TileLayer, Marker, Tooltip, useMapEvents, ZoomControl, useMap } from "react-leaflet";
 import { connect } from "react-redux";
 import { setPlacePreviewVisibility, setSelectedPlace } from "../../store/actions";
 import { IState, Place } from "../../store/models";
@@ -9,6 +9,7 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { GeoSearchControl } from 'leaflet-geosearch';
 import "./Map.css";
 import "leaflet-geosearch/dist/geosearch.css";
+import { toiletIcon } from "../../constants";
 
 var count = 0;
 
@@ -80,7 +81,7 @@ const Map = ({
 
     return position === null ? null : (
       <Marker position={position}>
-        <Popup>You are here</Popup>
+        <Tooltip>You are here</Tooltip>
       </Marker>
     )
   }
@@ -91,7 +92,7 @@ const Map = ({
         center={defaultPosition}
         zoom={16}
         scrollWheelZoom={true}
-        style={{ height: "100vh" }}
+        style={{ height: "95vh" }}
         zoomControl={false}
       >
         <TileLayer
@@ -112,12 +113,13 @@ const Map = ({
           style={"bar"}
           popupFormat={( result: { label: any; }) => result.label}
         />
-        <ZoomControl position="topright" zoomInText="+" zoomOutText="-"/>
+        <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
             key={place.title}
             position={place.position}
             eventHandlers={{ click: () => showPreview(place) }}
+            icon={ toiletIcon }
           >
             <Tooltip>{place.title}</Tooltip>
           </Marker>
