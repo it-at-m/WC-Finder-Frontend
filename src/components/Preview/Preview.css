@@ -65,6 +65,7 @@
 .preview__ramp_steepness {
   font-size: 1.25rem;
   margin-bottom: 1rem;
+  margin-left: 1rem;
   line-height: 1.5rem;
   color: #484848;
 }
@@ -73,6 +74,7 @@
   font-size: 1.25rem;
   margin-bottom: 1rem;
   line-height: 1.5rem;
+  margin-left: 1rem;
   color: #484848;
 }
 
@@ -83,12 +85,18 @@
   background-position: center;
 }
 
-.icon {
-  font-size: 0.5rem;
+.key_icon {
   margin-bottom: 1rem;
   margin-top: 5px;
   line-height: 1.5rem;
   font-size: 1rem;
+}
+
+.door_icon {
+  margin-bottom: 1rem;
+  margin-top: 5px;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .grid_container{
