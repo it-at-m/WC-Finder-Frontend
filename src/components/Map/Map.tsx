@@ -1,13 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { LatLngExpression } from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMapEvents } from "react-leaflet";
+import { LatLngExpression} from "leaflet";
+import { MapContainer, TileLayer, Marker, Tooltip, useMapEvents, ZoomControl, useMap } from "react-leaflet";
 import { connect } from "react-redux";
 import { setPlacePreviewVisibility, setSelectedPlace } from "../../store/actions";
 import { IState, Place } from "../../store/models";
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
+// import * from "leaflet";
 
-
+import { GeoSearchControl } from 'leaflet-geosearch';
 import "./Map.css";
+import "leaflet-geosearch/dist/geosearch.css";
+import { toiletIcon } from "../../constants";
+// import EuroKey from "../Filters/EuroKey/EuroKey";
+// import DoorWidthFunction from "../Filters/DoorWidth/DoorWidth";
+// import RampFunction from "../Filters/Ramp/Ramp";
+// import MoreFilters from "../Filters/More Filters/MoreFilters"
+import Filters from "../Filters/DoorWidth/DoorWidth"
 
+var count = 0;
+// onAdd: function (map) {
+//   var container = latLng.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+// container.style.backgroundColor = 'white';
+// container.style.width = '30px';
+// container.style.height = '30px';
+// container.onclick = function(){
+// console.log('buttonClicked');
+// }
+// return container;
+// }
+
+const SearchControl = (props) => {
+  const map = useMap()
+  useEffect(() => {
+    const searchControl = GeoSearchControl({
+        provider: props.provider,
+        ...props,
+      });
+      // TODO: Find another way to remove this logic
+      if (count === 0) {
+        map.addControl(searchControl); 
+        count++;
+      } 
+  }, [map, props])
+  return null;
+}
 
 const Map = ({
   isVisible,
@@ -17,7 +53,8 @@ const Map = ({
   setPlaceForPreview, 
 }: any) => {
   const defaultPosition: LatLngExpression = [48.1351, 11.5820]; // Munich
-  const [polyLinePops, setPolyLineProps] = useState([]);
+  const [, setPolyLineProps] = useState([]);
+  const prov = new OpenStreetMapProvider();
   
    useEffect(() => {
     setPolyLineProps(places.reduce((prev: LatLngExpression[], curr: Place) => {
@@ -60,7 +97,7 @@ const Map = ({
 
     return position === null ? null : (
       <Marker position={position}>
-        <Popup>You are here - {position}</Popup>
+        <Tooltip>You are here</Tooltip>
       </Marker>
     )
   }
@@ -69,20 +106,37 @@ const Map = ({
     <div className="map__container">
       <MapContainer
         center={defaultPosition}
-        zoom={17}
-        scrollWheelZoom={false}
-        style={{ height: "100vh" }}
+        zoom={16}
+        scrollWheelZoom={true}
+        style={{ height: "95vh" }}
         zoomControl={false}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <SearchControl
+          provider={prov}
+          showMarker={true}
+          showPopup={false}
+          maxMarkers={15}
+          retainZoomLevel={true}
+          animateZoom={true}
+          autoClose={false}
+          searchLabel={"Enter address, please"}
+          keepResult={true}
+          // eslint-disable-next-line react/style-prop-object
+          style={"bar"}
+          popupFormat={( result: { label: any; }) => result.label}
+        />
+        <Filters />
+        <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
             key={place.title}
             position={place.position}
             eventHandlers={{ click: () => showPreview(place) }}
+            icon={ toiletIcon }
           >
             <Tooltip>{place.title}</Tooltip>
           </Marker>

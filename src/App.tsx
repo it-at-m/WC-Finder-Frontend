@@ -3,14 +3,14 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
-import Search from "./components/Search/Search";
 import Preview from "./components/Preview/Preview";
 import { connect } from "react-redux";
 import { loadAllPlace } from "./store/actions";
 import { Place } from "./store/models";
+import { apiUri } from "./constants";
 
 const fetchData = async () => {
-  const res = await fetch("https://getaddress-4v3wnsvvhq-lm.a.run.app/address")
+  const res = await fetch(`${apiUri}`)
   const json = await res.json()
   return json
 }
@@ -25,7 +25,7 @@ function App({loadAllPlaces}: any) {
         <Header />
       </nav>
       <main>
-        <Search />
+        {/* <Search /> */}
         <Map />
         <Preview />
       </main>

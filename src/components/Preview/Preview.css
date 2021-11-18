@@ -1,7 +1,7 @@
 .preview__container {
   z-index: 1000;
   position: fixed;
-  width: 60%;
+  width: 33%;
   height: 100vh;
   overflow-y: scroll;
   background-color: white;
@@ -48,7 +48,33 @@
 }
 
 .preview__description {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
   line-height: 1.5rem;
+  color: #484848;
+}
+
+.preview__eurokey {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  line-height: 1.5rem;
+  color: #484848;
+}
+
+.preview__ramp_steepness {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  line-height: 1.5rem;
+  color: #484848;
+}
+
+.preview__door_width {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.5rem;
+  margin-left: 1rem;
   color: #484848;
 }
 
@@ -59,10 +85,31 @@
   background-position: center;
 }
 
+.key_icon {
+  margin-bottom: 1rem;
+  margin-top: 5px;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
 
-@media only screen and (min-width: 768px) {
+.door_icon {
+  margin-bottom: 1rem;
+  margin-top: 5px;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.grid_container{
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  grid-gap: 10px;
+}
+
+
+@media only screen and (max-width: 768px) {
   .preview__container {
-    top: auto;
-    width: 33%;
+    width: 100%;
+    height: 50%;
+    top: 50%;
   }
 }
