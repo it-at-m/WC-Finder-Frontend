@@ -7,8 +7,8 @@ import { IState, Place } from "../../store/models";
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 import { GeoSearchControl } from 'leaflet-geosearch';
-import "./Map.css";
 import "leaflet-geosearch/dist/geosearch.css";
+import "./Map.css";
 import { toiletIcon } from "../../constants";
 
 var count = 0;
@@ -70,20 +70,31 @@ const Map = ({
       (null as unknown) as LatLngExpression
     );
     const map = useMapEvents({
-      click() {
-        map.locate()
-      },
       locationfound(e) {
         setPosition(e.latlng)
         map.flyTo(e.latlng, map.getZoom())
       },
     })
+    function handleSubmit(e: { preventDefault: () => void; }) {
+      map.locate();
+      e.preventDefault();
+     // alert('You clicked submit.');
+    }
 
-    return position === null ? null : (
+    return position === null ? (
+      <form onSubmit={handleSubmit}>
+        <div className="leaflet-top leaflet-right relocation_div">
+         <div className="leaflet-control">
+           <button className="relocation_button" type="submit"></button>
+         </div>
+         </div>
+      </form>
+    )  : (
       <Marker position={position}>
         <Tooltip>You are here</Tooltip>
       </Marker>
     )
+
   }
 
   return (
