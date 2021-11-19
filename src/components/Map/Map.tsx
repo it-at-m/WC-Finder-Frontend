@@ -90,9 +90,16 @@ const Map = ({
          </div>
       </form>
     )  : (
-      <Marker position={position}>
-        <Tooltip>You are here</Tooltip>
-      </Marker>
+      <><form onSubmit={handleSubmit}>
+          <div className="leaflet-top leaflet-right relocation_div">
+            <div className="leaflet-control">
+              <button className="relocation_button" type="submit"></button>
+            </div>
+          </div>
+        </form>
+        <Marker position={position}>
+            <Tooltip>You are here</Tooltip>
+          </Marker></>
     )
 
   }
