@@ -11,23 +11,9 @@ import { GeoSearchControl } from 'leaflet-geosearch';
 import "./Map.css";
 import "leaflet-geosearch/dist/geosearch.css";
 import { toiletIcon } from "../../constants";
-// import EuroKey from "../Filters/EuroKey/EuroKey";
-// import DoorWidthFunction from "../Filters/DoorWidth/DoorWidth";
-// import RampFunction from "../Filters/Ramp/Ramp";
-// import MoreFilters from "../Filters/More Filters/MoreFilters"
-import Filters from "../Filters/DoorWidth/DoorWidth"
+import DoorWidthFunction from "../Filters/EuroKey/DoorWidth/DoorWidth";
 
 var count = 0;
-// onAdd: function (map) {
-//   var container = latLng.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-// container.style.backgroundColor = 'white';
-// container.style.width = '30px';
-// container.style.height = '30px';
-// container.onclick = function(){
-// console.log('buttonClicked');
-// }
-// return container;
-// }
 
 const SearchControl = (props) => {
   const map = useMap()
@@ -129,7 +115,9 @@ const Map = ({
           style={"bar"}
           popupFormat={( result: { label: any; }) => result.label}
         />
-        <Filters />
+        {/* <Filters /> */}
+        <DoorWidthFunction />
+        {/* <Euro /> */}
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
