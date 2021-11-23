@@ -125,12 +125,13 @@ const Map = ({
           retainZoomLevel={true}
           animateZoom={true}
           autoClose={false}
-          searchLabel={"Enter address, please"}
+          searchLabel={"Where are you going?"}
           keepResult={true}
           // eslint-disable-next-line react/style-prop-object
           style={"bar"}
           popupFormat={( result: { label: any; }) => result.label}
         />
+        <button className="button_test">Filter</button>
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
