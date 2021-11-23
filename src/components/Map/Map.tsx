@@ -9,7 +9,7 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { GeoSearchControl } from 'leaflet-geosearch';
 import "leaflet-geosearch/dist/geosearch.css";
 import "./Map.css";
-import { toiletIcon } from "../../constants";
+import { toiletIcon, trackerIcon } from "../../constants";
 
 var count = 0;
 
@@ -97,7 +97,9 @@ const Map = ({
             </div>
           </div>
         </form>
-        <Marker position={position}>
+        <Marker 
+        position={position}
+        icon={ trackerIcon }>
             <Tooltip>You are here</Tooltip>
           </Marker></>
     )
@@ -131,7 +133,6 @@ const Map = ({
           style={"bar"}
           popupFormat={( result: { label: any; }) => result.label}
         />
-        <button className="button_test">Filter</button>
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
