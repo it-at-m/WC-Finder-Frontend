@@ -117,7 +117,7 @@ export default function DoorWidthFunction() {
     // const currentState = { payload: { EuroKey: 1, DoorWidth: 0, Ramp: 0 } };
 
     // all states
-    const [euroKey, setEuroKey] = useState<number>(0);
+    const [euroKey, setEuroKey] = useState<number>(2);
 
     const [doorWidth, setDoorWidth] = useState<number>(0);
 
@@ -167,7 +167,7 @@ export default function DoorWidthFunction() {
 
     // For Clear Functionality
     const clearAll = () => {
-        setEuroKey(-1);
+        setEuroKey(2);
         setDoorWidth(0);
         setRampVal(0);
     };
@@ -218,8 +218,7 @@ export default function DoorWidthFunction() {
                     // select
                     select
                 >
-                    <MenuItem id="None" value={1}>
-                        None
+                    <MenuItem id="None" value={2}>
                     </MenuItem>
                     <MenuItem id="EuroKeyYes" value={1}>
                         Yes
@@ -247,8 +246,7 @@ export default function DoorWidthFunction() {
                     select
                     // onSelect={(e)=>handleSelect(e)}
                 >
-                    <MenuItem id="NoneDoor" value="">
-                        <em>None</em>
+                    <MenuItem id="NoneDoor" value={0}>
                     </MenuItem>
                     <MenuItem id="Door1" value={80}>
                         80cm
@@ -282,8 +280,7 @@ export default function DoorWidthFunction() {
                     select
                     // onSelect={(e)=>handleSelect(e)}
                 >
-                    <MenuItem value="">
-                        <em>None</em>
+                    <MenuItem value={0}>
                     </MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={20}>20</MenuItem>

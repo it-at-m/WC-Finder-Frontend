@@ -11,7 +11,7 @@ import { GeoSearchControl } from 'leaflet-geosearch';
 import "./Map.css";
 import "leaflet-geosearch/dist/geosearch.css";
 import { toiletIcon } from "../../constants";
-import DoorWidthFunction from "../Filters/EuroKey/DoorWidth/DoorWidth";
+import DoorWidthFunction from "../Filters/DoorWidth";
 
 var count = 0;
 
