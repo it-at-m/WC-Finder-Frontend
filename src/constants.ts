@@ -1,4 +1,5 @@
 import L from "leaflet";
+//import DoorWidthFunction from "./components/Filters/DoorWidth"
 
 const toiletIcon = L.icon({
   iconSize: [25, 41],
@@ -8,7 +9,7 @@ const toiletIcon = L.icon({
   shadowUrl: "https://unpkg.com/leaflet@1.6/dist/images/marker-shadow.png"
 });
 
-
 const apiUri = "https://toilets-4v3wnsvvhq-lm.a.run.app/";
 
-export { apiUri, toiletIcon };
+// var res = DoorWidthFunction
+export { apiUri,toiletIcon };

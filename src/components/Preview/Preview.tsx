@@ -20,7 +20,7 @@ const Preview = ({ isVisible, place, closePreview }: any) => {
       </div>
       <div
         className="preview__picture"
-        style={{ backgroundImage: `url(${apiUri}${place?.photo})` }}
+        style={{ backgroundImage: `url(${apiUri},${place?.photo})` }}
       ></div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>

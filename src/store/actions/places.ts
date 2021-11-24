@@ -8,6 +8,7 @@ export const SET_PLACE_FORM_VISIBILITY = "SET_PLACE_FORM_VISIBILITY";
 export const SET_PRE_PLACE_LOCATION = "SET_PRE_PLACE_LOCATION";
 export const ADD_NEW_PLACE = "ADD_NEW_PLACE";
 export const LOAD_ALL_PLACE = "LOAD_ALL_PLACE";
+//export const LOAD_ALL_FILTERED_PLACE = "LOAD_ALL_FILTERED_PLACE";
 
 export const setAllPlaces = (places: Place[]) => ({
   type: SET_ALL_PLACES,
@@ -43,3 +44,8 @@ export const loadAllPlace = (payload: Place[]) => ({
   type: LOAD_ALL_PLACE,
   payload,
 });
+
+// export const loadAllFilteredPlace = (payload: FilterPlaceState[]) => ({
+//   type: LOAD_ALL_FILTERED_PLACE,
+//   payload,
+// });

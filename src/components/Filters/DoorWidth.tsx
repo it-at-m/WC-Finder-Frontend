@@ -1,11 +1,18 @@
 import {MenuItem, makeStyles, TextField} from "@material-ui/core";
 import React, {useState, useEffect, useRef} from "react";
 import Button from "@material-ui/core/Button";
+//import L from "leaflet"
+// import App from "../../App"
+//import { loadAllPlace } from "../../store/actions/places";
+import { loadAllPlace } from "../../store/actions";
+//import { Place } from "./store/models";
+//import { data } from "../../data";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
     root: {
         height: 44,
-        width: 75,
+        width: 80,
         backgroundColor: "#ffffff",
         borderRadius: 25,
         fontSize: 15,
@@ -13,14 +20,14 @@ const useStyles = makeStyles({
         textDecoration: "none",
         outline: "none",
         textAlign: "center",
-        fontFamily: "SF-PRO Display",
+        fontFamily: "Barlow",
         "& .MuiOutlinedInput-input": {
             color: "black",
-            fontFamily: "SF-PRO Display",
+            fontFamily: "Barlow",
         },
         "& .MuiInputLabel-root": {
             color: "black",
-            fontFamily: "SF-PRO Display",
+            fontFamily: "Barlow",
         },
         "& .makeStyles-selectBox-3": {
             width: "auto",
@@ -29,7 +36,7 @@ const useStyles = makeStyles({
             zIndex: 1000,
             fontSize: 19,
             textAlign: "start",
-            fontFamily: "SF-PRO Display",
+            fontFamily: "Barlow",
             borderRadius: 30,
             textTransform: "none",
             backgroundColor: "#ffffff",
@@ -43,7 +50,7 @@ const useStyles = makeStyles({
             color: "#000000",
             padding: 0,
             fontSize: 15,
-            fontFamily: "SF-PRO Display",
+            fontFamily: "Barlow",
             lineHeight: 0.01,
         },
         "& .MuiInput-root": {
@@ -53,7 +60,7 @@ const useStyles = makeStyles({
             color: "#000000",
             padding: 0,
             fontSize: 19,
-            fontFamily: "SF-PRO Display",
+            fontFamily: "Barlow",
             lineHeight: 0.01,
         },
         "& .MuiInputBase-root": {
@@ -65,7 +72,7 @@ const useStyles = makeStyles({
             //boxSizing: border-box;
             alignItems: "center",
             fontFamily:
-                '"SF-PRO Display","SF-PRO Display","SF-PRO Display",SF-PRO Display',
+                '"Barlow","Barlow","Barlow",Barlow',
             //fonteight: 400;
             //  line-height: 1.1876em;
             //letter-spacing: 0.00938em;
@@ -74,11 +81,18 @@ const useStyles = makeStyles({
             transform: "translate(1px, 10px) scale(0.80)",
             transformOrigin: "top center",
         },
+        "& .MuiButton-label": {
+            width: "100%",
+            display: "contents",
+            alignItems: "inherit",
+            justifyContent: "inherit",
+            fontSize: "60%"
+        }
     },
     all: {
         justifyContent: "center",
         display: "flex",
-        fontFamily: "SF-PRO Display",
+        fontFamily: "Barlow",
     },
     selectWrapper: {
         borderRadius: 50,
@@ -87,7 +101,7 @@ const useStyles = makeStyles({
         border: "none",
         width: "auto",
         height: 44,
-        fontFamily: "SF-PRO Display",
+        fontFamily: "Barlow",
         // overflow:"hidden",
         // backgroundColor:"#cccccc",
         // border:"1 solid #cccccc"
@@ -97,8 +111,8 @@ const useStyles = makeStyles({
         width: "auto",
         color: "#000000",
         padding: 0,
-        fontSize: 15,
-        fontFamily: "SF-PRO Display",
+        fontSize: "85%",
+        fontFamily: "Barlow",
         backgroundColor: "#ffffff",
         borderRadius: 25,
         lineHeight: 0.1,
@@ -114,7 +128,6 @@ const useStyles = makeStyles({
 export default function DoorWidthFunction() {
     // For styling
     const classes = useStyles();
-    // const currentState = { payload: { EuroKey: 1, DoorWidth: 0, Ramp: 0 } };
 
     // all states
     const [euroKey, setEuroKey] = useState<number>(2);
@@ -122,14 +135,14 @@ export default function DoorWidthFunction() {
     const [doorWidth, setDoorWidth] = useState<number>(0);
 
     const [rampVal, setRampVal] = useState<number>(0);
-
+    const dispatch = useDispatch();
     const isMounted = useRef(false);
 
     useEffect(() => {
         if (isMounted.current) {
             console.log("handleSubmit");
-            console.log("EuroKey", euroKey, "DoorWidth", doorWidth, "Ramp", +rampVal);
-            handleSubmit({EuroKey: euroKey, DoorWidth: doorWidth, Ramp: +rampVal});
+            console.log("EuroKey", euroKey, "DoorWidth", doorWidth, "Ramp", rampVal);
+            handleSubmit({EuroKey: euroKey, DoorWidth: doorWidth, Ramp: rampVal});
         } else {
             isMounted.current = true;
         }
@@ -138,31 +151,23 @@ export default function DoorWidthFunction() {
     // For Euro Key
     function handleSelect(e) {
         setEuroKey(e.target.value);
-        // merge()
-        // const currentState = { payload: { EuroKey: e.target.value } };
-        // console.log(currentState.payload);
         console.log(e.target.value);
         console.log(euroKey, doorWidth, rampVal);
-        // handleSubmit({ EuroKey: euroKey, DoorWidth: doorWidth, Ramp: rampVal });
     }
 
     // For Door Width
     function handleSelectDoorWidth(f) {
         setDoorWidth(f.target.value);
-        //merge()
+        localStorage.setItem('DoorWidth',f.target.value );
         console.log(f.target.value);
         console.log(euroKey, doorWidth, rampVal);
-
-        // handleSubmit({ EuroKey: euroKey, DoorWidth: doorWidth, Ramp: rampVal });
     }
 
     // For Ramp
     function handleRamp(g) {
         setRampVal(g.target.value);
-        //merge()
         console.log(g.target.value);
         console.log(euroKey, doorWidth, rampVal);
-        // handleSubmit({ EuroKey: euroKey, DoorWidth: doorWidth, Ramp: rampVal });
     }
 
     // For Clear Functionality
@@ -175,6 +180,7 @@ export default function DoorWidthFunction() {
     //For sending data to backend
     function handleSubmit(event) {
         //event.preventDefault();
+        var res;
         const requestOptions = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -188,7 +194,15 @@ export default function DoorWidthFunction() {
         )
             .then((response) => {
                 if (response.ok) {
-                    return response.json();
+                    res=response.json();
+                    return res
+                    // var arr=[]
+                    // Object.keys(res).forEach(function(key){
+                    //   arr.push(res[key]);
+                    // });
+                    // return <ul>{arr.map(item => <key={item.position} value={item.position[]} />)}</ul>;
+                    //return res;
+                    //console.log(loadAllPlace(res))
                 } else {
                     throw new Error("Connection failed.");
                 }
@@ -206,16 +220,12 @@ export default function DoorWidthFunction() {
             <div className={classes.selectWrapper}>
                 <TextField
                     className={classes.root}
-                    // value={defaultValue}
-                    // onChange={useInput(defaultValue).onChange}
-                    // variant="outlined"
                     label="Euro key"
                     value={euroKey}
                     onChange={(e) => handleSelect(e)}
-                    //defaultValue={"Yes"}
                     id="EuroKey"
                     placeholder="Euro Key"
-                    // select
+                    // onClick= {L.geoJSON(res).addTo('map')}
                     select
                 >
                     <MenuItem id="None" value={2}>
@@ -231,22 +241,13 @@ export default function DoorWidthFunction() {
             <div className={classes.selectWrapper}>
                 <TextField
                     className={classes.root}
-                    // value={defaultValueDoor}
-                    // onChange={useInputDoor(defaultValueDoor).onChange}
-                    // // value={selectedColumns.levels[0]}
                     value={doorWidth}
                     onChange={(f) => handleSelectDoorWidth(f)}
-                    // onChange={handleChange2}
-                    // variant="outlined"
                     label="Door width"
                     id="DoorWidth"
-                    // onChange={(e)=>handleSelect(e)}
-                    // value={data}
-                    //defaultValue={'0'}
                     select
-                    // onSelect={(e)=>handleSelect(e)}
                 >
-                    <MenuItem id="NoneDoor" value={0}>
+                    <MenuItem id="NoneDoor" value={150}>
                     </MenuItem>
                     <MenuItem id="Door1" value={80}>
                         80cm
@@ -265,20 +266,11 @@ export default function DoorWidthFunction() {
             <div className={classes.selectWrapper}>
                 <TextField
                     className={classes.root}
-                    // value={defaultValueRamp}
-                    // onChange={useInputRamp(defaultValueRamp).onChange}
                     id="Ramp"
-                    // onChange={(e)=>handleSelect(e)}
-                    // value={data}
-                    // value={selectedColumns.levels[2]}
-                    //   onChange={e => handleChange(e, 2)}
                     value={rampVal}
                     onChange={handleRamp}
-                    // variant="outlined"
                     label="Ramp"
-                    //defaultValue={'0'}
                     select
-                    // onSelect={(e)=>handleSelect(e)}
                 >
                     <MenuItem value={0}>
                     </MenuItem>
@@ -289,13 +281,12 @@ export default function DoorWidthFunction() {
                 </TextField>
             </div>
             <div className={classes.selectWrapper}>
-                <Button variant="outlined" className={classes.selectBox}>
+                <Button className={classes.selectBox}>
                     More filters
                 </Button>
             </div>
             <div className={classes.selectWrapper}>
                 <Button
-                    variant="outlined"
                     className={classes.selectBox}
                     onClick={clearAll}
                 >

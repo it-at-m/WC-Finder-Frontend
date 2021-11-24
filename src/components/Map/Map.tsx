@@ -5,13 +5,12 @@ import { connect } from "react-redux";
 import { setPlacePreviewVisibility, setSelectedPlace } from "../../store/actions";
 import { IState, Place } from "../../store/models";
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
-// import * from "leaflet";
 
 import { GeoSearchControl } from 'leaflet-geosearch';
-import "./Map.css";
 import "leaflet-geosearch/dist/geosearch.css";
+import "./Map.css";
 import { toiletIcon } from "../../constants";
-import DoorWidthFunction from "../Filters/DoorWidth";
+import Filter from "../Filters/DoorWidth"
 
 var count = 0;
 
@@ -72,20 +71,39 @@ const Map = ({
       (null as unknown) as LatLngExpression
     );
     const map = useMapEvents({
-      click() {
-        map.locate()
-      },
       locationfound(e) {
         setPosition(e.latlng)
         map.flyTo(e.latlng, map.getZoom())
       },
     })
+    function handleSubmit(e: { preventDefault: () => void; }) {
+      map.locate();
+      e.preventDefault();
+     // alert('You clicked submit.');
+    }
 
-    return position === null ? null : (
-      <Marker position={position}>
-        <Tooltip>You are here</Tooltip>
-      </Marker>
+    return position === null ? (
+      <form onSubmit={handleSubmit}>
+        <div className="leaflet-top leaflet-right relocation_div">
+         <div className="leaflet-control">
+           <button className="relocation_button" type="submit"></button>
+         </div>
+         </div>
+      </form>
+    )  : (
+      <><form onSubmit={handleSubmit}>
+          <div className="leaflet-top leaflet-right relocation_div">
+            <div className="leaflet-control">
+              <button className="relocation_button" type="submit"></button>
+            </div>
+          </div>
+        </form>
+        <Marker 
+        position={position}>
+            <Tooltip>You are here</Tooltip>
+          </Marker></>
     )
+
   }
 
   return (
@@ -109,15 +127,13 @@ const Map = ({
           retainZoomLevel={true}
           animateZoom={true}
           autoClose={false}
-          searchLabel={"Enter address, please"}
+          searchLabel={"Where are you going?"}
           keepResult={true}
           // eslint-disable-next-line react/style-prop-object
           style={"bar"}
           popupFormat={( result: { label: any; }) => result.label}
         />
-        {/* <Filters /> */}
-        <DoorWidthFunction />
-        {/* <Euro /> */}
+        <Filter />
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
          {places.map((place: Place) => (
           <Marker
@@ -128,7 +144,8 @@ const Map = ({
           >
             <Tooltip>{place.title}</Tooltip>
           </Marker>
-        ))}
+        ))
+      }
         <LocationMarker />
       </MapContainer>
     </div>

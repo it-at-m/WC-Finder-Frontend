@@ -17,7 +17,7 @@ const initialState: PlaceState = {
   placePreviewsIsVisible: false,
   placeFormIsVisible: false,
   prePlacePosition: (null as unknown) as LatLngExpression,  
-};
+}
 
 const productsReducer = (
   state: PlaceState = initialState,
@@ -49,6 +49,7 @@ const productsReducer = (
       return state;
     }
   }
-};
+}
+;
 
 export default productsReducer;

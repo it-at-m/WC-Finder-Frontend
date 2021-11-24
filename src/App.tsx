@@ -8,15 +8,18 @@ import { connect } from "react-redux";
 import { loadAllPlace } from "./store/actions";
 import { Place } from "./store/models";
 import { apiUri } from "./constants";
+//import DoorWidthFunction  from "./components/Filters/DoorWidth"
 
 const fetchData = async () => {
-  const res = await fetch(`${apiUri}`)
-  const json = await res.json()
-  return json
+  const response = await fetch(`${apiUri}`);
+  const data = await response.json();
+    //console.log(data);
+    return data
 }
 
 function App({loadAllPlaces}: any) {
   fetchData().then(data => {
+    //console.log("Load all places data is - ",data)
     loadAllPlaces(data);
   })
   return (
