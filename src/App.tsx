@@ -9,7 +9,6 @@ import Header from "./components/Header/Header";
 //import { useSelector } from "./hooks/useTypedSelector";
 import Map from "./components/Map/Map";
 import Preview from "./components/Preview/Preview";
-//import DoorWidthFunction  from "./components/Filters/DoorWidth"
 
 function App() {
   return (

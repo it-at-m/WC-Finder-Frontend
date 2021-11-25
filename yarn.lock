@@ -7268,7 +7268,11 @@ last-call-webpack-plugin@^3.0.0:
 
 leaflet-geosearch@^3.6.0:
   version "3.6.0"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/leaflet-geosearch/-/leaflet-geosearch-3.6.0.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/leaflet-geosearch/-/leaflet-geosearch-3.6.0.tgz#1e2da4152e473df24467ca019334a981af9330c9"
+>>>>>>> origin/master
   integrity sha512-TkJOi+eVbsQB7wC0ssGzV9eGQv5BgEwDyb0QOunYA64qe53lB+ostUemvQD7Cmari0shtgBr3Patn5galjr3WA==
   optionalDependencies:
     leaflet "^1.6.0"

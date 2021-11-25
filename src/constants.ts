@@ -5,11 +5,15 @@ const toiletIcon = L.icon({
   iconSize: [25, 41],
   iconAnchor: [10, 41],
   popupAnchor: [2, -40],
-  iconUrl: "images/toilet.svg",
+  iconUrl: "images/toilet.png",
   shadowUrl: "https://unpkg.com/leaflet@1.6/dist/images/marker-shadow.png"
 });
 
+
 const apiUri = "https://toilets-4v3wnsvvhq-lm.a.run.app/";
 
-// var res = DoorWidthFunction
-export { apiUri,toiletIcon };
+const trackerIcon = L.icon({
+  iconUrl: "images/tracker_icon.png",
+});
+
+export { apiUri, toiletIcon, trackerIcon };

@@ -6,7 +6,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <div className="header__container">
-      {/* <CgSearch
+       {/* <CgSearch
         style={{
           fontSize: "3rem",
           verticalAlign: "middle",
