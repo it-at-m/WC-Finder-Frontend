@@ -17,10 +17,10 @@ const Header = () => {
         onClick={() => setSearchVisibility(!searchIsVisible)}
       ></CgSearch> */}
       <span>
-        Loofinder
-        <span role="img" aria-label="toilet">
+        inclus
+       {/*  <span role="img" aria-label="toilet">
           🚽
-        </span>
+        </span> */}
       </span>
     </div>
   );
