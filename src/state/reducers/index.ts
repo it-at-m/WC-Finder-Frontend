@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
 import placesReducer from "./placesReducer";
-import placeSelctedReducer from "./placeSelctedReducer";
+import placeSelectedReducer from "./placeSelectedReducer";
 
 const reducers = combineReducers({
   placesList: placesReducer,
-  placeSelected: placeSelctedReducer,
+  placeSelected: placeSelectedReducer,
 });
 
 export default reducers;

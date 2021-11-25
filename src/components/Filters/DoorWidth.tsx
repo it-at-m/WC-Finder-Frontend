@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 //import { loadAllPlace } from "../../store/actions/places";
 //import { Place } from "./store/models";
 //import { data } from "../../data";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 import { useActions } from "../../hooks/useActions";
 
 const useStyles = makeStyles({

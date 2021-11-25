@@ -1,24 +1,24 @@
 import { ActionTypePlaceSelected } from "../action-types/placeSelectedType";
 import { Place } from "../state-types/place";
 
-interface PlaceSelctedRequestAction {
+interface PlaceSelectedRequestAction {
   type: ActionTypePlaceSelected.PLACE_SELECTED_REQUEST;
 }
-interface PlaceSelctedSuccessAction {
+interface PlaceSelectedSuccessAction {
   type: ActionTypePlaceSelected.PLACE_SELECTED_SUCCESS;
   payload: Place;
 }
-interface PlaceSelctedFailAction {
+interface PlaceSelectedFailAction {
   type: ActionTypePlaceSelected.PLACE_SELECTED_FAIL;
   payload: string;
 }
 
-interface PlaceSelctedNullAction {
+interface PlaceSelectedNullAction {
   type: ActionTypePlaceSelected.PLACE_SELECTED_NULL;
 }
 
 export type PlaceSelectedAction =
-  | PlaceSelctedRequestAction
-  | PlaceSelctedSuccessAction
-  | PlaceSelctedFailAction
-  | PlaceSelctedNullAction;
+  | PlaceSelectedRequestAction
+  | PlaceSelectedSuccessAction
+  | PlaceSelectedFailAction
+  | PlaceSelectedNullAction;
