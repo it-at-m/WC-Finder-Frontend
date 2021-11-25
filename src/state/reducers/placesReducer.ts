@@ -1,7 +1,7 @@
 import { PlacesListAction } from "../actions/placesListAction";
 import { ActionTypePlacesList } from "../action-types/placesListTypes";
 import { Place } from "../state-types/place";
-// import { State, defaultState } from "../stateType";
+
 interface PlaceState {
   loading: boolean;
   error: string | null;

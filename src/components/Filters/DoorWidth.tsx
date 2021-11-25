@@ -1,12 +1,6 @@
 import { MenuItem, makeStyles, TextField } from "@material-ui/core";
 import React, { useState, useEffect, useRef } from "react";
 import Button from "@material-ui/core/Button";
-//import L from "leaflet"
-// import App from "../../App"
-//import { loadAllPlace } from "../../store/actions/places";
-//import { Place } from "./store/models";
-//import { data } from "../../data";
-import { useDispatch } from "react-redux";
 import { useActions } from "../../hooks/useActions";
 
 const useStyles = makeStyles({
@@ -69,12 +63,8 @@ const useStyles = makeStyles({
       display: "inline-flex",
       position: "relative",
       fontSize: 19,
-      //boxSizing: border-box;
       alignItems: "center",
-      fontFamily: '"Barlow","Barlow","Barlow",Barlow',
-      //fonteight: 400;
-      //  line-height: 1.1876em;
-      //letter-spacing: 0.00938em;
+      fontFamily: '"Barlow","Barlow","Barlow",Barlow'
     },
     "& .MuiInputLabel-shrink": {
       transform: "translate(1px, 10px) scale(0.80)",
@@ -100,10 +90,7 @@ const useStyles = makeStyles({
     border: "none",
     width: "auto",
     height: 44,
-    fontFamily: "Barlow",
-    // overflow:"hidden",
-    // backgroundColor:"#cccccc",
-    // border:"1 solid #cccccc"
+    fontFamily: "Barlow"
   },
   selectBox: {
     height: 44,
@@ -125,13 +112,14 @@ const useStyles = makeStyles({
 });
 
 export default function DoorWidthFunction() {
+  
   // For styling
   const classes = useStyles();
 
   // all states
   const [euroKey, setEuroKey] = useState<number>(2);
   const [doorWidth, setDoorWidth] = useState<number>(0);
-  const [rampVal, setRampVal] = useState<number>(0);
+  const [rampVal, setRampVal] = useState<number>(41);
   const isMounted = useRef(false);
 
   const { listPlacesFilter } = useActions();
@@ -156,7 +144,6 @@ export default function DoorWidthFunction() {
   // For Door Width
   function handleSelectDoorWidth(f) {
     setDoorWidth(f.target.value);
-    localStorage.setItem("DoorWidth", f.target.value);
   }
 
   // For Ramp
@@ -168,7 +155,7 @@ export default function DoorWidthFunction() {
   const clearAll = () => {
     setEuroKey(2);
     setDoorWidth(0);
-    setRampVal(0);
+    setRampVal(41);
   };
 
   return (
@@ -181,7 +168,6 @@ export default function DoorWidthFunction() {
           onChange={(e) => handleSelect(e)}
           id="EuroKey"
           placeholder="Euro Key"
-          // onClick= {L.geoJSON(res).addTo('map')}
           select
         >
           <MenuItem id="None" value={2}></MenuItem>
@@ -202,17 +188,17 @@ export default function DoorWidthFunction() {
           id="DoorWidth"
           select
         >
-          <MenuItem id="NoneDoor" value={150}></MenuItem>
-          <MenuItem id="Door1" value={80}>
+          <MenuItem id="NoneDoor" value={0}></MenuItem>
+          <MenuItem id="Door80cm" value={80}>
             80cm
           </MenuItem>
-          <MenuItem id="Door2" value={100}>
+          <MenuItem id="Door100cm" value={100}>
             100cm
           </MenuItem>
-          <MenuItem id="Door3" value={120}>
+          <MenuItem id="Door120cm" value={120}>
             120cm
           </MenuItem>
-          <MenuItem id="Door4" value={150}>
+          <MenuItem id="Door150cm" value={150}>
             150cm
           </MenuItem>
         </TextField>
@@ -226,11 +212,12 @@ export default function DoorWidthFunction() {
           label="Ramp"
           select
         >
-          <MenuItem value={0}></MenuItem>
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={20}>20</MenuItem>
-          <MenuItem value={30}>30</MenuItem>
+          <MenuItem value={41}></MenuItem>
           <MenuItem value={40}>40</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={0}>0</MenuItem>
         </TextField>
       </div>
       <div className={classes.selectWrapper}>

@@ -1,5 +1,4 @@
 import L from "leaflet";
-//import DoorWidthFunction from "./components/Filters/DoorWidth"
 
 const toiletIcon = L.icon({
   iconSize: [25, 41],

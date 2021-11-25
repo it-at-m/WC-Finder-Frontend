@@ -8,9 +8,7 @@ import { useActions } from "../../hooks/useActions";
 
 const Preview = () => {
   const {
-    data: place,
-    error,
-    loading,
+    data: place
   } = useSelector((state) => state.placeSelected);
 
   const { nullSelectPlace } = useActions();
@@ -47,26 +45,9 @@ const Preview = () => {
             Door Width: {place?.door_width}cm
           </div>
         </div>
-        {/* <div style={{display: 'flex'}}>
-          <a className="preview__button" href={place?.seeMoreLink} target="_blank" rel="noreferrer">See more</a>
-        </div> */}
       </div>
     </div>
   );
 };
-
-// const mapStateToProps = (state: IState) => {
-//   const { places } = state;
-//   return {
-//     isVisible: places.placePreviewsIsVisible,
-//     place: places.selectedPlace,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch: any) => {
-//   return {
-//     closePreview: () => dispatch(setPlacePreviewVisibility(false)),
-//   };
-// };
 
 export default Preview;

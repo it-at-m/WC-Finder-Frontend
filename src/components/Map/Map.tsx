@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { LatLngExpression } from "leaflet";
 import {
   MapContainer,
@@ -45,9 +45,7 @@ const Map = () => {
   const prov = new OpenStreetMapProvider();
   const { listPlaces, selectPlace } = useActions();
   const {
-    data: places,
-    error,
-    loading,
+    data: places
   } = useSelector((state) => state.placesList);
 
   useEffect(() => {

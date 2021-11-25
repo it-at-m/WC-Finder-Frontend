@@ -36,19 +36,3 @@
     border: 0px;
     border-radius: 50%;
 }
-
-.leaflet-touch .leaflet-control-geosearch a.reset {
-    height: 40px;
-}
-
-.leaflet-touch .leaflet-geosearch-bar form input {
-    height: 40px;
-}
-
-.leaflet-touch .leaflet-geosearch-bar form {
-    height: 44px;
-}
-
-.leaflet-control-geosearch {
-    height: 44px;
-}

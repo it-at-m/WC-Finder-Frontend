@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 import { BiArrowBack } from "react-icons/bi";
 import "./Search.css";
 import { Place } from "../../state/state-types/place";

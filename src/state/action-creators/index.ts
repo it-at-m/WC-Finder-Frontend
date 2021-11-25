@@ -67,7 +67,7 @@ export const listPlacesFilter = (dataInput) => {
   };
 };
 
-// selcet place
+// select place
 export const selectPlace = (placeId: string) => {
   return async (
     dispatch: Dispatch<PlaceSelectedAction>,
