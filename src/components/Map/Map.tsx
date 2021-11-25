@@ -15,12 +15,11 @@ import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
 import "./Map.css";
-import { toiletIcon } from "../../constants";
-import Filter from "../Filters/DoorWidth";
+import { toiletIcon,trackerIcon } from "../../constants";
+import Filter from "../Filters/Filter";
 import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
-
 var count = 0;
 
 const SearchControl = (props) => {
@@ -98,7 +97,9 @@ const Map = () => {
             </div>
           </div>
         </form>
-        <Marker position={position}>
+        <Marker 
+        position={position}
+        icon={trackerIcon}>
           <Tooltip>You are here</Tooltip>
         </Marker>
       </>
