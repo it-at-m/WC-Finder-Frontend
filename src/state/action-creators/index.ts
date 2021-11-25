@@ -4,7 +4,7 @@ import axios from "axios";
 import { PlacesListAction } from "../actions/placesListAction";
 import { ActionTypePlacesList } from "../action-types/placesListTypes";
 import { Place } from "../state-types/place";
-import { apiUri } from "../../constants";
+import { apiUri,filterApi } from "../../constants";
 import { PlaceSelectedAction } from "../actions/placeSelectedAction";
 import { RootState } from "..";
 import { ActionTypePlaceSelected } from "../action-types/placeSelectedType";
@@ -49,7 +49,7 @@ export const listPlacesFilter = (dataInput) => {
 
     try {
       const { data }: any = await instance.post(
-        "https://toilets-4v3wnsvvhq-lm.a.run.app/filter/",
+        filterApi,
         dataInput
       );
       const places: Place[] = data;
