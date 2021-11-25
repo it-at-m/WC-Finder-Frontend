@@ -1,14 +1,12 @@
 import { connect } from "react-redux";
-import { setSearchVisibility } from "../../store/actions";
-import { IState } from "../../store/models";
+
 import "./Header.css";
 //import { CgSearch} from "react-icons/cg";
 
-const Header = ({ searchIsVisible, setSearchVisibility }: any) => {
-
+const Header = () => {
   return (
     <div className="header__container">
-       {/* <CgSearch
+      {/* <CgSearch
         style={{
           fontSize: "3rem",
           verticalAlign: "middle",
@@ -28,16 +26,4 @@ const Header = ({ searchIsVisible, setSearchVisibility }: any) => {
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  const { search } = state;
-  return search;
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    setSearchVisibility: (payload: boolean) =>
-      dispatch(setSearchVisibility(payload)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
