@@ -40,7 +40,6 @@ const SearchControl = (props) => {
 
 const Map = () => {
   const defaultPosition: LatLngExpression = [48.1351, 11.582]; // Munich
-  const [, setPolyLineProps] = useState([]);
   const prov = new OpenStreetMapProvider();
   const { listPlaces, selectPlace } = useActions();
   const {

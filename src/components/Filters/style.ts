@@ -2,11 +2,11 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles({
     root: {
       height: 44,
-      width: 80,
+      width: 95,
       backgroundColor: "#ffffff",
-      borderRadius: 25,
-      fontSize: 15,
-      lineHeight: 0.01,
+      borderRadius: 50,
+      fontSize: "95%",
+      lineHeight: 0.1,
       textDecoration: "none",
       outline: "none",
       textAlign: "center",
@@ -41,7 +41,7 @@ export default makeStyles({
         padding: 0,
         fontSize: 15,
         fontFamily: "Barlow",
-        lineHeight: 0.01,
+        lineHeight: 0.1,
       },
       "& .MuiInput-root": {
         position: "static",
@@ -63,7 +63,7 @@ export default makeStyles({
         fontFamily: '"Barlow","Barlow","Barlow",Barlow'
       },
       "& .MuiInputLabel-shrink": {
-        transform: "translate(1px, 10px) scale(0.80)",
+        transform: "translate(13px, 12px) scale(1.10)",
         transformOrigin: "top center",
       },
       "& .MuiButton-label": {
@@ -90,10 +90,10 @@ export default makeStyles({
     },
     selectBox: {
       height: 44,
-      width: "auto",
+      width: 95,
       color: "#000000",
       padding: 0,
-      fontSize: "85%",
+      fontSize: "95%",
       fontFamily: "Barlow",
       backgroundColor: "#ffffff",
       borderRadius: 25,

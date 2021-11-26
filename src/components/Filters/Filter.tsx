@@ -56,7 +56,7 @@ export default function DoorWidthFunction() {
       <div className={classes.selectWrapper}>
         <TextField
           className={classes.root}
-          label="Euro key"
+          label="Eurokey"
           value={euroKey}
           onChange={(e) => handleSelect(e)}
           id="EuroKey"
@@ -72,6 +72,7 @@ export default function DoorWidthFunction() {
           </MenuItem>
         </TextField>
       </div>
+      <br />
       <div className={classes.selectWrapper}>
         <TextField
           className={classes.root}
