@@ -11,6 +11,7 @@ export default makeStyles({
       outline: "none",
       textAlign: "center",
       fontFamily: "Barlow",
+      
       "& .MuiOutlinedInput-input": {
         color: "black",
         fontFamily: "Barlow",
@@ -36,6 +37,12 @@ export default makeStyles({
         /* left: 0; */
         /* position: fixed; */
       },
+      "& .makeStyles-all-2": {
+        display: "flex",
+        fontFamily: "Barlow",
+        marginTop: 5,
+        justifyContent: "center"
+    },
       "& .MuiFormLabel-root": {
         color: "#000000",
         padding: 0,
@@ -79,6 +86,7 @@ export default makeStyles({
       justifyContent: "center",
       display: "flex",
       fontFamily: "Barlow",
+      marginTop: 5,
     },
     selectWrapper: {
       borderRadius: 50,
