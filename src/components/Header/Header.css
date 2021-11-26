@@ -1,9 +1,9 @@
 .header__container {
-  background-color: #786DE8;
-  padding: .2rem 0;
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'Varela Round', sans-serif;
+    background-color: #786DE8;
+    padding: .2rem 0;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Varela Round', sans-serif;
 }

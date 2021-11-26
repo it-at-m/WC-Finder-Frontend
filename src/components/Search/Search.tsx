@@ -1,10 +1,13 @@
-import { connect } from "react-redux";
-import { setSelectedPlace, setPlacePreviewVisibility, setSearchVisibility } from "../../store/actions";
-import { IState, Place } from "../../store/models";
-import {BiArrowBack} from "react-icons/bi"
+import { BiArrowBack } from "react-icons/bi";
 import "./Search.css";
+import { Place } from "../../state/state-types/place";
+import { useActions } from "../../hooks/useActions";
+import { useSelector } from "../../hooks/useTypedSelector";
 
-const Search = ({ searchIsVisible, places, closeSearch, setSelectedPlace }: any) => {
+const Search = ({ searchIsVisible }: any) => {
+  const { nullSelectPlace, selectPlace } = useActions();
+
+  const { data: places } = useSelector((state) => state.placesList);
 
   return (
     <div
@@ -13,36 +16,29 @@ const Search = ({ searchIsVisible, places, closeSearch, setSelectedPlace }: any)
       }`}
     >
       <div className="search__header">
-        <span className="search__header__close" role="button" onClick={() => closeSearch()}><BiArrowBack/></span>
+        <span
+          className="search__header__close"
+          role="button"
+          onClick={() => nullSelectPlace()}
+        >
+          <BiArrowBack />
+        </span>
         <span className="search__header__title">Search</span>
       </div>
       <div className="search__list">
         {places.map((place: Place) => (
-        <div key={place.title} className="search__list__item" style={{backgroundImage: `url(${place.photo})`}} onClick={() => setSelectedPlace(place) }> 
-          {place.title}
-        </div>
+          <div
+            key={place.title}
+            className="search__list__item"
+            style={{ backgroundImage: `url(${place.photo})` }}
+            onClick={() => selectPlace(place.id)}
+          >
+            {place.title}
+          </div>
         ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  const { search, places } = state;
-  return {searchIsVisible: search.searchIsVisible, places: places.places};
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    closeSearch: () =>
-      dispatch(setSearchVisibility(false)),
-
-    setSelectedPlace: (payload: Place) =>
-      {
-        dispatch(setSelectedPlace(payload));
-        dispatch(setPlacePreviewVisibility(true))
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default Search;

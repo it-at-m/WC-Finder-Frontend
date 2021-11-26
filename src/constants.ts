@@ -1,7 +1,7 @@
 import L from "leaflet";
 
 const toiletIcon = L.icon({
-  iconSize: [25, 41],
+  iconSize: [25, 35],
   iconAnchor: [10, 41],
   popupAnchor: [2, -40],
   iconUrl: "images/toilet.png",
@@ -15,4 +15,5 @@ const trackerIcon = L.icon({
   iconUrl: "images/tracker_icon.png",
 });
 
-export { apiUri, toiletIcon, trackerIcon };
+const filterApi = apiUri + "filter/";;
+export { apiUri, toiletIcon, trackerIcon,filterApi };

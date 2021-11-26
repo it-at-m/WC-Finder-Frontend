@@ -23,7 +23,7 @@
   right: 1rem;
   top: 1rem;
   font-size: 2rem;
-  color: #f9b29c;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -45,6 +45,13 @@
   font-weight: bold;
   font-size: 1.25rem;
   margin-bottom: 1rem;
+}
+
+.preview__address {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5rem;
+  color: #6C696C ;
 }
 
 .preview__description {
@@ -90,6 +97,13 @@
   margin-top: 5px;
   line-height: 1.5rem;
   font-size: 1rem;
+}
+
+.ramp_icon {
+  margin-bottom: 1rem;
+  margin-top: 5px;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .door_icon {

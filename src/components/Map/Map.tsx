@@ -1,88 +1,86 @@
-import React, { useEffect, useState } from "react";
-import { LatLngExpression} from "leaflet";
-import { MapContainer, TileLayer, Marker, Tooltip, useMapEvents, ZoomControl, useMap } from "react-leaflet";
-import { connect } from "react-redux";
-import { setPlacePreviewVisibility, setSelectedPlace } from "../../store/actions";
-import { IState, Place } from "../../store/models";
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { useEffect, useState } from "react";
+import { LatLngExpression } from "leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Tooltip,
+  useMapEvents,
+  ZoomControl,
+  useMap,
+} from "react-leaflet";
 
-import { GeoSearchControl } from 'leaflet-geosearch';
+import { OpenStreetMapProvider } from "leaflet-geosearch";
+
+import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
 import "./Map.css";
-import { toiletIcon, trackerIcon } from "../../constants";
-
+import { toiletIcon,trackerIcon } from "../../constants";
+import Filter from "../Filters/Filter";
+import { useActions } from "../../hooks/useActions";
+import { Place } from "../../state/state-types/place";
+import { useSelector } from "../../hooks/useTypedSelector";
 var count = 0;
 
 const SearchControl = (props) => {
-  const map = useMap()
+  const map = useMap();
   useEffect(() => {
     const searchControl = GeoSearchControl({
-        provider: props.provider,
-        ...props,
-      });
-      // TODO: Find another way to remove this logic
-      if (count === 0) {
-        map.addControl(searchControl); 
-        count++;
-      } 
-  }, [map, props])
+      provider: props.provider,
+      ...props,
+    });
+    // TODO: Find another way to remove this logic
+    if (count === 0) {
+      map.addControl(searchControl);
+      count++;
+    }
+  }, [map, props]);
   return null;
-}
+};
 
-const Map = ({
-  isVisible,
-  places,
-  selectedPlace,
-  togglePreview,
-  setPlaceForPreview, 
-}: any) => {
-  const defaultPosition: LatLngExpression = [48.1351, 11.5820]; // Munich
+const Map = () => {
+  const defaultPosition: LatLngExpression = [48.1351, 11.582]; // Munich
   const prov = new OpenStreetMapProvider();
-  
-  const showPreview = (place: Place) => {
-    if (isVisible) {
-      togglePreview(false);
-      setPlaceForPreview(null);
-    }
+  const { listPlaces, selectPlace } = useActions();
+  const {
+    data: places
+  } = useSelector((state) => state.placesList);
 
-    if (selectedPlace?.title !== place.title) {
-      setTimeout(() => {
-        showPlace(place);
-      }, 400);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      listPlaces();
+    };
 
-  const showPlace = (place: Place) => {
-    setPlaceForPreview(place);
-    togglePreview(true);
-  };
+    fetchData();
+  }, []);
 
   function LocationMarker() {
     const [position, setPosition] = useState(
-      (null as unknown) as LatLngExpression
+      null as unknown as LatLngExpression
     );
     const map = useMapEvents({
       locationfound(e) {
-        setPosition(e.latlng)
-        map.flyTo(e.latlng, map.getZoom())
+        setPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
       },
-    })
-    function handleSubmit(e: { preventDefault: () => void; }) {
+    });
+    function handleSubmit(e: { preventDefault: () => void }) {
       map.locate();
       e.preventDefault();
-     // alert('You clicked submit.');
+      // alert('You clicked submit.');
     }
 
     return position === null ? (
       <form onSubmit={handleSubmit}>
         <div className="leaflet-top leaflet-right relocation_div">
-         <div className="leaflet-control">
-           <button className="relocation_button" type="submit"></button>
-         </div>
-         </div>
+          <div className="leaflet-control">
+            <button className="relocation_button" type="submit"></button>
+          </div>
+        </div>
       </form>
-    )  : (
-      <><form onSubmit={handleSubmit}>
+    ) : (
+      <>
+        <form onSubmit={handleSubmit}>
           <div className="leaflet-top leaflet-right relocation_div">
             <div className="leaflet-control">
               <button className="relocation_button" type="submit"></button>
@@ -91,11 +89,11 @@ const Map = ({
         </form>
         <Marker 
         position={position}
-        icon={ trackerIcon }>
-            <Tooltip>You are here</Tooltip>
-          </Marker></>
-    )
-
+        icon={trackerIcon}>
+          <Tooltip>You are here</Tooltip>
+        </Marker>
+      </>
+    );
   }
 
   return (
@@ -123,42 +121,26 @@ const Map = ({
           keepResult={true}
           // eslint-disable-next-line react/style-prop-object
           style={"bar"}
-          popupFormat={( result: { label: any; }) => result.label}
+          popupFormat={(result: { label: any }) => result.label}
         />
-        <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-"/>
-         {places.map((place: Place) => (
-          <Marker
-            key={place.title}
-            position={place.position}
-            eventHandlers={{ click: () => showPreview(place) }}
-            icon={ toiletIcon }
-          >
-            <Tooltip>{place.title}</Tooltip>
-          </Marker>
-        ))}
+        <Filter />
+        <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
+        {places &&
+          places.map((place: Place) => (
+            <Marker
+              key={place.title}
+              position={place.position}
+              eventHandlers={{ click: () => selectPlace(place.id) }}
+              icon={toiletIcon}
+            >
+              <Tooltip>{place.title}</Tooltip>
+            </Marker>
+          ))}
         <LocationMarker />
       </MapContainer>
     </div>
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  const { places } = state;
-  return {
-    isVisible: places.placePreviewsIsVisible,
-    places: places.places,
-    selectedPlace: places.selectedPlace,
-  };
-};
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    togglePreview: (payload: boolean) =>
-      dispatch(setPlacePreviewVisibility(payload)),
-    setPlaceForPreview: (payload: Place) =>
-      dispatch(setSelectedPlace(payload)),
-  };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default Map;
