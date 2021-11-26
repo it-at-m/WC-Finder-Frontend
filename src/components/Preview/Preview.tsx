@@ -1,10 +1,11 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./Preview.css";
 import { apiUri } from "../../constants";
-import { ImKey } from "react-icons/im";
-import { CgArrowsShrinkH } from "react-icons/cg";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
+import key_logo from "./icons/eurokey.png"
+import door_logo from "./icons/door width.png"
+import ramp_logo from "./icons/ramp.png"
 
 const Preview = () => {
   const {
@@ -28,18 +29,23 @@ const Preview = () => {
         <div className="preview__description">{place?.short_description}</div>
         <div className="grid_container">
           <div>
-            <ImKey className="key_icon"></ImKey>
+            <img src={key_logo} alt={"eurokey"} className="key_icon"></img>
           </div>
           <div className="preview__eurokey">
             Eurokey: {place?.eurokey ? "Required" : "Not required"}
           </div>
         </div>
+        <div className="grid_container">
+          <div>
+            <img src={ramp_logo} alt={"ramp"} className="key_icon"></img>
+          </div>
         <div className="preview__ramp_steepness">
           Ramp Steepness: {place?.ramp_steepness}%
         </div>
+        </div>
         <div className="grid_container">
           <div>
-            <CgArrowsShrinkH className="door_icon"></CgArrowsShrinkH>
+            <img src={door_logo} alt={"doorwidth"} className="door_icon"></img>
           </div>
           <div className="preview__door_width">
             Door Width: {place?.door_width}cm
