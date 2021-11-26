@@ -61,6 +61,7 @@ export default function DoorWidthFunction() {
           onChange={(e) => handleSelect(e)}
           id="EuroKey"
           placeholder="Euro Key"
+          InputProps={{ disableUnderline: true }}
           select
         >
           <MenuItem id="None" value={2}></MenuItem>
@@ -79,6 +80,7 @@ export default function DoorWidthFunction() {
           onChange={(f) => handleSelectDoorWidth(f)}
           label="Door width"
           id="DoorWidth"
+          InputProps={{ disableUnderline: true }}
           select
         >
           <MenuItem id="NoneDoor" value={0}></MenuItem>
@@ -103,6 +105,7 @@ export default function DoorWidthFunction() {
           value={rampVal}
           onChange={handleRamp}
           label="Ramp"
+          InputProps={{ disableUnderline: true }}
           select
         >
           <MenuItem value={41}></MenuItem>

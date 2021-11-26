@@ -1,7 +1,7 @@
 import L from "leaflet";
 
 const toiletIcon = L.icon({
-  iconSize: [25, 41],
+  iconSize: [25, 35],
   iconAnchor: [10, 41],
   popupAnchor: [2, -40],
   iconUrl: "images/toilet.png",
