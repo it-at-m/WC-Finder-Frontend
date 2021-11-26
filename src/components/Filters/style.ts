@@ -2,10 +2,10 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles({
     root: {
       height: 44,
-      width: 95,
+      width: 88,
       backgroundColor: "#ffffff",
       borderRadius: 50,
-      fontSize: "95%",
+      fontSize: "80%",
       lineHeight: 0.1,
       textDecoration: "none",
       outline: "none",
@@ -90,7 +90,7 @@ export default makeStyles({
     },
     selectBox: {
       height: 44,
-      width: 95,
+      width: "auto",
       color: "#000000",
       padding: 0,
       fontSize: "95%",
