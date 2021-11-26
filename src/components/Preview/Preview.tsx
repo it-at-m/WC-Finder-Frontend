@@ -26,6 +26,7 @@ const Preview = () => {
       ></div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>
+        <div className="preview__address">{place?.address}</div>
         <div className="preview__description">{place?.short_description}</div>
         <div className="grid_container">
           <div>
