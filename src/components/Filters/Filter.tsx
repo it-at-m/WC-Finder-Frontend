@@ -122,7 +122,7 @@ export default function DoorWidthFunction() {
       </div> */}
       <div className={classes.selectWrapper}>
         <Button className={classes.selectBox} onClick={clearAll}>
-          Clear filters
+          Clear
         </Button>
       </div>
     </div>
