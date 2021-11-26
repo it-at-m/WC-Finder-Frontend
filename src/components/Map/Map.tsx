@@ -49,7 +49,7 @@ const Map = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await listPlaces();
+      listPlaces();
     };
 
     fetchData();
