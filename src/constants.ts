@@ -15,5 +15,5 @@ const trackerIcon = L.icon({
   iconUrl: "images/tracker_icon.png",
 });
 
-const filterApi = "https://toilets-4v3wnsvvhq-lm.a.run.app/filter/";
+const filterApi = apiUri + "filter/";;
 export { apiUri, toiletIcon, trackerIcon,filterApi };

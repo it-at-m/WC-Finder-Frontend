@@ -16,7 +16,7 @@ export default function DoorWidthFunction() {
   const isMounted = useRef(false);
 
   const { listPlacesFilter } = useActions();
-
+  // TODO: Change this method
   useEffect(() => {
     if (isMounted.current) {
       listPlacesFilter({
