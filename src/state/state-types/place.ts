@@ -6,6 +6,7 @@ export interface Place {
   short_description: string;
   position: LatLngExpression;
   photo?: string; //?: use to declare as optional.
+  plan?: string;
   seeMoreLink?: string;
   address: string;
   eurokey?: string;

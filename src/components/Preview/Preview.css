@@ -23,7 +23,7 @@
   right: 1rem;
   top: 1rem;
   font-size: 2rem;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
 }
 
@@ -127,3 +127,5 @@
     top: 50%;
   }
 }
+
+.next{cursor:pointer}
