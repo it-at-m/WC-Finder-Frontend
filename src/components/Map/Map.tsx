@@ -55,15 +55,6 @@ const Map = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    setPolyLineProps(
-      places.reduce((prev: any, curr) => {
-        prev.push(curr.position);
-        return prev;
-      }, [])
-    );
-  }, []);
-
   function LocationMarker() {
     const [position, setPosition] = useState(
       null as unknown as LatLngExpression
