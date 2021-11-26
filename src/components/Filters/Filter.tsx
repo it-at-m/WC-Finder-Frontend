@@ -27,6 +27,7 @@ export default function DoorWidthFunction() {
     } else {
       isMounted.current = true;
     }
+    // eslint-disable-next-line
   }, [euroKey, doorWidth, rampVal]);
 
   // For Euro Key

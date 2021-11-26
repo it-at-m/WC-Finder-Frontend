@@ -34,6 +34,7 @@ const SearchControl = (props) => {
       map.addControl(searchControl);
       count++;
     }
+
   }, [map, props]);
   return null;
 };
@@ -52,6 +53,7 @@ const Map = () => {
     };
 
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   function LocationMarker() {
