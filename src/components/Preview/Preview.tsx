@@ -30,8 +30,8 @@ const Preview = () => {
         className="preview__picture"
         style={{
           backgroundImage: nextImage
-              ? `url(${apiUri}/${place?.plan})`
-              : `url(${apiUri}/${place?.photo})`,
+              ? `url(${apiUri}/get_layout/${place?.plan})`
+              : `url(${apiUri}/get_image/${place?.photo})`,
         }}
       >
         {!nextImage ? <ArrowForwardIosIcon onClick={() => setNextImage(true)} className="next"/> :
