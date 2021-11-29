@@ -36,3 +36,17 @@
     border: 0px;
     border-radius: 50%;
 }
+
+.leaflet-touch .leaflet-geosearch-bar form input {
+    height: 36.5px;
+}
+
+.leaflet-control-geosearch form input {
+    font-family: Barlow;
+    font-size: 15px;
+}
+
+.leaflet-control-geosearch a.reset {
+    top: 4px;
+    font-size: 150%;
+}

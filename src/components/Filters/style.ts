@@ -4,14 +4,16 @@ export default makeStyles({
       height: "auto",
       width: 90,
       backgroundColor: "#ffffff",
-      borderRadius: 50,
+      borderRadius: 5,
       fontSize: 10,
       lineHeight: 0.1,
       textDecoration: "none",
       outline: "none",
       textAlign: "center",
       fontFamily: "Barlow",
-      
+      borderWidth: "1px",
+      boxShadow: "rgb(0 0 0 / 30%) 0px 1px 3px 0px, rgb(27 31 35 / 10%) 0px 0px 0px 1px",
+
       "& .MuiOutlinedInput-input": {
         color: "black",
         fontFamily: "Barlow",
@@ -114,7 +116,7 @@ export default makeStyles({
       height: 44,
       width: 88,
       backgroundColor: "#ffffff",
-      borderRadius: 50,
+      borderRadius: 5,
       fontSize: 13,
       fontWeight: 600,
       lineHeight: 0.1,
@@ -123,6 +125,8 @@ export default makeStyles({
       textAlign: "center",
       textTransform: "none",
       fontFamily: "Barlow",
+      boxShadow: "rgb(0 0 0 / 30%) 0px 1px 3px 0px, rgb(27 31 35 / 10%) 0px 0px 0px 1px",
+
       "&:hover": {
         backgroundColor: "#ffffff",
       },

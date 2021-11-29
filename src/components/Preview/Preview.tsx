@@ -6,11 +6,16 @@ import { useActions } from "../../hooks/useActions";
 import key_logo from "./icons/eurokey.png"
 import door_logo from "./icons/door width.png"
 import ramp_logo from "./icons/ramp.png"
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useState } from "react";
 
 const Preview = () => {
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
+
+  const [nextImage,setNextImage] = useState<boolean>(false)
 
   const { nullSelectPlace } = useActions();
   return (
@@ -18,15 +23,24 @@ const Preview = () => {
       className={`preview__container preview__container--${place && "active"}`}
     >
       <div className="preview__close" onClick={() => nullSelectPlace()}>
-        <AiFillCloseCircle></AiFillCloseCircle>
+        <AiFillCloseCircle>
+        </AiFillCloseCircle>
       </div>
       <div
         className="preview__picture"
-        style={{ backgroundImage: `url(${apiUri}/${place?.photo})` }}
-      ></div>
+        style={{
+          backgroundImage: nextImage
+              ? `url(${apiUri}/get_layout/${place?.plan})`
+              : `url(${apiUri}/get_image/${place?.photo})`,
+        }}
+      >
+        {!nextImage ? <ArrowForwardIosIcon onClick={() => setNextImage(true)} className="next"/> :
+            <ArrowBackIosIcon onClick={() => setNextImage(false)} className="previous"/>}
+
+      </div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>
-        <div className="preview__address">{place?.address}</div>
+        <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
         <div className="preview__description">{place?.short_description}</div>
         <div className="grid_container">
           <div>

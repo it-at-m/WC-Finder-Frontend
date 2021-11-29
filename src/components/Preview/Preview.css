@@ -19,11 +19,12 @@
 }
 
 .preview__close {
-  position: absolute;
+  position: sticky;
+  float: right;
   right: 1rem;
   top: 1rem;
   font-size: 2rem;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
 }
 
@@ -103,14 +104,14 @@
   margin-bottom: 1rem;
   margin-top: 5px;
   line-height: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .door_icon {
   margin-bottom: 1rem;
   margin-top: 5px;
   line-height: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .grid_container{
@@ -126,4 +127,31 @@
     height: 50%;
     top: 50%;
   }
+}
+
+.next {
+  color: white;
+  cursor:pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  float: right;
+  margin-top: 130px;
+  border-radius: 5px;
+  height:500%;
+  padding: 0.5vh;
+  margin-right: -1.5rem;
+}
+
+.previous {
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  float: left;
+  margin-top: 130px;
+  border-radius: 5px;
+  left: 0.5rem;
+  padding: 0.5vh;
+  float: left;
+  position: absolute;
+  padding-right: 0vh;
+  padding-left: 1vh;
 }
