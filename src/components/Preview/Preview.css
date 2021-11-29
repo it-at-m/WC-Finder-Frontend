@@ -19,7 +19,8 @@
 }
 
 .preview__close {
-  position: absolute;
+  position: sticky;
+  float: right;
   right: 1rem;
   top: 1rem;
   font-size: 2rem;
@@ -103,14 +104,14 @@
   margin-bottom: 1rem;
   margin-top: 5px;
   line-height: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .door_icon {
   margin-bottom: 1rem;
   margin-top: 5px;
   line-height: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .grid_container{
@@ -128,4 +129,30 @@
   }
 }
 
-.next{cursor:pointer}
+.next {
+  cursor:pointer;
+  background-color: white;
+  float: right;
+  margin-top: 125px;
+  border-radius: 5px;
+  height:500%;
+  padding: 0.5vh;
+  font-size: 3x;
+  margin-right: -20px;
+}
+
+.previous {
+  color: white;
+  cursor: pointer;
+  background-color: black;
+  float: left;
+  margin-top: 125px;
+  border-radius: 5px;
+  left: 25px;
+  padding: 0.5vh;
+  margin-left: -10px;
+  float: left;
+  position: absolute;
+  padding-right: 0vh;
+  padding-left: 1vh;
+}

@@ -35,12 +35,12 @@ const Preview = () => {
         }}
       >
         {!nextImage ? <ArrowForwardIosIcon onClick={() => setNextImage(true)} className="next"/> :
-            <ArrowBackIosIcon onClick={() => setNextImage(false)} className="next"/>}
+            <ArrowBackIosIcon onClick={() => setNextImage(false)} className="previous"/>}
 
       </div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>
-        <div className="preview__address">{place?.address}</div>
+        <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
         <div className="preview__description">{place?.short_description}</div>
         <div className="grid_container">
           <div>

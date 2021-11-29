@@ -12,5 +12,6 @@ export interface Place {
   eurokey?: string;
   ramp_steepness?: string;
   door_width?: string;
-
+  zip_code?: string;
+  city: string;
 }
