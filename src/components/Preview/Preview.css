@@ -130,27 +130,26 @@
 }
 
 .next {
+  color: white;
   cursor:pointer;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.5);
   float: right;
   margin-top: 125px;
   border-radius: 5px;
   height:500%;
   padding: 0.5vh;
-  font-size: 3x;
-  margin-right: -20px;
+  margin-right: -1.5rem;
 }
 
 .previous {
   color: white;
   cursor: pointer;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   float: left;
   margin-top: 125px;
   border-radius: 5px;
-  left: 25px;
+  left: 0.5rem;
   padding: 0.5vh;
-  margin-left: -10px;
   float: left;
   position: absolute;
   padding-right: 0vh;
