@@ -16,7 +16,6 @@ const Preview = () => {
   } = useSelector((state) => state.placeSelected);
 
   const [nextImage,setNextImage] = useState<boolean>(false)
-
   const { nullSelectPlace } = useActions();
   return (
     <div
@@ -43,28 +42,36 @@ const Preview = () => {
         <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
         <div className="preview__description">{place?.short_description}</div>
         <div className="grid_container">
-          <div>
-            <img src={key_logo} alt={"eurokey"} className="key_icon"></img>
-          </div>
-          <div className="preview__eurokey">
-            Eurokey: {place?.eurokey ? "Required" : "Not required"}
-          </div>
-        </div>
-        <div className="grid_container">
-          <div>
-            <img src={ramp_logo} alt={"ramp"} className="key_icon"></img>
-          </div>
-        <div className="preview__ramp_steepness">
-          Ramp Steepness: {place?.ramp_steepness}%
-        </div>
-        </div>
-        <div className="grid_container">
+          <div id="rcorners3" className="grid_child">
+            <div>
+              <img src={key_logo} alt={"eurokey"} className="key_icon"></img>
+            </div>
+            <div className="preview__eurokey">
+            Eurokey: 
+              <div><b>{place?.eurokey ? "Required" : "Not required"}</b></div>
+            </div>
+            </div>
+          <div id="rcorners3" className="grid_child">
           <div>
             <img src={door_logo} alt={"doorwidth"} className="door_icon"></img>
           </div>
           <div className="preview__door_width">
-            Door Width: {place?.door_width}cm
+            Door Width: 
+              <div><b>{place?.door_width}cm</b></div>
           </div>
+          </div>
+          <div id="rcorners3" className="grid_child">
+            <div>
+             <img src={ramp_logo} alt={"ramp"} className="key_icon"></img>
+            </div>
+            <div className="preview__ramp_steepness">
+              Ramp Steepness: 
+                <div><b>{place?.ramp_steepness}%</b></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button onClick={()=> window.open("https://www.google.com/maps/@"+place?.position+",15z", "_blank")} className="GoButton">Go</button>
         </div>
       </div>
     </div>
