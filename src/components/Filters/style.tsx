@@ -144,15 +144,24 @@ export default makeStyles({
     menuitem: {
       background: "#0000FF !important"
     },
-    ".Sidebar": {
-      height: "100%", /* 100% Full-height */
-      width: 0, /* 0 width - change this with JavaScript */
-      position: "fixed", /* Stay in place */
-      zIndex: 1000, /* Stay on top */
-      top: 0,
-      left: 0,
-      backgroundColor: "#111", /* Black*/
-      paddingTop: 60, /* Place content 60px from the top */
-      transition: "0.5s" /* 0.5 second transition effect to slide in the sidebar */
+    "disableParking": {
+      borderRadius: 10,
+      background: "#D3D3D3",
+      backgroundPosition: "top",
+      backgroundRepeat: "repeat",
+      paddingLeft: 50,
+      width: 400,
+      height: 100,
+      marginLeft:4
+  },
+    rightSideBar: {
+      height: "100%",
+      width: "35%",
+      zIndex: 1000,
+      "@media (max-width: 768px)": {
+            width: "80%",
+            height: "50%",
+            top: "50%"
     }
+  }
   });

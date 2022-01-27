@@ -14,6 +14,22 @@
     right: 0;
 }
 
+.preview__container__new {
+    z-index: 1000;
+    position: fixed;
+    width: 33%;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: white;
+    top: 0;
+    right: -100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.preview__container__new--active {
+    right: 0;
+}
+
 .preview__description__container {
     padding: 1rem;
 }
@@ -25,6 +41,22 @@
     top: 1rem;
     font-size: 2rem;
     color: #000000;
+    cursor: pointer;
+}
+
+.preview__close__new {
+    position: sticky;
+    float: right;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    color: #000000;
+    cursor: pointer;
+}
+
+.info {
+    position: sticky;
+    font-size: 2rem;
     cursor: pointer;
 }
 
@@ -92,7 +124,14 @@
 .preview__picture {
     height: 40vh;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+}
+
+.preview__picture__new {
+    height: 40vh;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-position: center;
 }
 
@@ -152,6 +191,11 @@
         height: 50%;
         top: 50%;
     }
+    .preview__container__new {
+        width: 100%;
+        height: 100%;
+        top: 20%;
+    }
 }
 
 .next {
@@ -179,4 +223,17 @@
     position: absolute;
     padding-right: 0vh;
     padding-left: 1vh;
+}
+
+.LayoutTitle {
+    text-align: center;
+    padding-left: 10px;
+    font-family: 'Barlow';
+    font-weight: bold;
+    font-size: larger;
+}
+
+.Layout1 {
+    position: relative;
+    padding-left: 20px;
 }
