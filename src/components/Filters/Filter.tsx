@@ -121,11 +121,11 @@ export default function DoorWidthFunction() {
           <MenuItem value={40} className="menuitem">40</MenuItem>
         </TextField>
       </div>
-      <div className={classes.selectWrapper}>
+      {/* <div className={classes.selectWrapper}>
         <Button className={classes.root}>
           Filters
         </Button>
-      </div>
+      </div> */}
       <div className={classes.selectWrapper}>
         <Button onClick={clearAll} className={classes.root}>
           Clear
