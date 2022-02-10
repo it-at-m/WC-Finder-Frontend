@@ -50,3 +50,11 @@
     top: 4px;
     font-size: 150%;
 }
+
+.combination {
+    display: flex;
+}
+
+.language {
+    z-index: 1000;
+}
