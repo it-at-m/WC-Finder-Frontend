@@ -118,15 +118,6 @@ const Map = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <div className="combination">
-            <select className="language" onChange={(e)=>changeLang(e)}>
-              <option value="en">
-                EN
-              </option>
-              <option value="ge">
-                GE
-              </option>
-            </select> */}
           <SearchControl
           provider={prov}
           showMarker={true}
@@ -141,7 +132,6 @@ const Map = () => {
           style={"bar"}
           popupFormat={(result: { label: any }) => result.label}
           />
-        {/* </div> */}
         <Filter />
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
         {places &&

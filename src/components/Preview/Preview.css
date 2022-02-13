@@ -58,7 +58,7 @@
 
 .Info {
     cursor: pointer;
-    margin-top: 50%;
+    margin-top: 3%;
 }
 
 .preview__button {
@@ -205,8 +205,8 @@
     background-position: left top;
     background-repeat: repeat;
     padding: 13px;
-    width: 162px;
-    height: 40px;
+    width: 87%;
+    height: 45px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -221,7 +221,6 @@
         top: 20%;
     }
 }
-
 .next {
     color: white;
     cursor: pointer;

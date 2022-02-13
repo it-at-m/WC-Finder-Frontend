@@ -33,15 +33,35 @@ const Preview = () => {
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
+
+  //Language
   const {t,i18n}=useTranslation();
+
   const { nullSelectPlace } = useActions();
+
+  //let sidebarCollapsed = localStorage.getItem('sidebar-collapsed');
+  // let [isExpanded, setIsExpanded] = useState(sidebarCollapsed ? true: false);
+  let [isExpanded, setIsExpanded] = useState<boolean>(true)
+  
+  function handleToggler() {
+    
+    let storeMe = {
+      myBool: true
+    }
+    if(isExpanded){
+      setIsExpanded(true);
+      localStorage.setItem('sidebar-collapsed',JSON.stringify(storeMe));
+    }
+    setIsExpanded(false);
+  }
+  
   const Layout = () => (
-    <Popup trigger={<BsFillInfoCircleFill className="Info"/>} position="bottom left">
+    <Popup trigger={<BsFillInfoCircleFill className="Info"/>} position="top left">
     <div
     className={`preview__container__new preview__container__new--${place && "active"}`}
   >
-    <div className="preview__close__new" onClick={()=>nullSelectPlace()}>
-      <AiFillCloseCircle>
+    <div className={isExpanded ? "preview__close" : `preview__container preview__container--${place && "active"}'`}>
+      <AiFillCloseCircle onClick={()=>handleToggler()}>
       </AiFillCloseCircle>
     </div>
     <div
