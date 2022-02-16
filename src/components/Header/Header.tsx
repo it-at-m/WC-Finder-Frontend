@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="header__container">
       <button className="header" onClick={()=>window.open("https://forms.gle/YNagaK7RyNroiqfn9")}>
-        {t("Beta Testing Survey")}
+        {t("Beta Testing Survey")} - inclus
       </button>
     </div>
   );
