@@ -29,78 +29,20 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import Popup from 'reactjs-popup';
 import { useTranslation } from "react-i18next";
 
-const Layout = () => {
-  const [screen, setScreen] = useState("layout");
-  const {
-    data: place
-  } = useSelector((state) => state.placeSelected);
-  const {t}=useTranslation();
-
-  return(
-  <Popup trigger={<BsFillInfoCircleFill className="Info"></BsFillInfoCircleFill> } position="top left">
-  <div
-  className={`preview__container__new preview__container__new--${place && "active"}`}
->
-  <div className="preview__close__new" onClick={() => setScreen("preview")}>
-  { screen === "preview" ?
-    <Preview />
-    :  <Layout />
-    }
-    <AiFillCloseCircle>
-    </AiFillCloseCircle>
-  </div>
-  <div
-    className="preview__picture__new"
-    style={{
-      backgroundImage:`url(${apiUri}/get_layout/${place?.plan})`
-    }}
-  ></div>
-    <div><b className="LayoutTitle">{t("Layout Explanation")}</b></div>
-    <br />
-    <div className="Layout1"><img src={blue} alt={"ToiletFlush"}></img>    {t("Toilet Flush or tap")}</div>
-    <br />
-    <div className="Layout1"><img src={red} alt={"EmergencyCall"}></img>      {t("Emergency call button or cord")}</div>
-    <br />
-    <div className="Layout1"><img src={green} alt={"DoorButton"}></img>    {t("Door button open or close")}</div>
-    <br />
-    <div className="Layout1"><img src={yellow} alt={"LightSwitch"}></img>     {t("Light Switch")}</div>
-    <br />
-    <div className="Layout1"><img src={toiletIcon} alt={"Toilet Bowl"}></img>     {t("WC Toilet Bowl")}</div>
-    <br />
-    <div className="Layout1"><img src={urinal} alt={"Urinal"}></img>     {t("Urinal")}</div>
-    <br />
-    <div className="Layout1"><img src={sink} alt={"Sink"}></img>     {t("Sink")}</div>
-    <br />
-    <div className="Layout1"><img src={flex} alt={"Flexible Handrails"}></img>     {t("Flexible Handrails")}</div>
-    <br />
-    <div className="Layout1"><img src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}</div>
-    <br />
-    <div className="Layout1"><img src={stand} alt={"StandupAid"}></img>     {t("Standup Aid")}</div>
-    <br />
-    <div className="Layout1"><img src={mobile} alt={"Mobile Ceil"}></img>     {t("Mobile ceiling lift")}</div>
-    <br />
-    <div className="Layout1"><img src={water} alt={"Water filter"}></img>     {t("Water Filter with activated carbon")}</div>
-    <br />
-    <div className="Layout1"><img src={turning} alt={"Turning space"}></img>     {t("Turning space in the room and infront of the toilet bowl")}</div>
-    <br />
-    <div className="Layout1"><img src={barrier} alt={"Shower"}></img>     {t("Barrier-free shower")}</div>
-    <br />
-    <div className="Layout1"><img src={door} alt={"Door Handle"}></img>     {t("Door/ WC Bowl handle")}</div>
-    <br />
-  </div>
-</Popup>
-  )
-  };
-
 const Preview = () => {
+  //data
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
-
+  const [screen, setScreen] = useState("layout");
+  
   //Language
   const {t}=useTranslation();
-
+  
+  // Cross Button Functionality
   const { nullSelectPlace } = useActions();
+
+  // Images in Preview
   const [nextImage,setNextImage] = useState<boolean>(false)
   return (
     <div
@@ -120,7 +62,56 @@ const Preview = () => {
       >
         {!nextImage ? <ArrowForwardIosIcon onClick={() => setNextImage(true)} className="next"/> :
             <ArrowBackIosIcon onClick={() => setNextImage(false)} className="previous"/>}
-      <Layout />
+      
+      {/* Layout Popup */}
+
+      <Popup trigger={<BsFillInfoCircleFill className="Info" />}>
+        <div className={`preview__container__new preview__container__new--${place && "active"}`}>
+          <div className="preview__close__new" onClick={() => setScreen("preview")}>
+            { screen === "preview" ? <Preview /> :  ""}
+            <AiFillCloseCircle></AiFillCloseCircle>
+          </div>
+          <div className="preview__picture__new" style={{
+            backgroundImage:`url(${apiUri}/get_layout/${place?.plan})`
+          }}
+          >
+          </div>
+          <div>
+            <b className="LayoutTitle">{t("Layout Explanation")}</b>
+          </div>
+          <br />
+          <div className="Layout1"><img src={blue} alt={"ToiletFlush"}></img>    {t("Toilet Flush or tap")}</div>
+          <br />
+          <div className="Layout1"><img src={red} alt={"EmergencyCall"}></img>      {t("Emergency call button or cord")}</div>
+          <br />
+          <div className="Layout1"><img src={green} alt={"DoorButton"}></img>    {t("Door button open or close")}</div>
+          <br />
+          <div className="Layout1"><img src={yellow} alt={"LightSwitch"}></img>     {t("Light Switch")}</div>
+          <br />
+          <div className="Layout1"><img src={toiletIcon} alt={"Toilet Bowl"}></img>     {t("WC Toilet Bowl")}</div>
+          <br />
+          <div className="Layout1"><img src={urinal} alt={"Urinal"}></img>     {t("Urinal")}</div>
+          <br />
+          <div className="Layout1"><img src={sink} alt={"Sink"}></img>     {t("Sink")}</div>
+          <br />
+          <div className="Layout1"><img src={flex} alt={"Flexible Handrails"}></img>     {t("Flexible Handrails")}</div>
+          <br />
+          <div className="Layout1"><img src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}</div>
+          <br />
+          <div className="Layout1"><img src={stand} alt={"StandupAid"}></img>     {t("Standup Aid")}</div>
+          <br />
+          <div className="Layout1"><img src={mobile} alt={"Mobile Ceil"}></img>     {t("Mobile ceiling lift")}</div>
+          <br />
+          <div className="Layout1"><img src={water} alt={"Water filter"}></img>     {t("Water Filter with activated carbon")}</div>
+          <br />
+          <div className="Layout1"><img src={turning} alt={"Turning space"}></img>     {t("Turning space in the room and infront of the toilet bowl")}</div>
+          <br />
+          <div className="Layout1"><img src={barrier} alt={"Shower"}></img>     {t("Barrier-free shower")}</div>
+          <br />
+          <div className="Layout1"><img src={door} alt={"Door Handle"}></img>     {t("Door/ WC Bowl handle")}</div>
+          <br />
+        </div>
+      </Popup>
       </div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>

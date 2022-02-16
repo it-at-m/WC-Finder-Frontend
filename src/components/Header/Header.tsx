@@ -4,8 +4,8 @@ const Header = () => {
   const {t} = useTranslation();
   return (
     <div className="header__container">
-      <button className="header" onClick={()=>window.open("https://forms.gle/YNagaK7RyNroiqfn9")}>
-        {t("Beta Testing Survey")}
+      <button className="header" onClick={()=>window.open("https://forms.gle/D3AbbSA4GGQ6TMzu9")}>
+        {t("Beta Testing Survey")} - inclus
       </button>
     </div>
   );
