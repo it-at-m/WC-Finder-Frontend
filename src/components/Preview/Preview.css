@@ -57,9 +57,14 @@
 }
 
 .Info {
-    cursor: pointer;
-    margin-top: 3%;
+    position: sticky;
+    float: left;
+    left: 1rem;
+    top: 1rem;
     font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 .preview__button {
@@ -218,9 +223,13 @@
     }
     .preview__container__new {
         width: 100%;
-        height: 50%;
+        height: 100%;
         top: 50%;
     }
+}
+
+.Info__new {
+    display: none;
 }
 
 .next {

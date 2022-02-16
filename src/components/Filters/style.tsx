@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import { blue } from "@material-ui/core/colors";
 export default makeStyles({
     root: {
       height: "auto",
@@ -17,13 +16,6 @@ export default makeStyles({
       "&:hover": {
         backgroundColor: "#ffffff"
      },
-     "& .makeStyles-all-2": {
-      display: "flex",
-      fontFamily: "Barlow",
-      marginTop: 5,
-      // justifyContent: "center",
-      overflowX: "scroll"
-     },
       "& .MuiOutlinedInput-input": {
         color: "black",
         fontFamily: "Barlow",
@@ -33,7 +25,7 @@ export default makeStyles({
         fontFamily: "Barlow",
       },
       "& .MuiSelect-selectMenu":{
-        lineHeight: 1,
+        lineHeight: 1
       },
       "& .makeStyles-selectBox-3": {
         width: "auto",
@@ -121,6 +113,9 @@ export default makeStyles({
       "& .MuiSelect-select.MuiSelect-select": {
         paddingRight: 19,
         paddingLeft: 10,
+        "&:after":{
+          borderColor: "#000000"
+        },
     }
     },
     all: {

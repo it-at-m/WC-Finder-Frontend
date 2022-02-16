@@ -11,8 +11,6 @@ import {
 } from "react-leaflet";
 
 import { OpenStreetMapProvider } from "leaflet-geosearch";
-import Button from "@material-ui/core/Button";
-
 import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
 import "./Map.css";
@@ -22,7 +20,6 @@ import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
-import i18n from "../../i18n";
 var count = 0;
 
 const SearchControl = (props) => {
@@ -74,7 +71,7 @@ const Map = () => {
       e.preventDefault();
       // alert('You clicked submit.');
     }
-    const {t,i18n}=useTranslation();
+    const {t}=useTranslation();
     return position === null ? (
       <form onSubmit={handleSubmit}>
         <div className="leaflet-top leaflet-right relocation_div">
@@ -102,9 +99,6 @@ const Map = () => {
   }
     //For translation
   const {t} = useTranslation();
-    function changeLang(ln){
-      i18n.changeLanguage(ln);
-    }
   return (
     <div className="map__container">
       <MapContainer
