@@ -1,10 +1,9 @@
-import { MenuItem, TextField,Select } from "@material-ui/core";
+import { MenuItem, Select } from "@material-ui/core";
 import { useState, useEffect, useRef } from "react";
 import Button from "@material-ui/core/Button";
 import { useActions } from "../../hooks/useActions";
 import style from "./style";
 import { useTranslation } from "react-i18next";
-import i18n from "../../i18n";
 
 
 export default function DoorWidthFunction() {
@@ -25,7 +24,7 @@ export default function DoorWidthFunction() {
       listPlacesFilter({
         EuroKey: euroKey,
         DoorWidth: doorWidth,
-        Ramp: rampVal,
+        Ramp: rampVal 
       });
     } else {
       isMounted.current = true;
@@ -47,7 +46,6 @@ export default function DoorWidthFunction() {
   function handleRamp(g) {
     setRampVal(g.target.value);
   }
-
   // For Clear Functionality
   // const clearAll = () => {
   //   setEuroKey(2);
@@ -58,6 +56,7 @@ export default function DoorWidthFunction() {
   //For translation
   const {t, i18n} = useTranslation();
   function changeLang(ln){
+    // setLang(ln.target.value);
     i18n.changeLanguage(ln);
   }
   
@@ -73,6 +72,22 @@ export default function DoorWidthFunction() {
           DE
         </Button>
       </div>
+      {/* <div className={classes.selectWrapper}>
+        <Select
+          className={classes.root}
+          value={lang}
+          onChange={(h)=>changeLang(h)}
+          placeholder="Lang"
+          disableUnderline
+        >
+          <MenuItem className="menuitem" value={"en"} >
+            EN
+          </MenuItem>
+          <MenuItem className="menuitem" value={"de"}>
+            DE
+          </MenuItem>
+        </Select>
+      </div> */}
       <div className={classes.selectWrapper}>
         <Select
           className={classes.root}

@@ -34,10 +34,10 @@ const Layout = () => {
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
-  const {t,i18n}=useTranslation();
+  const {t}=useTranslation();
 
   return(
-  <Popup trigger={<BsFillInfoCircleFill className="Info"/> } position="top left">
+  <Popup trigger={<BsFillInfoCircleFill className="Info"></BsFillInfoCircleFill> } position="top left">
   <div
   className={`preview__container__new preview__container__new--${place && "active"}`}
 >
@@ -46,7 +46,7 @@ const Layout = () => {
     <Preview />
     :  <Layout />
     }
-    <AiFillCloseCircle >
+    <AiFillCloseCircle>
     </AiFillCloseCircle>
   </div>
   <div
@@ -98,11 +98,10 @@ const Preview = () => {
   } = useSelector((state) => state.placeSelected);
 
   //Language
-  const {t,i18n}=useTranslation();
+  const {t}=useTranslation();
 
   const { nullSelectPlace } = useActions();
   const [nextImage,setNextImage] = useState<boolean>(false)
-
   return (
     <div
       className={`preview__container preview__container--${place && "active"}`}
@@ -121,7 +120,7 @@ const Preview = () => {
       >
         {!nextImage ? <ArrowForwardIosIcon onClick={() => setNextImage(true)} className="next"/> :
             <ArrowBackIosIcon onClick={() => setNextImage(false)} className="previous"/>}
-      <Layout/>
+      <Layout />
       </div>
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>
