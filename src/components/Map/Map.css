@@ -50,3 +50,29 @@
     top: 4px;
     font-size: 150%;
 }
+
+.combination {
+    display: flex;
+}
+
+.language {
+    z-index: 1000;
+}
+
+.leaflet-touch .leaflet-control-geosearch a.reset {
+    line-height: 30px;
+    display: none;
+}
+
+.leaflet-touch .leaflet-geosearch-bar form input {
+    height: 36.5px;
+    border-radius: 50px;
+}
+
+.leaflet-geosearch-bar form {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 25px;
+}

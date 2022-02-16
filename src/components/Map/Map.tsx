@@ -11,6 +11,7 @@ import {
 } from "react-leaflet";
 
 import { OpenStreetMapProvider } from "leaflet-geosearch";
+import Button from "@material-ui/core/Button";
 
 import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
@@ -20,6 +21,8 @@ import Filter from "../Filters/Filter";
 import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 var count = 0;
 
 const SearchControl = (props) => {
@@ -55,7 +58,7 @@ const Map = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
-
+  
   function LocationMarker() {
     const [position, setPosition] = useState(
       null as unknown as LatLngExpression
@@ -71,7 +74,7 @@ const Map = () => {
       e.preventDefault();
       // alert('You clicked submit.');
     }
-
+    const {t,i18n}=useTranslation();
     return position === null ? (
       <form onSubmit={handleSubmit}>
         <div className="leaflet-top leaflet-right relocation_div">
@@ -92,12 +95,16 @@ const Map = () => {
         <Marker 
         position={position}
         icon={trackerIcon}>
-          <Tooltip>You are here</Tooltip>
+          <Tooltip>{t("You are here")}</Tooltip>
         </Marker>
       </>
     );
   }
-
+    //For translation
+  const {t} = useTranslation();
+    function changeLang(ln){
+      i18n.changeLanguage(ln);
+    }
   return (
     <div className="map__container">
       <MapContainer
@@ -111,7 +118,7 @@ const Map = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <SearchControl
+          <SearchControl
           provider={prov}
           showMarker={true}
           showPopup={false}
@@ -119,12 +126,12 @@ const Map = () => {
           retainZoomLevel={true}
           animateZoom={true}
           autoClose={false}
-          searchLabel={"Where are you going?"}
           keepResult={true}
+          searchLabel= {t("Where  are you going?")}
           // eslint-disable-next-line react/style-prop-object
           style={"bar"}
           popupFormat={(result: { label: any }) => result.label}
-        />
+          />
         <Filter />
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
         {places &&

@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { blue } from "@material-ui/core/colors";
 export default makeStyles({
     root: {
       height: "auto",
@@ -16,6 +17,13 @@ export default makeStyles({
       "&:hover": {
         backgroundColor: "#ffffff"
      },
+     "& .makeStyles-all-2": {
+      display: "flex",
+      fontFamily: "Barlow",
+      marginTop: 5,
+      // justifyContent: "center",
+      overflowX: "scroll"
+     },
       "& .MuiOutlinedInput-input": {
         color: "black",
         fontFamily: "Barlow",
@@ -26,9 +34,6 @@ export default makeStyles({
       },
       "& .MuiSelect-selectMenu":{
         lineHeight: 1,
-        "&:onClick":{
-            background: "#0000FF"
-        }
       },
       "& .makeStyles-selectBox-3": {
         width: "auto",
@@ -67,12 +72,6 @@ export default makeStyles({
          /* left: 0; */
          /* position: fixed; */
        },
-      "& .makeStyles-all-2": {
-        display: "flex",
-        fontFamily: "Barlow",
-        marginTop: 5,
-        justifyContent: "center"
-    },
       "& .MuiFormLabel-root": {
         color: "#000000",
         padding: 0,
@@ -121,7 +120,7 @@ export default makeStyles({
       },
       "& .MuiSelect-select.MuiSelect-select": {
         paddingRight: 19,
-        paddingLeft: 10
+        paddingLeft: 10,
     }
     },
     all: {
@@ -141,19 +140,6 @@ export default makeStyles({
       marginRight:5,
       color: "black"
     },
-    menuitem: {
-      background: "#0000FF !important"
-    },
-    "disableParking": {
-      borderRadius: 10,
-      background: "#D3D3D3",
-      backgroundPosition: "top",
-      backgroundRepeat: "repeat",
-      paddingLeft: 50,
-      width: 400,
-      height: 100,
-      marginLeft:4
-  },
     rightSideBar: {
       height: "100%",
       width: "35%",
@@ -162,6 +148,13 @@ export default makeStyles({
             width: "80%",
             height: "50%",
             top: "50%"
+          }
+        },
+    EuroKey: {
+      zIndex:1000,
+      position: "absolute"
+    },
+    menuitem: {
+      borderWidth: 10
     }
-  }
   });

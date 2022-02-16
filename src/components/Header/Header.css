@@ -1,9 +1,28 @@
 .header__container {
-    background-color: #786DE8;
-    padding: .2rem 0;
+    background-color: #E0EBF8;
     color: white;
+    padding: .2rem 0;
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
     font-family: 'Varela Round', sans-serif;
+    border-radius: 5;
+}
+
+.header {
+    background-color: #7B61FF;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Barlow';
+    cursor: pointer;
+    border-end-start-radius: 5px;
+    border: none;
+    border-start-start-radius: 5px;
+    border-end-end-radius: 5px;
+    border-start-end-radius: 5px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-right: 20px;
+    padding-left: 20px;
 }

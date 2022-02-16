@@ -1,4 +1,8 @@
 main {
-  display: flex;
-  position: fixed;
+    display: flex;
+    position: fixed;
+}
+
+.English {
+    z-index: 1000;
 }
