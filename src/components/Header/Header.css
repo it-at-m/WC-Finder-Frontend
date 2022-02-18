@@ -1,12 +1,7 @@
 .header__container {
     background-color: #E0EBF8;
-    color: white;
     padding: .2rem 0;
-    font-size: 2rem;
     text-align: center;
-    font-weight: bold;
-    font-family: 'Varela Round', sans-serif;
-    border-radius: 5;
 }
 
 .header {
@@ -25,4 +20,11 @@
     padding-bottom: 9px;
     padding-right: 20px;
     padding-left: 20px;
+}
+
+.root {
+    float: left;
+    padding: 10px;
+    margin-left: 2px;
+    border-radius: 5px;
 }

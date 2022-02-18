@@ -9,7 +9,6 @@ import {
   ZoomControl,
   useMap,
 } from "react-leaflet";
-
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
@@ -97,6 +96,7 @@ const Map = () => {
       </>
     );
   }
+
     //For translation
   const {t} = useTranslation();
   return (

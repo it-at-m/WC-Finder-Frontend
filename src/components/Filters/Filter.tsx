@@ -1,10 +1,8 @@
 import { MenuItem, Select } from "@material-ui/core";
 import { useState, useEffect, useRef } from "react";
-import Button from "@material-ui/core/Button";
 import { useActions } from "../../hooks/useActions";
 import style from "./style";
 import { useTranslation } from "react-i18next";
-
 
 export default function DoorWidthFunction() {
   
@@ -15,6 +13,7 @@ export default function DoorWidthFunction() {
   const [euroKey, setEuroKey] = useState<number>(2);
   const [doorWidth, setDoorWidth] = useState<number>(0);
   const [rampVal, setRampVal] = useState<number>(41);
+  // const [lang, setLang] = useState<string>("de");
   const isMounted = useRef(false);
 
   const { listPlacesFilter } = useActions();
@@ -35,6 +34,7 @@ export default function DoorWidthFunction() {
   // For Euro Key
   function handleSelect(e) {
     setEuroKey(e.target.value);
+    console.log(e)
   }
 
   // For Door Width
@@ -54,40 +54,29 @@ export default function DoorWidthFunction() {
   // };
   
   //For translation
-  const {t, i18n} = useTranslation();
-  function changeLang(ln){
-    // setLang(ln.target.value);
-    i18n.changeLanguage(ln);
-  }
+  const {t} = useTranslation();
+  // function changeLang(ln){
+  //   setLang(ln);
+  //   i18n.changeLanguage(ln);
+  // }
   
   return (
     <div className={classes.all}>
       <div className={classes.selectWrapper}>
-        <Button onClick={()=>changeLang('en')} className={classes.root}>
-          EN
-        </Button>
-      </div>
-      <div className={classes.selectWrapper}>
-        <Button onClick={()=>changeLang('de')} className={classes.root}>
-          DE
-        </Button>
-      </div>
-      {/* <div className={classes.selectWrapper}>
-        <Select
+        {/* <select
           className={classes.root}
           value={lang}
-          onChange={(h)=>changeLang(h)}
+          onChange={(h)=> changeLang(h.target.value)}
           placeholder="Lang"
-          disableUnderline
         >
-          <MenuItem className="menuitem" value={"en"} >
+          <option data-icon={language} className="menuitem" value={"en"} >
             EN
-          </MenuItem>
-          <MenuItem className="menuitem" value={"de"}>
+          </option>
+          <option data-icon={language} className="menuitem" value={"de"}>
             DE
-          </MenuItem>
-        </Select>
-      </div> */}
+          </option>
+        </select> */}
+      </div>
       <div className={classes.selectWrapper}>
         <Select
           className={classes.root}
@@ -154,16 +143,6 @@ export default function DoorWidthFunction() {
           <MenuItem value={10} className="menuitem">10%</MenuItem>
         </Select>
       </div>
-      {/* <div className={classes.selectWrapper}>
-        <Button onClick={()=> window.open("https://docs.google.com/forms/d/13C7YlT0Sb8beejj-eDYzHWfHDgo7kcIxOqLZ9Qc_dJ4/edit")} className={classes.root}>
-          {t("Feedback")}
-        </Button>
-      </div> */}
-      {/* <div className={classes.selectWrapper}>
-        <Button onClick={clearAll} className={classes.root}>
-          {t("Clear")}
-        </Button>
-      </div> */}
     </div>
     
     // <>
