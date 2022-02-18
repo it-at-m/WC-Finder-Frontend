@@ -61,7 +61,7 @@
 
 .leaflet-touch .leaflet-control-geosearch a.reset {
     line-height: 30px;
-    display: none;
+    border-radius: 35px;
 }
 
 .leaflet-touch .leaflet-geosearch-bar form input {
@@ -75,4 +75,9 @@
     left: 0;
     display: block;
     border-radius: 25px;
+}
+
+.Language {
+    z-index: 1000;
+    position: absolute;
 }
