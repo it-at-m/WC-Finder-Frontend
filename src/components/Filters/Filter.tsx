@@ -11,7 +11,6 @@ export default function DoorWidthFunction() {
   const [euroKey, setEuroKey] = useState<number>(2);
   const [doorWidth, setDoorWidth] = useState<number>(0);
   const [rampVal, setRampVal] = useState<number>(41);
-  const [width,setWidth] = useState<number>(0);
   const isMounted = useRef(false);
 
   const { listPlacesFilter } = useActions();
@@ -32,19 +31,16 @@ export default function DoorWidthFunction() {
   // For Euro Key
   function handleSelect(e) {
     setEuroKey(e.target.value);
-    setWidth(50);
   }
 
   // For Door Width
   function handleSelectDoorWidth(f) {
     setDoorWidth(f.target.value);
-    setWidth(50);
   }
 
   // For Ramp
   function handleRamp(g) {
     setRampVal(g.target.value);
-    setWidth(50);
   }
   
   //For translation
