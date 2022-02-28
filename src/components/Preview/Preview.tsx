@@ -21,6 +21,7 @@ import water from "./icons/Water.png"
 import turning from "./icons/Turning.png"
 import barrier from "./icons/BarrierFree.png"
 import door from "./icons/Door.png"
+import handrails_logo from "./icons/Handrails.jpg"
 //import save from "./icons/bookmarkIcon.svg"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -44,6 +45,20 @@ const Preview = () => {
 
   // Images in Preview
   const [nextImage,setNextImage] = useState<boolean>(false)
+
+  //Handrails
+  let handrails = {
+    'lr': "Flexible Left & Flexible Right",
+    'l': "Flexible Left",
+    'rfl': "Fixed Left & Flexible Right",
+    'flr':"Fixed Left & Flexible Right",
+    'fr': "Fixed Right",
+    'none': "No Grip",
+    'lfr': "Flexible Left & Fixed Right",
+    'r': "Flexible Right",
+    'fl': "Fixed Left"
+  }
+
   return (
     <div
       className={`preview__container preview__container--${place && "active"}`}
@@ -62,8 +77,6 @@ const Preview = () => {
       >
         {!nextImage ? <ArrowForwardIosIcon onClick={() => setNextImage(true)} className="next"/> :
             <ArrowBackIosIcon onClick={() => setNextImage(false)} className="previous"/>}
-      
-      {/* Layout Popup */}
 
       <Popup trigger={<BsFillInfoCircleFill className="Info" />}>
         <div className={`preview__container__new preview__container__new--${place && "active"}`}>
@@ -75,6 +88,7 @@ const Preview = () => {
             backgroundImage:`url(${apiUri}/get_layout/${place?.plan})`
           }}
           >
+            
           </div>
           <div>
             <b className="LayoutTitle">{t("Layout Explanation")}</b>
@@ -116,7 +130,7 @@ const Preview = () => {
       <div className="preview__description__container">
         <div className="preview__title">{place?.title}</div>
         <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
-        <div className="preview__description">{place?.short_description}</div>
+        <div className="preview__address">{place?.short_description}</div>
         <div className="grid_container">
           <div id="rcorners3" className="grid_child">
             <div>
@@ -124,7 +138,7 @@ const Preview = () => {
             </div>
             <div className="preview__eurokey">
             {t("Eurokey")}: 
-              <div><b>{(place?.eurokey) ? t("Required") : t("Not Required") }</b></div>
+              <div className="bld">{(place?.eurokey) ? t("Required") : t("Not Required") }</div>
             </div>
           </div>
           <div id="rcorners3" className="grid_child">
@@ -133,7 +147,7 @@ const Preview = () => {
           </div>
           <div className="preview__door_width">
             {t("Door Width")}: 
-              <div><b>{place?.door_width}cm</b></div>
+              <div className="bld">{place?.door_width}cm</div>
           </div>
           </div>
           <div id="rcorners3" className="grid_child">
@@ -142,13 +156,22 @@ const Preview = () => {
             </div>
             <div className="preview__ramp_steepness">
               {t("Ramp Steepness")}: 
-                <div><b>{place?.ramp_steepness}%</b></div>
+                <div className="bld">{place?.ramp_steepness}%</div>
+            </div>
+          </div>
+          <div id="rcorners3" className="grid_child">
+            <div>
+             <img src={handrails_logo} alt={"handrail"} className="key_icon"></img>
+            </div>
+            <div className="preview__handrail">
+              {t("Handrails")}: 
+                <div className="bld">{t(handrails[`${place?.grip}`])}</div>
             </div>
           </div>
         </div>
         <br />
         <div className="Save">
-          <div><button onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")} className="GoButton">{t("Go")}</button></div>
+          <div><button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button></div>
           {/* <div><img src={save} alt="Save" className="SaveImage"></img></div> */}
         </div>
       </div>

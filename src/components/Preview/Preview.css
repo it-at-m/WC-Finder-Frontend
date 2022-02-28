@@ -82,14 +82,11 @@
 }
 
 .preview__title {
-    font-family: Barlow;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 140%;
     text-align: center;
-    text-decoration-line: underline;
-    color: #000000;
+    padding-left: 10px;
+    font-family: 'Barlow';
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .preview__address {
@@ -105,12 +102,12 @@
 }
 
 .preview__description {
-    margin-bottom: 1rem;
     font-family: Barlow;
     font-style: normal;
     font-weight: 600;
     font-size: 17px;
     line-height: 150%;
+    display: flex;
     align-items: center;
     text-align: center;
     letter-spacing: 0.01em;
@@ -128,6 +125,16 @@
 }
 
 .preview__ramp_steepness {
+    font-size: 17px;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-top: -3rem;
+    line-height: 1.5rem;
+    color: #484848;
+    font-family: 'Barlow';
+}
+
+.preview__handrail {
     font-size: 17px;
     margin-bottom: 1rem;
     margin-left: 2rem;
@@ -184,15 +191,13 @@
 
 .grid_container {
     display: grid;
-    grid-template-columns: 187px 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 11px;
 }
 
 .GoButton {
     width: 277%;
     height: 145%;
-    margin-left: 385%;
-    border-radius: 40px;
     -webkit-border-radius: 40px;
     text-align: center;
     line-height: 149%;
@@ -203,6 +208,8 @@
     font-weight: 600;
     font-size: 17px;
     border-color: #13109E;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #rcorners3 {
@@ -210,9 +217,9 @@
     background: #f6f6f6;
     background-position: left top;
     background-repeat: repeat;
-    padding: 13px;
+    padding: 11px;
     width: 87%;
-    height: 45px;
+    height: 65%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -263,7 +270,7 @@
     padding-left: 10px;
     font-family: 'Barlow';
     font-weight: bold;
-    font-size: larger;
+    font-size: 20px;
 }
 
 .Layout1 {
@@ -273,8 +280,14 @@
 
 .Save {
     display: flex;
+    margin-right: 50%;
+    margin-left: 50%;
 }
 
 .SaveImage {
     cursor: pointer;
+}
+
+.bld {
+    font-weight: bolder;
 }

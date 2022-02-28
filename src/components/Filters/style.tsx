@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 export default makeStyles({
     root: {
+      zIndex: 1000,
       height: "auto",
       minWidth: "6vw",
       backgroundColor: "#ffffff",
@@ -79,6 +80,27 @@ export default makeStyles({
         '@media (min-width:600px)': {
           fontSize: '50rem',
         },
+        "& .makeStyles-root-1:hover":{
+          backgroundColor: "#ffffff",
+          overflowX: "scroll"
+        },
+        "& .makeStyles-root-1": {
+          height: "auto",
+          outline: "none",
+          zIndex: 1000,
+          minWidth: "6vw",
+          boxShadow: "rgb(0 0 0 / 30%) 0px 1px 3px 0px, rgb(27 31 35 / 10%) 0px 0px 0px 1px",
+          textAlign: "center",
+          fontFamily: "Barlow",
+          lineHeight: 0.1,
+          borderWidth: 1,
+          borderRadius: 36,
+          textTransform: "none",
+          textDecoration: "none",
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#ffffff"
+        }
     },
     "& .MuiPaper-root": {
       top: 134,

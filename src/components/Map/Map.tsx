@@ -19,6 +19,7 @@ import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
+
 var count = 0;
 
 const SearchControl = (props) => {
@@ -50,7 +51,6 @@ const Map = () => {
     const fetchData = async () => {
       listPlaces();
     };
-
     fetchData();
     // eslint-disable-next-line
   }, []);
@@ -68,7 +68,6 @@ const Map = () => {
     function handleSubmit(e: { preventDefault: () => void }) {
       map.locate();
       e.preventDefault();
-      // alert('You clicked submit.');
     }
     const {t}=useTranslation();
     return position === null ? (
@@ -97,7 +96,7 @@ const Map = () => {
     );
   }
 
-    //For translation
+  //For translation
   const {t} = useTranslation();
   return (
     <div className="map__container">
@@ -144,6 +143,5 @@ const Map = () => {
     </div>
   );
 };
-
 
 export default Map;
