@@ -291,3 +291,15 @@
 .bld {
     font-weight: bolder;
 }
+
+.PreviewBlock {
+    position: sticky;
+    margin-top: 6%;
+}
+
+.handrail__icon {
+    margin-top: 5px;
+    line-height: 1rem;
+    font-size: 1rem;
+    margin-bottom: 0px;
+}
