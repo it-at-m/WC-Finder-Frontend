@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="header__container">
       <select
-          className="root"
+          className="rootLang"
           value={lang}
           onChange={(h)=> changeLang(h.target.value)}
           placeholder="Lang"

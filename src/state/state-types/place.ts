@@ -14,4 +14,5 @@ export interface Place {
   door_width?: string;
   zip_code?: string;
   city: string;
+  grip?: string;
 }

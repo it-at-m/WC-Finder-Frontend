@@ -1,19 +1,17 @@
 import { MenuItem, Select } from "@material-ui/core";
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import { useState, useEffect, useRef } from "react";
 import { useActions } from "../../hooks/useActions";
-import style from "./style";
 import { useTranslation } from "react-i18next";
-
+import "./Filter.css"
 export default function DoorWidthFunction() {
   
-  // For styling
-  const classes = style();
 
   // all states
   const [euroKey, setEuroKey] = useState<number>(2);
   const [doorWidth, setDoorWidth] = useState<number>(0);
   const [rampVal, setRampVal] = useState<number>(41);
-  // const [lang, setLang] = useState<string>("de");
+  const [width,setWidth] = useState<number>(0);
   const isMounted = useRef(false);
 
   const { listPlacesFilter } = useActions();
@@ -34,58 +32,47 @@ export default function DoorWidthFunction() {
   // For Euro Key
   function handleSelect(e) {
     setEuroKey(e.target.value);
-    console.log(e)
+    setWidth(50);
   }
 
   // For Door Width
   function handleSelectDoorWidth(f) {
     setDoorWidth(f.target.value);
+    setWidth(50);
   }
 
   // For Ramp
   function handleRamp(g) {
     setRampVal(g.target.value);
+    setWidth(50);
   }
-  // For Clear Functionality
-  // const clearAll = () => {
-  //   setEuroKey(2);
-  //   setDoorWidth(0);
-  //   setRampVal(41);
-  // };
   
   //For translation
   const {t} = useTranslation();
-  // function changeLang(ln){
-  //   setLang(ln);
-  //   i18n.changeLanguage(ln);
-  // }
   
   return (
-    <div className={classes.all}>
-      <div className={classes.selectWrapper}>
-        {/* <select
-          className={classes.root}
-          value={lang}
-          onChange={(h)=> changeLang(h.target.value)}
-          placeholder="Lang"
-        >
-          <option data-icon={language} className="menuitem" value={"en"} >
-            EN
-          </option>
-          <option data-icon={language} className="menuitem" value={"de"}>
-            DE
-          </option>
-        </select> */}
-      </div>
-      <div className={classes.selectWrapper}>
+    <div className="overall">
+      <div className="root">
         <Select
-          className={classes.root}
+          className="selectButton"
           value={euroKey}
           onChange={(e) => handleSelect(e)}
           placeholder="Euro Key"
+          IconComponent={KeyboardArrowUpOutlinedIcon}
+          MenuProps={{
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "left"
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "left"
+            },
+            getContentAnchorEl: null
+          }}
           disableUnderline
         >
-          <MenuItem id="None" value={2}>
+          <MenuItem id="None" className="menuitem" value={2}>
             {t("EuroKey")}
           </MenuItem>
           <MenuItem id="EuroKeyYes" className="menuitem" value={1}>
@@ -96,11 +83,23 @@ export default function DoorWidthFunction() {
           </MenuItem>
         </Select>
       </div>
-      <div className={classes.selectWrapper}>
+      <div className="root">
         <Select
-          className={classes.root}
+          className="selectButton"
           value={doorWidth}
           onChange={(f) => handleSelectDoorWidth(f)}
+          IconComponent={KeyboardArrowUpOutlinedIcon}
+          MenuProps={{
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "left"
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "left"
+            },
+            getContentAnchorEl: null
+          }}
           id="DoorWidth"
           disableUnderline
         >
@@ -119,12 +118,24 @@ export default function DoorWidthFunction() {
           </MenuItem>
         </Select>
       </div>
-      <div className={classes.selectWrapper}>
+      <div className="root">
         <Select
-          className={classes.root}
+          className="selectButton"
           id="Ramp"
           value={rampVal}
           onChange={g=>handleRamp(g)}
+          IconComponent={KeyboardArrowUpOutlinedIcon}
+          MenuProps={{
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "left"
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "left"
+            },
+            getContentAnchorEl: null
+          }}
           disableUnderline
         >
           <MenuItem value={41}>
@@ -144,22 +155,21 @@ export default function DoorWidthFunction() {
         </Select>
       </div>
     </div>
-    
     // <>
-    // <div className={classes.EuroKey}>
-    //   <select onChange={(e) => handleSelect(e)} value={euroKey}>
+    // <div className={classes.selectWrapper}>
+    //   <select onChange={e=>handleSelect(e)} value={euroKey} className={classes.root}>
     //     <option value={2}>EuroKey</option>
     //     <option value={1}>Yes</option>
     //     <option value={0}>No</option>
     //   </select>
-    //   <select  onChange={(f) => handleSelectDoorWidth(f)} value={doorWidth}>
+    //   <select  onChange={(f) => handleSelectDoorWidth(f)} value={doorWidth} className={classes.root}>
     //     <option value={0}>Door Width</option>
     //     <option value={80}>80CM</option>
     //     <option value={100}>100CM</option>
     //     <option value={120}>120CM</option>
     //     <option value={150}>150CM</option>
     //   </select>
-    //   <select onChange={(g) => handleRamp(g)} value={rampVal}>
+    //   <select onChange={(g) => handleRamp(g)} value={rampVal} className={classes.root}>
     //     <option value={41}>Ramp</option>
     //     <option value={0}>0</option>
     //     <option value={10}>10</option>

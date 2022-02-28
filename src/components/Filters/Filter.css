@@ -1,0 +1,96 @@
+.root {
+    z-index: 1000;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 22px;
+    line-height: 0.1;
+    text-decoration: none;
+    outline: none;
+    text-align: center;
+    font-family: "Barlow";
+    border-width: 1;
+    text-transform: none;
+    padding: 0px 1px;
+    margin-right: 4px;
+}
+
+.MuiSelect-select.MuiSelect-select {
+    padding-right: 24px;
+    /* z-index: 1000; */
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 22px;
+    line-height: 1.1;
+    font-family: 'Barlow';
+}
+
+
+/* .root :hover {
+    background-color: blue;
+} */
+
+.overall {
+    display: flex;
+    overflow-x: scroll;
+    margin-top: 5px;
+    justify-content: center;
+    font-family: "Barlow";
+}
+
+.buttons {
+    color: black;
+    width: auto;
+    border: none;
+    height: 32px;
+    display: flex;
+    z-index: 1000;
+    font-family: "Barlow";
+    margin-right: 5px;
+    border-radius: 22px;
+}
+
+.selectButton {
+    margin-right: 2px;
+}
+
+.selectButton :active {
+    border-width: 20px;
+}
+
+
+/* .menuitem {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 27px;
+    padding: 0%;
+    border-width: 50px;
+} */
+
+.MuiPaper-rounded {
+    border-radius: 22px;
+}
+
+div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+    margin-top: 2px;
+    margin-left: 0px;
+    border-radius: 20px;
+}
+
+.MuiSelect-select:focus {
+    border-radius: 22px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.MuiSelect-select.MuiSelect-select {
+    padding-right: 24px;
+    padding-left: 10px;
+}
+
+ul.MuiList-padding {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: purple
+}
