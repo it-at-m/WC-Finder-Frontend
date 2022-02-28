@@ -72,7 +72,7 @@ const Map = () => {
     const {t}=useTranslation();
     return position === null ? (
       <form onSubmit={handleSubmit}>
-        <div className="leaflet-top leaflet-right relocation_div">
+        <div className="leaflet-bottom leaflet-right relocation_div">
           <div className="leaflet-control">
             <button className="relocation_button" type="submit"></button>
           </div>
@@ -81,7 +81,7 @@ const Map = () => {
     ) : (
       <>
         <form onSubmit={handleSubmit}>
-          <div className="leaflet-top leaflet-right relocation_div">
+          <div className="leaflet-bottom leaflet-right relocation_div">
             <div className="leaflet-control">
               <button className="relocation_button" type="submit"></button>
             </div>
