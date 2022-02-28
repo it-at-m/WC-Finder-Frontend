@@ -133,7 +133,7 @@ const Preview = () => {
         <div className="preview__address">{place?.short_description}</div>
         <div className="grid_container">
           <div id="rcorners3" className="grid_child">
-            <div>
+            <div className="PreviewBlock">
               <img src={key_logo} alt={"eurokey"} className="key_icon"></img>
             </div>
             <div className="preview__eurokey">
@@ -142,16 +142,16 @@ const Preview = () => {
             </div>
           </div>
           <div id="rcorners3" className="grid_child">
-          <div>
+          <div className="PreviewBlock">
             <img src={door_logo} alt={"doorwidth"} className="door_icon"></img>
           </div>
           <div className="preview__door_width">
             {t("Door Width")}: 
               <div className="bld">{place?.door_width}cm</div>
           </div>
-          </div>
+          </div >
           <div id="rcorners3" className="grid_child">
-            <div>
+            <div className="PreviewBlock">
              <img src={ramp_logo} alt={"ramp"} className="key_icon"></img>
             </div>
             <div className="preview__ramp_steepness">
@@ -160,8 +160,8 @@ const Preview = () => {
             </div>
           </div>
           <div id="rcorners3" className="grid_child">
-            <div>
-             <img src={handrails_logo} alt={"handrail"} className="key_icon"></img>
+            <div className="PreviewBlock">
+             <img src={handrails_logo} alt={"handrail"} className="handrail_icon"></img>
             </div>
             <div className="preview__handrail">
               {t("Handrails")}: 
