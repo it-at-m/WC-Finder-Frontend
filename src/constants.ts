@@ -9,7 +9,7 @@ const toiletIcon = L.icon({
 });
 
 
-const apiUri = "https://toilets-4v3wnsvvhq-ew.a.run.app/";
+const apiUri = "https://toilets-4v3wnsvvhq-lm.a.run.app/";
 
 const trackerIcon = L.icon({
   iconUrl: "images/tracker_icon.png",
