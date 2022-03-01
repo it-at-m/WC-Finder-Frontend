@@ -53,18 +53,9 @@
     margin-right: 2px;
 }
 
-.selectButton :active {
-    border-width: 20px;
+.menuitem :focus {
+    border-width: thick;
 }
-
-
-/* .menuitem {
-    position: absolute;
-    background: #FFFFFF;
-    border-radius: 27px;
-    padding: 0%;
-    border-width: 50px;
-} */
 
 .MuiPaper-rounded {
     border-radius: 22px;

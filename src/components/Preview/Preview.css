@@ -5,7 +5,7 @@
     height: 100vh;
     overflow-y: scroll;
     background-color: white;
-    top: 0;
+    top: 46px;
     right: -100%;
     transition: all 0.2s ease-in-out;
 }

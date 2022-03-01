@@ -79,7 +79,7 @@ const Preview = () => {
             <ArrowBackIosIcon onClick={() => setNextImage(false)} className="previous"/>}
 
       <Popup trigger={<BsFillInfoCircleFill className="Info" />}>
-        <div className={`preview__container__new preview__container__new--${place && "active"}`}>
+        <div className={`preview__container preview__container--${place && "active"}`}>
           <div className="preview__close__new" onClick={() => setScreen("preview")}>
             { screen === "preview" ? <Preview /> :  ""}
             <AiFillCloseCircle></AiFillCloseCircle>
@@ -88,7 +88,6 @@ const Preview = () => {
             backgroundImage:`url(${apiUri}/get_layout/${place?.plan})`
           }}
           >
-            
           </div>
           <div>
             <b className="LayoutTitle">{t("Layout Explanation")}</b>
@@ -169,7 +168,6 @@ const Preview = () => {
             </div>
           </div>
         </div>
-        <br />
         <div className="Save">
           <div><button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button></div>
           {/* <div><img src={save} alt="Save" className="SaveImage"></img></div> */}
