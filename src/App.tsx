@@ -2,9 +2,9 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
-import Preview from "./components/Preview/Preview";
+import DetailView from "./components/DetailedView/DetailedView";
 
-function App() {
+const App=()=> {
   return (
     <>
       <nav>
@@ -12,7 +12,8 @@ function App() {
       </nav>
       <main>
         <Map />
-        <Preview />
+        {/* <Preview /> */}
+        <DetailView />
       </main>
     </>
   );

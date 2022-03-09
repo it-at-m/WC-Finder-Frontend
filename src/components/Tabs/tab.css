@@ -1,0 +1,379 @@
+*,
+ ::before,
+ ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: auto;
+    height: auto;
+    word-break: break-all;
+}
+
+.bloc-tabs {
+    display: flex;
+}
+
+.tabs {
+    padding: 5px;
+    text-align: center;
+    width: 50%;
+    cursor: pointer;
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+}
+
+.tabs:not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.active-tabs {
+    background: white;
+    border-bottom: 1px solid transparent;
+}
+
+.active-tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 2px);
+    height: 5px;
+    background: rgb(88, 147, 241);
+}
+
+button {
+    border: none;
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 150%;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.content-tabs {
+    flex-grow: 1;
+}
+
+.content {
+    background: white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.content h2 {
+    padding: 0px 0 5px 0px;
+}
+
+.content hr {
+    width: auto;
+    background: #CDCECF;
+    margin-top: 9px;
+}
+
+.content p {
+    width: 100%;
+    height: 100%;
+}
+
+.active-content {
+    display: block;
+}
+
+.preview__address {
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 150%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #717171;
+}
+
+.key_icon {
+    margin-bottom: 10px;
+    margin-top: 2px;
+    line-height: 1rem;
+    font-size: 1rem;
+    padding-right: 2%;
+}
+
+.EuroKey {
+    display: flex;
+    letter-spacing: 0.01em;
+    margin-top: 3%;
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 140%;
+    justify-content: center;
+    letter-spacing: -0.03em;
+    color: #000000;
+}
+
+.Filter {
+    display: flex;
+    letter-spacing: 0.01em;
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 140%;
+    justify-content: center;
+    letter-spacing: -0.03em;
+    color: #000000;
+}
+
+.Euro {
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: -0.03em;
+    color: #000000;
+}
+
+.Details {
+    text-align: center;
+    width: 150px;
+    height: 44px;
+    background: #000000;
+    justify-content: center;
+    align-content: center;
+    color: white;
+    border-radius: 8px;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.DetailInfo {
+    justify-content: center;
+    display: flex;
+}
+
+.DetailsContact {
+    background: #FFFFFF;
+    border-radius: 15px 15px 0px 0px;
+    font-family: Barlow;
+    font-style: normal;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 175px;
+    height: 44px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1.25%;
+    cursor: pointer;
+}
+
+.LastUpdateInfo {
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #717171;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1%;
+}
+
+.images {
+    margin-right: 7px;
+}
+
+.LayoutTitle {
+    /* text-align: center; */
+    padding-left: 10px;
+    font-family: 'Barlow';
+    /* font-weight: bold; */
+    /* font-size: 20px; */
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.preview__picture__new {
+    height: 40vh;
+    margin-top: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.LayoutsImage {
+    margin-right: 10px;
+}
+
+.Layout {
+    text-align: center;
+}
+
+.EachLayer {
+    text-align: left;
+}
+
+.abc {
+    display: flex;
+}
+
+.LegendsAll {
+    /* transition: height 0.66s ease-out; */
+    display: none;
+}
+
+.progressbar {
+    counter-reset: step;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progressbar::before,
+progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+}
+
+.progress {
+    background-color: blue;
+    width: 0%;
+}
+
+.progress-steps {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.progress-steps-active {
+    background-color: blue;
+    color: black;
+    z-index: 1000;
+}
+
+.progress-steps::before {
+    counter-increment: step;
+    content: counter(step);
+    z-index: 1000;
+}
+
+.Pro {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    /* position: absolute;*/
+    width: 21%;
+    height: 24%;
+    border: 1px solid #11875E;
+    margin-left: 40%;
+    border-radius: 5px;
+    color: #11875E;
+    text-align: center;
+    cursor: pointer;
+}
+
+.Photo {
+    background: #11875E;
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 150%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    position: absolute;
+    width: 136px;
+    height: 40px;
+}
+
+.Detail {
+    text-align: -webkit-center;
+}
+
+.prev {
+    color: #11875E;
+}
+
+.Text {
+    padding-right: 18px;
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 150%;
+    /* display: flex; */
+    align-items: center;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.AddPhoto {
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    /* or 24px */
+    display: flex;
+    align-items: center;
+    /* Primary Green */
+    color: #11875E;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step-active {
+    display: block;
+}

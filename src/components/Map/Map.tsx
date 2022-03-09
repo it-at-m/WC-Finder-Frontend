@@ -9,6 +9,7 @@ import {
   ZoomControl,
   useMap,
 } from "react-leaflet";
+// import mapboxgl from 'mapbox-gl';
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
@@ -19,7 +20,6 @@ import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
-
 var count = 0;
 
 const SearchControl = (props) => {
@@ -51,6 +51,7 @@ const Map = () => {
     const fetchData = async () => {
       listPlaces();
     };
+
     fetchData();
     // eslint-disable-next-line
   }, []);
@@ -68,6 +69,7 @@ const Map = () => {
     function handleSubmit(e: { preventDefault: () => void }) {
       map.locate();
       e.preventDefault();
+      // alert('You clicked submit.');
     }
     const {t}=useTranslation();
     return position === null ? (
@@ -96,7 +98,14 @@ const Map = () => {
     );
   }
 
-  //For translation
+  // mapboxgl.accessToken = 'pk.eyJ1IjoieWFzaGFzd2lwIiwiYSI6ImNsMGkwYTFuaDA5MTAzZG1xYWdmZTF6eTkifQ.bc26l7KO7dCtYduYXQBCJA';
+  // const map = new mapboxgl.Map({
+  //       container: 'map_container', // container ID
+  //       style: 'mapbox://styles/mapbox/streets-v11', // style URL
+  //       center: [-74.5, 40], // starting position [lng, lat]
+  //       zoom: 9 // starting zoom
+  //     });
+    //For translation
   const {t} = useTranslation();
   return (
     <div className="map__container">
@@ -142,6 +151,6 @@ const Map = () => {
       </MapContainer>
     </div>
   );
-};
+          }
 
 export default Map;

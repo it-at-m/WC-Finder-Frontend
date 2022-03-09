@@ -29,6 +29,7 @@ import { useState } from "react";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import Popup from 'reactjs-popup';
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Preview = () => {
   //data
@@ -127,7 +128,7 @@ const Preview = () => {
       </Popup>
       </div>
       <div className="preview__description__container">
-        <div className="preview__title">{place?.title}</div>
+        <div className="preview__title"><Link to='/Explanation'>{place?.title}</Link></div>
         <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
         <div className="preview__address">{place?.short_description}</div>
         <div className="grid_container">
