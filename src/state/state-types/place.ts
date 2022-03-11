@@ -15,4 +15,11 @@ export interface Place {
   zip_code?: string;
   city: string;
   grip?: string;
+  direction: string;
+  access: string;
+  interior_description: string;
+  wc_details: string;
+  wc_accessright: string;
+  wc_accessleft: string;
+  modified: string;
 }

@@ -19,7 +19,6 @@ import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
-
 var count = 0;
 
 const SearchControl = (props) => {
@@ -51,6 +50,7 @@ const Map = () => {
     const fetchData = async () => {
       listPlaces();
     };
+
     fetchData();
     // eslint-disable-next-line
   }, []);
@@ -68,11 +68,12 @@ const Map = () => {
     function handleSubmit(e: { preventDefault: () => void }) {
       map.locate();
       e.preventDefault();
+      // alert('You clicked submit.');
     }
     const {t}=useTranslation();
     return position === null ? (
       <form onSubmit={handleSubmit}>
-        <div className="leaflet-top leaflet-right relocation_div">
+        <div className="leaflet-bottom leaflet-right relocation_div">
           <div className="leaflet-control">
             <button className="relocation_button" type="submit"></button>
           </div>
@@ -81,7 +82,7 @@ const Map = () => {
     ) : (
       <>
         <form onSubmit={handleSubmit}>
-          <div className="leaflet-top leaflet-right relocation_div">
+          <div className="leaflet-bottom leaflet-right relocation_div">
             <div className="leaflet-control">
               <button className="relocation_button" type="submit"></button>
             </div>
@@ -95,21 +96,22 @@ const Map = () => {
       </>
     );
   }
-
-  //For translation
+    //For translation
   const {t} = useTranslation();
   return (
     <div className="map__container">
-      <MapContainer
+       <MapContainer
         center={defaultPosition}
         zoom={16}
         scrollWheelZoom={true}
-        style={{ height: "95vh" }}
+        style={{ height: "100vh" }}
         zoomControl={false}
       >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieWFzaGFzd2lwIiwiYSI6ImNsMGkwYTFuaDA5MTAzZG1xYWdmZTF6eTkifQ.bc26l7KO7dCtYduYXQBCJA"
+          tileSize={512}
+          zoomOffset={-1}
         />
           <SearchControl
           provider={prov}
@@ -142,6 +144,6 @@ const Map = () => {
       </MapContainer>
     </div>
   );
-};
+          }
 
 export default Map;

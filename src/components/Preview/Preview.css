@@ -5,7 +5,7 @@
     height: 100vh;
     overflow-y: scroll;
     background-color: white;
-    top: 0;
+    top: 0px;
     right: -100%;
     transition: all 0.2s ease-in-out;
 }
@@ -196,7 +196,7 @@
 }
 
 .GoButton {
-    width: 277%;
+    width: 421%;
     height: 145%;
     -webkit-border-radius: 40px;
     text-align: center;
@@ -218,8 +218,8 @@
     background-position: left top;
     background-repeat: repeat;
     padding: 11px;
-    width: 87%;
-    height: 65%;
+    width: 97%;
+    height: 91%;
 }
 
 @media only screen and (max-width: 768px) {

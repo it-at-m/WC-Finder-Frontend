@@ -23,11 +23,15 @@
     border-radius: 50%;
 }
 
+div.leaflet-bottom.leaflet-right.relocation_div {
+    margin-bottom: 198px;
+    position: fixed;
+}
+
 .relocation_div {
     background-color: transparent;
     width: 40px;
     height: 40px;
-    position: absolute;
     display: block;
     z-index: 1000;
     margin-right: 1px;
@@ -93,4 +97,24 @@
 .leaflet-touch .leaflet-geosearch-bar form {
     border: 0.7px solid #FFFFFF;
     box-shadow: none;
+}
+
+div.leaflet-control-zoom.leaflet-bar.leaflet-control {
+    margin-bottom: 101px;
+}
+
+div.leaflet-control-attribution.leaflet-control {
+    margin-bottom: 0px;
+}
+
+.rootLang {
+    float: left;
+    padding: 10px;
+    margin-right: 4px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.root {
+    z-index: 1000;
 }

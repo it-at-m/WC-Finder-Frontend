@@ -45,7 +45,8 @@ export default function DoorWidthFunction() {
   
   //For translation
   const {t} = useTranslation();
-  
+
+
   return (
     <div className="overall">
       <div className="root">
@@ -151,29 +152,5 @@ export default function DoorWidthFunction() {
         </Select>
       </div>
     </div>
-    // <>
-    // <div className={classes.selectWrapper}>
-    //   <select onChange={e=>handleSelect(e)} value={euroKey} className={classes.root}>
-    //     <option value={2}>EuroKey</option>
-    //     <option value={1}>Yes</option>
-    //     <option value={0}>No</option>
-    //   </select>
-    //   <select  onChange={(f) => handleSelectDoorWidth(f)} value={doorWidth} className={classes.root}>
-    //     <option value={0}>Door Width</option>
-    //     <option value={80}>80CM</option>
-    //     <option value={100}>100CM</option>
-    //     <option value={120}>120CM</option>
-    //     <option value={150}>150CM</option>
-    //   </select>
-    //   <select onChange={(g) => handleRamp(g)} value={rampVal} className={classes.root}>
-    //     <option value={41}>Ramp</option>
-    //     <option value={0}>0</option>
-    //     <option value={10}>10</option>
-    //     <option value={20}>20</option>
-    //     <option value={30}>30</option>
-    //     <option value={40}>40</option>
-    //   </select>
-    // </div>
-    // </>
   );
 }
