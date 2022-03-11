@@ -1,9 +1,9 @@
 import "./Header.css";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import language from "./icons/language.jpg"
 import i18n from "../../i18n";
 import { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 const Header = () => {
   const [lang, setLang] = useState<string>("de");
   const {t} = useTranslation();

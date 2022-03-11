@@ -9,7 +9,6 @@ import {
   ZoomControl,
   useMap,
 } from "react-leaflet";
-// import mapboxgl from 'mapbox-gl';
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { GeoSearchControl } from "leaflet-geosearch";
 import "leaflet-geosearch/dist/geosearch.css";
@@ -97,28 +96,22 @@ const Map = () => {
       </>
     );
   }
-
-  // mapboxgl.accessToken = 'pk.eyJ1IjoieWFzaGFzd2lwIiwiYSI6ImNsMGkwYTFuaDA5MTAzZG1xYWdmZTF6eTkifQ.bc26l7KO7dCtYduYXQBCJA';
-  // const map = new mapboxgl.Map({
-  //       container: 'map_container', // container ID
-  //       style: 'mapbox://styles/mapbox/streets-v11', // style URL
-  //       center: [-74.5, 40], // starting position [lng, lat]
-  //       zoom: 9 // starting zoom
-  //     });
     //For translation
   const {t} = useTranslation();
   return (
     <div className="map__container">
-      <MapContainer
+       <MapContainer
         center={defaultPosition}
         zoom={16}
         scrollWheelZoom={true}
-        style={{ height: "95vh" }}
+        style={{ height: "100vh" }}
         zoomControl={false}
       >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieWFzaGFzd2lwIiwiYSI6ImNsMGkwYTFuaDA5MTAzZG1xYWdmZTF6eTkifQ.bc26l7KO7dCtYduYXQBCJA"
+          tileSize={512}
+          zoomOffset={-1}
         />
           <SearchControl
           provider={prov}

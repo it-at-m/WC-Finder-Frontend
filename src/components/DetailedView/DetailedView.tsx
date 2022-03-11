@@ -3,32 +3,9 @@ import "./DetailedView.css";
 import { apiUri } from "../../constants";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
-// import key_logo from "./icons/eurokey.png"
-// import door_logo from "./icons/door width.png"
-// import ramp_logo from "./icons/ramp.png"
-// import toiletIcon from "./icons/Toilet bowl.png"
-// import blue from "./icons/BlueDot.png"
-// import red from "./icons/RedDot.png"
-// import green from "./icons/GreenDot.png"
-// import yellow from "./icons/YellowDot.png"
-// import urinal from "./icons/Urinal.png"
-// import sink from "./icons/Sink.png"
-// import flex from "./icons/FlexHand.png"
-// import fix from "./icons/FixHand.png"
-// import stand from "./icons/Standup.png"
-// import mobile from "./icons/MobCeil.png"
-// import water from "./icons/Water.png"
-// import turning from "./icons/Turning.png"
-// import barrier from "./icons/BarrierFree.png"
-// // import door from "./icons/Door.png"
-// import handrails_logo from "./icons/Handrails.jpg"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState } from "react";
-// import { BsFillInfoCircleFill } from "react-icons/bs";
-// import Popup from 'reactjs-popup';
-import { useTranslation } from "react-i18next";
-// import { Routes,Route } from "react-router-dom";
 import Tab from "../Tabs/tab";
 
 const DetailedView = () => {
@@ -36,10 +13,7 @@ const DetailedView = () => {
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
-  // const [screen, setScreen] = useState("layout");
   
-  // //Language
-  // const {t}=useTranslation();
   
   // Cross Button Functionality
   const { nullSelectPlace } = useActions();

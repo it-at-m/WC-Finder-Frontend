@@ -7,7 +7,6 @@ import key_logo from "../Preview/icons/eurokey.png";
 import handrails_logo from "../Preview/icons/Handrails.jpg"
 import door_logo from "../Preview/icons/door width.png"
 import ramp_logo from "../Preview/icons/ramp.png"
-import contact_icon from "./icons/Contact.png"
 import LastUpdate_logo from "./icons/LastUpdate.png"
 import blue from "../Preview/icons/BlueDot.png"
 import red from "../Preview/icons/RedDot.png"
@@ -121,10 +120,6 @@ function Tabs() {
           <div className="DetailInfo">
             <button className="Details" onClick={()=>setToggleState(2)}>See More Details</button>
           </div>
-          <hr />
-          <div className="DetailInfo">
-            <button className="DetailsContact"><img src={contact_icon} className="images" alt="Contact"/>Need Help?</button>
-          </div>
           <div className="LastUpdateInfo">
             <img src={LastUpdate_logo} className="images" alt="Last Updated" />  Last Updated: {place?.modified}
           </div>
@@ -152,7 +147,7 @@ function Tabs() {
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-          <h1>{t("Toilet Information")}</h1>
+          <h2>{t("Toilet Information")}</h2>
           <br />
           <h3>{t("Indoor Navigation to the toilet")}</h3>
           <p>{place?.direction}</p>
@@ -182,18 +177,18 @@ function Tabs() {
               <h3>How was your experience?</h3>
               <br />
               <div className="Pro">
-                <div><img src={sad} className="Reaction" /></div>
-                <div><img src={neutral} className="Reaction" /></div>
-                <div><img src={happy} className="Reaction" /></div>
+                <div><img src={sad} alt="sad" className="Reaction" /></div>
+                <div><img src={neutral} alt="neutral" className="Reaction" /></div>
+                <div><img src={happy} alt="happy" className="Reaction" /></div>
               </div>
             </div>
             <div className="form-step">
               <h3>Was the toilet clean?</h3>
               <br />
               <div className="Pro">
-                <div><img src={sad} /></div>
-                <div><img src={neutral} /></div>
-                <div><img src={happy} /></div>
+                <div><img src={sad} alt="sad" /></div>
+                <div><img src={neutral} alt="neutral" /></div>
+                <div><img src={happy} alt="happy" /></div>
               </div>
               <br />
               <div className="btn">
