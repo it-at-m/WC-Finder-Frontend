@@ -4,10 +4,13 @@ import axios from "axios";
 import { PlacesListAction } from "../actions/placesListAction";
 import { ActionTypePlacesList } from "../action-types/placesListTypes";
 import { Place } from "../state-types/place";
-import { apiUri,filterApi } from "../../constants";
+import { apiUri,filterApi,ReviewApi } from "../../constants";
 import { PlaceSelectedAction } from "../actions/placeSelectedAction";
 import { RootState } from "..";
 import { ActionTypePlaceSelected } from "../action-types/placeSelectedType";
+import { ActionTypePlaceReview } from "../action-types/placeReviewType";
+import { PlaceReviewAction } from "../actions/placeReviewAction";
+import { Review } from "../state-types/review";
 
 // list places
 export const listPlaces = () => {
@@ -100,5 +103,39 @@ export const nullSelectPlace = () => {
     return dispatch({
       type: ActionTypePlaceSelected.PLACE_SELECTED_NULL,
     });
+  };
+};
+
+// // Save Review
+export const ReviewPlace = (dataInput) => {
+  const instance = axios.create({
+    // withCredentials: true,
+  });
+  return async (dispatch: Dispatch<PlaceReviewAction>) => {
+    dispatch({
+      type: ActionTypePlaceReview.PLACE_REVIEW_SUCCESS,
+      payload: dataInput,
+    });
+
+    try {
+      const { data }: any = await instance.post(
+        ReviewApi,
+        dataInput
+      );
+      const review: Review = data;
+      dispatch({
+        type: ActionTypePlaceReview.PLACE_REVIEW_SUCCESS,
+        payload:review,
+        body: JSON.stringify({
+          review
+        }),
+      });
+    } catch (err: any) {
+      console.log("error");
+      dispatch({
+        type: ActionTypePlaceReview.PLACE_REVIEW_NULL,
+        payload: null,
+      });
+    }
   };
 };

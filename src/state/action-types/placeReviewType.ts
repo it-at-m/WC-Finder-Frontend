@@ -1,0 +1,4 @@
+export enum ActionTypePlaceReview {
+    PLACE_REVIEW_SUCCESS = "PLACE_REVIEW_SUCCESS",
+    PLACE_REVIEW_NULL = "PLACE_REVIEW_NULL",
+}
