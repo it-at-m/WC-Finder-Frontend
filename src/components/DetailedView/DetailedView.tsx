@@ -29,6 +29,7 @@ const DetailedView = () => {
         <AiFillCloseCircle>
         </AiFillCloseCircle>
       </div>
+      <br />
       <div className="preview__title">{place?.title}</div>
       <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
       <div

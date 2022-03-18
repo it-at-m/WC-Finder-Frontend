@@ -31,6 +31,7 @@ body {
     box-sizing: content-box;
     position: relative;
     outline: none;
+    background-color: #F5F3FC;
 }
 
 .tabs:not(:last-child) {
@@ -51,7 +52,7 @@ body {
     transform: translateX(-50%);
     width: calc(100% + 2px);
     height: 5px;
-    background: rgb(88, 147, 241);
+    background: #6F5AF2;
 }
 
 button {
@@ -90,6 +91,7 @@ button {
 .content p {
     width: 100%;
     height: 100%;
+    font-family: Barlow;
 }
 
 .active-content {
@@ -115,6 +117,9 @@ button {
     line-height: 1rem;
     font-size: 1rem;
     padding-right: 2%;
+    height: 30px;
+    width: 30px;
+    image-resolution: from-image 300dpi;
 }
 
 .EuroKey {
@@ -170,7 +175,8 @@ button {
 .DetailInfo {
     justify-content: center;
     display: flex;
-    padding-bottom: 2%;
+    padding-bottom: 4%;
+    padding-top: 2%;
 }
 
 .DetailsContact {
@@ -186,8 +192,8 @@ button {
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 8px;
-    width: 175px;
-    height: 44px;
+    width: 279px;
+    height: 48px;
     text-align: center;
     justify-content: center;
     align-content: center;
@@ -219,7 +225,7 @@ button {
 .LayoutTitle {
     padding-left: 10px;
     font-family: 'Barlow';
-    padding-top: 3%;
+    padding-top: 5%;
     font-family: Barlow;
     font-style: normal;
     font-weight: 600;
@@ -249,6 +255,41 @@ button {
 
 .EachLayer {
     text-align: left;
+}
+
+.GoButton {
+    /* width: 421%;
+    height: 145%;
+    -webkit-border-radius: 40px;
+    text-align: center;
+    line-height: 149%;
+    color: white;
+    background-color: #13109E;
+    cursor: pointer;
+    font-family: 'Barlow';
+    font-weight: 600;
+    font-size: 17px;
+    border-color: #13109E;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); */
+    position: fixed;
+    left: 8%;
+    right: 48px;
+    margin-top: 54%;
+    top: 12px;
+    background: linear-gradient(88.78deg, #6F5AF2 13.15%, #514EF9 54.82%, #2E59F0 92.36%);
+    border-radius: 5px;
+    height: 48px;
+    width: 292px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.Save {
+    display: flex;
+    margin-right: 50%;
+    margin-left: 50%;
 }
 
 .EachLayer img {
@@ -315,20 +356,6 @@ button {
 .Pro {
     display: flex;
     justify-content: space-between;
-}
-
-.btn {
-    /* position: absolute;*/
-    /* width: 21%;
-    height: 24%;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 5px;
-    /* margin-left: 40%; 
-    color: black;
-    text-align: center;
-    cursor: pointer;
-    padding: 10px; */
 }
 
 .Photo {
@@ -521,4 +548,9 @@ button {
 .image {
     width: 30px;
     height: 30px;
+}
+
+h2,
+h3 {
+    font-family: Barlow;
 }

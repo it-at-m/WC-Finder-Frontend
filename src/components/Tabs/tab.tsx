@@ -6,15 +6,15 @@ import "./tab.css";
 import { apiUri } from "../../constants";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
-import key_logo from "../Preview/icons/eurokey.png";
-import handrails_logo from "../Preview/icons/Handrails.png"
-import door_logo from "../Preview/icons/door width.png"
-import ramp_logo from "../Preview/icons/ramp.png"
+import key_logo from "../Preview/icons/eurokey.svg";
+import handrails_logo from "../Preview/icons/handrailS.svg"
+import door_logo from "../Preview/icons/door width.svg"
+import ramp_logo from "../Preview/icons/ramp.svg"
 import LastUpdate_logo from "./icons/LastUpdate.png"
-import blue from "../Preview/icons/BlueDot.png"
-import red from "../Preview/icons/RedDot.png"
-import green from "../Preview/icons/GreenDot.png"
-import yellow from "../Preview/icons/YellowDot.png"
+import blue from "../Preview/icons/BlueDot.svg"
+import red from "../Preview/icons/RedDot.svg"
+import green from "../Preview/icons/GreenDot.svg"
+import yellow from "../Preview/icons/YellowDot.svg"
 import urinal from "../Preview/icons/Urinal.png"
 import sink from "../Preview/icons/Sink.png"
 import flex from "../Preview/icons/FlexHand.png"
@@ -26,6 +26,7 @@ import turning from "../Preview/icons/Turning.png"
 import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
+// import Review from "../Review/Review";
 // import sad from "./icons/SadFace.png"
 // import neutral from "./icons/NuetralFace.png"
 // import happy from "./icons/HappyFace.png"
@@ -79,6 +80,7 @@ function Tabs() {
     <img src={barrier} alt={"Shower"} ></img>     {t("Barrier-free shower")}<br />
     <img src={door} alt={"Door Handle"} ></img>     {t("Door/ WC Bowl handle")}</div>
     <div className="Detail">
+    <br />
     <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
     </div>
     </div>  
@@ -179,18 +181,18 @@ function Tabs() {
             <div className="Euro">{t("Eurokey")}: <b>{(place?.eurokey) ? t("Required") : t("Not Required") }</b></div>
             </div>
             <div className="Filter"><img src={handrails_logo} alt={"handrail"} className="key_icon"></img>
-            <div className="Euro">{t("Handrails")}:<b>{t(handrails[`${place?.grip}`])}</b></div>
+            <div className="Euro">{t("Handrails")}: <b>{t(handrails[`${place?.grip}`])}</b></div>
             </div>
             <div className="Filter"><img src={ramp_logo} alt={"Ramp Gradient"} className="key_icon"></img>
-            <div className="Euro">{t("Ramp Steepness")}:<b>{place?.ramp_steepness}%</b></div>
+            <div className="Euro">{t("Ramp Steepness")}: <b>{place?.ramp_steepness}%</b></div>
             </div>
             <div className="Filter"><img src={door_logo} alt={"Door width"} className="key_icon"></img>
-            <div className="Euro">{t("Door Width")}:<b>{place?.door_width}cm</b></div>
+            <div className="Euro">{t("Door Width")}: <b>{place?.door_width}cm</b></div>
             </div>
           </div>
           </div>
           <div className="DetailInfo">
-            <button className="Details" onClick={()=>setToggleState(2)}>See More Details</button>
+            <button className="DetailsContact" onClick={()=>setToggleState(2)}>See More Details</button>
           </div>
           <div className="LastUpdateInfo">
             <img src={LastUpdate_logo} className="images" alt="Last Updated" />  Last Updated: {place?.modified}
@@ -213,7 +215,10 @@ function Tabs() {
             <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
             {showLegends && extraContent}
           </div>
-          <hr />
+          <br />
+          {/* <div className="Save">
+          <div><button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button></div>
+          </div> */}
           {/* <div>
             <div className="combine"><h2>Help keep our photos updated</h2><img src={question} alt="information" className="image"/></div>
             <div className="LastUpdateInfo">If you notice the photos are inaccurate, let us know by adding a photo!</div>
