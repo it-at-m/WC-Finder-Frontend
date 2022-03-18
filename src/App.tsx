@@ -1,9 +1,9 @@
 import "./App.css";
+import DetailedView from "./components/DetailedView/DetailedView";
 
 //import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
-//import DetailView from "./components/DetailedView/DetailedView";
-import Preview from "./components/Preview/Preview"
+// import Preview from "./components/Preview/Preview"
 // import { useState } from "react";
 
 const App=()=> {
@@ -15,7 +15,8 @@ const App=()=> {
       </nav>
       <main>
         <Map />
-        <Preview />
+        {/* <Preview /> */}
+        <DetailedView />
       </main>
     </>
   );

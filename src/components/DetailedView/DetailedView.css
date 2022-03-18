@@ -6,12 +6,12 @@
     overflow-y: scroll;
     background-color: white;
     top: 0px;
-    right: -100%;
+    right: 100%;
     transition: all 0.2s ease-in-out;
 }
 
 .preview__container--active {
-    right: 0;
+    left: 0;
 }
 
 .preview__close {

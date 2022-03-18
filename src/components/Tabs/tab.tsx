@@ -1,10 +1,13 @@
 import { useState } from "react";
+// import {useEffect, useRef} from "react";
 import "./tab.css";
+// import Review from "../Review/Review"
+// import { ReviewApi } from "../../constants";
 import { apiUri } from "../../constants";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
 import key_logo from "../Preview/icons/eurokey.png";
-import handrails_logo from "../Preview/icons/Handrails.jpg"
+import handrails_logo from "../Preview/icons/Handrails.png"
 import door_logo from "../Preview/icons/door width.png"
 import ramp_logo from "../Preview/icons/ramp.png"
 import LastUpdate_logo from "./icons/LastUpdate.png"
@@ -23,12 +26,16 @@ import turning from "../Preview/icons/Turning.png"
 import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
-import sad from "./icons/SadFace.png"
-import neutral from "./icons/NuetralFace.png"
-import happy from "./icons/HappyFace.png"
-
+// import sad from "./icons/SadFace.png"
+// import neutral from "./icons/NuetralFace.png"
+// import happy from "./icons/HappyFace.png"
+// import thanks from "./icons/Thanks.png"
+// import { useActions } from "../../hooks/useActions";
+// import question from "./icons/Question_icon.png"
 
 function Tabs() {
+
+  // Toggle between Tabs
   const [toggleState, setToggleState] = useState(1);
   const [showLegends, setShowLegends] = useState(false);
 
@@ -55,23 +62,88 @@ function Tabs() {
     'r': "Flexible Right",
     'fl': "Fixed Left"
   }
+
+  //Legends
   const AllLegends=showLegends?'Show Few Legends':'Show All Legends'
+  
   const extraContent=<div className="Layout">
-    <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} />     {t("WC Toilet Bowl")}<br />
-    <img src={urinal} alt={"Urinal"} />     {t("Urinal")}<br />
-    <img src={sink} alt={"Sink"} />     {t("Sink")}<br />
-    <img src={flex} alt={"Flexible Handrails"} />     {t("Flexible Handrails")}<br />
-    <img src={fix} alt={"Fixed Handrails"} />     {t("Fixed Handrails")}<br />
-    <img src={stand} alt={"StandupAid"} />     {t("Standup Aid")}<br />
-    <img src={mobile} alt={"Mobile Ceil"} />     {t("Mobile ceiling lift")}<br />
-    <img src={water} alt={"Water filter"} />     {t("Water Filter with activated carbon")}<br />
-    <img src={turning} alt={"Turning space"} />     {t("Turning space in the room and infront of the toilet bowl")}<br />
-    <img src={barrier} alt={"Shower"} />     {t("Barrier-free shower")}<br />
-    <img src={door} alt={"Door Handle"} />     {t("Door/ WC Bowl handle")}</div>
+    <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br />
+    <img src={urinal} alt={"Urinal"} ></img>     {t("Urinal")}<br />
+    <img src={sink} alt={"Sink"} ></img>     {t("Sink")}<br />
+    <img src={flex} alt={"Flexible Handrails"}></img>     {t("Flexible Handrails")}<br />
+    <img src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}<br />
+    <img src={stand} alt={"StandupAid"} ></img>     {t("Standup Aid")}<br />
+    <img src={mobile} alt={"Mobile Ceil"} ></img>     {t("Mobile ceiling lift")}<br />
+    <img src={water} alt={"Water filter"} ></img>     {t("Water Filter with activated carbon")}<br />
+    <img src={turning} alt={"Turning space"} ></img>     {t("Turning space in the room and infront of the toilet bowl")}<br />
+    <img src={barrier} alt={"Shower"} ></img>     {t("Barrier-free shower")}<br />
+    <img src={door} alt={"Door Handle"} ></img>     {t("Door/ WC Bowl handle")}</div>
     <div className="Detail">
     <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
     </div>
     </div>  
+
+  const prevBtns = document.querySelectorAll(".btn-prev");
+  const nextBtns = document.querySelectorAll(".btn-next");
+  const formSteps = document.querySelectorAll(".form-step");
+  const progressSteps = document.querySelectorAll(".progress-step");
+
+  let formStepsNum = 0;
+
+  nextBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      formStepsNum++;
+      updateFormSteps();
+      updateProgressbar();
+    });
+  });
+
+  prevBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      formStepsNum--;
+      updateFormSteps();
+      updateProgressbar();
+    });
+  });
+
+  function updateFormSteps() {
+    formSteps.forEach((formStep) => {
+      formStep.classList.contains("form-step-active") &&
+        formStep.classList.remove("form-step-active");
+    });
+
+  formSteps[formStepsNum].classList.add("form-step-active");
+  }
+
+  function updateProgressbar() {
+    progressSteps.forEach((progressStep, idx) => {
+      if (idx < formStepsNum + 1) {
+        progressStep.classList.add("progress-step-active");
+      } else {
+        progressStep.classList.remove("progress-step-active");
+      }
+    });
+  }
+  
+  // ReviewSubmit 
+  // const SubmitReview = <div>
+  //   <h3>Thanks for your feedback</h3>
+  //   <br />
+  //   <h4>Your feedback would help us <br /> improve our service</h4>
+  //   <img src={thanks} alt="Thankyou" />
+  // </div>
+
+  //Upload File
+  // const [state,setState] = useState();
+  // const  [selectedFile,IsSelectedFile] = useState();
+
+  // let fileChangedHandler = (event) => {
+  //   setState({ selectedFile: event.target.files })
+  // }
+
+  // uploadHandler = () => {
+  // console.log(state.selectedFile)
+  // }
 
   return (
     <div className="container">
@@ -88,12 +160,12 @@ function Tabs() {
         >
           Toilet Info
         </button>
-        <button
+        {/* <button
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
           Review
-        </button>
+        </button> */}
       </div>
 
       <div className="content-tabs">
@@ -142,6 +214,12 @@ function Tabs() {
             {showLegends && extraContent}
           </div>
           <hr />
+          {/* <div>
+            <div className="combine"><h2>Help keep our photos updated</h2><img src={question} alt="information" className="image"/></div>
+            <div className="LastUpdateInfo">If you notice the photos are inaccurate, let us know by adding a photo!</div>
+            <input type="file" onChange={()=>fileChangedHandler()} />
+            <button onClick={()=>uploadHandler()}>Upload!</button>
+          </div> */}
         </div>
 
         <div
@@ -160,61 +238,11 @@ function Tabs() {
           <br />
         </div>
 
-        <div
+        {/* <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
-          <div className="Progress">
-            <div className="progressbar">
-              <div className="progress" id="progress"></div>
-              <div className="progress-steps progress-steps-active"></div>
-              <div className="progress-steps"></div> 
-              <div className="progress-steps"></div>
-              <div className="progress-steps"></div>
-            </div>
-            </div>
-            <br />
-            <div className="form-step form-step-active">
-              <h3>How was your experience?</h3>
-              <br />
-              <div className="Pro">
-                <div><img src={sad} alt="sad" className="Reaction" /></div>
-                <div><img src={neutral} alt="neutral" className="Reaction" /></div>
-                <div><img src={happy} alt="happy" className="Reaction" /></div>
-              </div>
-            </div>
-            <div className="form-step">
-              <h3>Was the toilet clean?</h3>
-              <br />
-              <div className="Pro">
-                <div><img src={sad} alt="sad" /></div>
-                <div><img src={neutral} alt="neutral" /></div>
-                <div><img src={happy} alt="happy" /></div>
-              </div>
-              <br />
-              <div className="btn">
-              <button className="prev">Back</button>
-            </div>
-            <div className="form-step">
-              <h3>Did you find the toilet?</h3>
-              <div className="RadioButton">
-                <label className="Text">
-                  <input type="radio" name="choice-radio" />Yes</label>
-                <label className="Text">
-                  <input type="radio" name="choice-radio" />No</label>
-              </div>
-              <h3>Were the photos helpful?</h3>
-              <div className="RadioButton">
-                <label className="Text">
-                  <input type="radio" name="choice-radio" />Yes</label>
-                <label className="Text">
-                  <input type="radio" name="choice-radio" />No</label>
-              </div>
-              <h3 className="AddPhoto">Help us update photos</h3>
-              <button className="Photo">Add Photo</button>
-              <br />
-              </div>
-            </div>
-        </div>
+          <Review />
+        </div> */}
       </div>
     </div>
   );
