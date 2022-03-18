@@ -1,15 +1,15 @@
-import { func } from "prop-types";
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useRef, useState } from "react";
 import { useActions } from "../../hooks/useActions";
 import "./Review.css";
 
 const Review = () => {
   const prevBtns = document.querySelectorAll(".btn-prev");
-const nextBtns = document.querySelectorAll(".btn-next");
-const formSteps = document.querySelectorAll(".form-step");
-const progressSteps = document.querySelectorAll(".progress-step");
+  const nextBtns = document.querySelectorAll(".btn-next");
+  const formSteps = document.querySelectorAll(".form-step");
+  const progressSteps = document.querySelectorAll(".progress-step");
 
-let formStepsNum = 0;
+  let formStepsNum = 0;
 
 nextBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -152,8 +152,8 @@ const isMounted = useRef(false);
         </div>
         <br />
         <div className="Buttons">
-            <a href="#" className="btn-prev">Back</a>
-            <a href="#" className="btn-next">Next</a>
+            <a href="#" className="btn btn-prev">Back</a>
+            <a href="#" className="btn btn-next">Next</a>
         </div>
       </div>
       <div className="form-step">
@@ -179,8 +179,8 @@ const isMounted = useRef(false);
               <input type="radio" name="choice-radio-5" />No</label>
         </div> 
         <div className="Buttons">
-            <a href="#" className="btn-prev">Back</a>
-            <a href="#" className="btn-next">Next</a>
+            <a href="#" className="btn btn-prev">Back</a>
+            <a href="#" className="btn btn-next">Next</a>
         </div>
       </div>
       <div className="form-step">
@@ -189,11 +189,11 @@ const isMounted = useRef(false);
             <textarea name="paragraph_text" className="Paragraph" id="output" placeholder="Type your content here"></textarea>
         </div>
         <br />
-        <div className="Buttons-End">
-          <a href="#" className="btn-prev">Back</a>
-          <button className="Submit" onClick={()=>handleSubmit}>Submit</button>
-          <button className="Cancel" onClick={()=>Clear()}>Clear</button>
-        </div>
+        {/* <div className="Buttons-End"> */}
+          <a href="#" className="btn btn-prev">Back</a>
+          <a href="#" className="Submit" onClick={()=>handleSubmit}>Submit</a>
+          <a href="#" className="Cancel" onClick={()=>Clear()}>Clear</a>
+        {/* </div> */}
       </div>
     </form>
   )

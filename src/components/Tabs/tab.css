@@ -251,6 +251,10 @@ button {
     text-align: left;
 }
 
+.EachLayer img {
+    margin-right: 10px;
+}
+
 .abc {
     display: flex;
 }
