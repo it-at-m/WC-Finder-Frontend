@@ -257,33 +257,24 @@ button {
     text-align: left;
 }
 
+.GoContainer {
+    justify-content: center;
+    text-align: -webkit-center;
+    display: flex;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    position: sticky;
+    bottom: 0px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
 .GoButton {
-    /* width: 421%;
-    height: 145%;
-    -webkit-border-radius: 40px;
-    text-align: center;
-    line-height: 149%;
-    color: white;
-    background-color: #13109E;
-    cursor: pointer;
-    font-family: 'Barlow';
-    font-weight: 600;
-    font-size: 17px;
-    border-color: #13109E;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%); */
-    position: fixed;
-    left: 8%;
-    right: 48px;
-    margin-top: 54%;
-    top: 12px;
     background: linear-gradient(88.78deg, #6F5AF2 13.15%, #514EF9 54.82%, #2E59F0 92.36%);
     border-radius: 5px;
     height: 48px;
-    width: 292px;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+    width: 200px;
+    color: white;
+    cursor: pointer;
 }
 
 .Save {
@@ -375,7 +366,11 @@ button {
 }
 
 .Detail {
+    justify-content: center;
     text-align: -webkit-center;
+    display: flex;
+    padding-bottom: 4%;
+    padding-top: 2%;
 }
 
 .prev {
