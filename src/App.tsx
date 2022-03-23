@@ -5,18 +5,18 @@ import DetailedView from "./components/DetailedView/DetailedView";
 import Map from "./components/Map/Map";
 // import Preview from "./components/Preview/Preview"
 // import { useState } from "react";
-import ReactGa from 'react-ga';
-import { useEffect } from "react";
+// import ReactGa from 'react-ga';
+// import { useEffect } from "react";
 
 
 const App=()=> {
   
-  useEffect(()=>{
-    ReactGa.initialize('UA-223747245-1')
+  // useEffect(()=>{
+  //   ReactGa.initialize('UA-223747245-1')
 
-    // to report page view
-    ReactGa.pageview('/')
-  },[])
+  //   // to report page view
+  //   ReactGa.pageview('/')
+  // },[])
 
   return (
     <>
