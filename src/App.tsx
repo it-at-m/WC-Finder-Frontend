@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const App=()=> {
   
   useEffect(()=>{
-    ReactGa.initialize('G-K91HD7X777')
+    ReactGa.initialize('UA-223747245-1')
 
     // to report page view
     ReactGa.pageview('/')
