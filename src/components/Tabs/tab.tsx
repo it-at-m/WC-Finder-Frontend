@@ -215,6 +215,10 @@ function Tabs() {
             <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
             {showLegends && extraContent}
           </div>
+          <div className="GoContainer">
+            <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
+            {showLegends && extraContent}
+          </div>
           <br />
           {/* <div className="Save">
           <div><button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button></div>
