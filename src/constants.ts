@@ -18,4 +18,6 @@ const trackerIcon = L.icon({
 
 const filterApi = apiUri + "filter/";
 const ReviewApi = "34.141.65.61:5000/review/";
-export { apiUri, toiletIcon, trackerIcon,filterApi,ReviewApi };
+
+const GA_TRACKING_CODE = 'UA-223747245-1';
+export { apiUri, toiletIcon, trackerIcon,filterApi,ReviewApi,GA_TRACKING_CODE };
