@@ -51,6 +51,7 @@ function updateProgressbar() {
 var [Experience,setExperience] = useState<number>(0);
 function handleExperience(e) {
   setExperience(e.target.value);
+  console.log(e.target.value);
 }
 
 //Clean
@@ -99,7 +100,7 @@ const isMounted = useRef(false);
         moreExperience: moreinfo
       });
     } else {
-      isMounted.current = true;
+      isMounted.current = false;
     }
     // eslint-disable-next-line
   }, [Experience,Clean,locate,photo,accurate,moreinfo]);
@@ -110,6 +111,7 @@ const isMounted = useRef(false);
   {
     textarea.values();
   }
+
   return(
 <form action="#" className="form">
       {/* <!-- Progress bar --> */}
@@ -130,57 +132,57 @@ const isMounted = useRef(false);
         <br />
         <div className="RadioButton" onChange={(e)=>handleExperience(e)}>
             <label className="Text">
-              <input type="radio" name="choice-radio-1" value={1}/>Good</label>
+              <input type="radio" name="choice-radio-1" id="ExpGood" value={1}/>Good</label>
             <label className="Text">
-              <input type="radio" name="choice-radio-1" value={2}/>Neutral</label>
+              <input type="radio" name="choice-radio-1" id="ExpNeutral" value={2}/>Neutral</label>
             <label className="Text">
-              <input type="radio" name="choice-radio-1" value={3}/>Sad</label>
+              <input type="radio" name="choice-radio-1" id="ExpSad" value={3}/>Sad</label>
         </div>
         <br />
-        <a href="#" className="btn btn-next">Next</a>
+        <button className="btn btn-next">Next</button>
       </div>
       <div className="form-step">
         <h3>Was the toilet clean?</h3>
         <br />
         <div className="RadioButton" onChange={(e)=>handleClean(e)}>
             <label className="Text">
-              <input type="radio" name="choice-radio-2" value={1}/>Good</label>
+              <input type="radio" name="choice-radio-2" id="CleanGood" value={1}/>Good</label>
             <label className="Text">
-              <input type="radio" name="choice-radio-2" value={2}/>Neutral</label>
+              <input type="radio" name="choice-radio-2" id="CleanNeutral" value={2}/>Neutral</label>
             <label className="Text">
-              <input type="radio" name="choice-radio-2" value={3}/>Sad</label>
+              <input type="radio" name="choice-radio-2" id="CleanSad" value={3}/>Sad</label>
         </div>
         <br />
         <div className="Buttons">
-            <a href="#" className="btn btn-prev">Back</a>
-            <a href="#" className="btn btn-next">Next</a>
+            <button className="btn btn-prev">Back</button>
+            <button className="btn btn-next">Next</button>
         </div>
       </div>
       <div className="form-step">
         <h3>Did you find the toilet easily?</h3>
         <div className="RadioButton" onChange={(e)=>handleLocate(e)}>
           <label className="Text">
-            <input type="radio" name="choice-radio-3" value={1}/>Yes</label>
+            <input type="radio" name="choice-radio-3" id="Found" value={1}/>Yes</label>
           <label className="Text">
-            <input type="radio" name="choice-radio-3" value={0}/>No</label>
+            <input type="radio" name="choice-radio-3" id="NotFound" value={0}/>No</label>
         </div>
         <h3>Were the photos helpful?</h3>
         <div className="RadioButton" onChange={(f)=>handlePhoto(f)} >
             <label className="Text">
-              <input type="radio" name="choice-radio-4" />Yes</label>
+              <input type="radio" name="choice-radio-4" id="PhotosUseful" />Yes</label>
             <label className="Text">
-              <input type="radio" name="choice-radio-4" />No</label>
+              <input type="radio" name="choice-radio-4" id="PhotosNotUseful" />No</label>
         </div>
         <h3>Were the information accurate?</h3>
         <div className="RadioButton" onChange={(g)=>handleAccurate(g)}>
             <label className="Text">
-              <input type="radio" name="choice-radio-5" />Yes</label>
+              <input type="radio" name="choice-radio-5" id="AccurateInfo" />Yes</label>
             <label className="Text">
-              <input type="radio" name="choice-radio-5" />No</label>
+              <input type="radio" name="choice-radio-5" id="NotAccurateInfo" />No</label>
         </div> 
         <div className="Buttons">
-            <a href="#" className="btn btn-prev">Back</a>
-            <a href="#" className="btn btn-next">Next</a>
+            <a href="#" className="btn btn-prev" id="Previous">Back</a>
+            <a href="#" className="btn btn-next" id="Next" >Next</a>
         </div>
       </div>
       <div className="form-step">
@@ -189,11 +191,11 @@ const isMounted = useRef(false);
             <textarea name="paragraph_text" className="Paragraph" id="output" placeholder="Type your content here"></textarea>
         </div>
         <br />
-        {/* <div className="Buttons-End"> */}
+        <div className="Buttons-End">
           <a href="#" className="btn btn-prev">Back</a>
-          <a href="#" className="Submit" onClick={()=>handleSubmit}>Submit</a>
-          <a href="#" className="Cancel" onClick={()=>Clear()}>Clear</a>
-        {/* </div> */}
+          <a href="#" className="btn Submit"  onClick={()=>handleSubmit}>Submit</a>
+          <a href="#" className="btn Cancel" onClick={()=>Clear()}>Clear</a>
+        </div>
       </div>
     </form>
   )

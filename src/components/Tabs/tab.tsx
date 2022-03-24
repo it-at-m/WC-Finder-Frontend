@@ -10,7 +10,7 @@ import key_logo from "../Preview/icons/eurokey.svg";
 import handrails_logo from "../Preview/icons/handrailS.svg"
 import door_logo from "../Preview/icons/door width.svg"
 import ramp_logo from "../Preview/icons/ramp.svg"
-import LastUpdate_logo from "./icons/LastUpdate.png"
+import LastUpdate_logo from "./icons/LastUpdate.svg"
 import blue from "../Preview/icons/BlueDot.svg"
 import red from "../Preview/icons/RedDot.svg"
 import green from "../Preview/icons/GreenDot.svg"
@@ -26,7 +26,7 @@ import turning from "../Preview/icons/Turning.png"
 import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
-// import Review from "../Review/Review";
+import Review from "../Review/Review";
 // import sad from "./icons/SadFace.png"
 // import neutral from "./icons/NuetralFace.png"
 // import happy from "./icons/HappyFace.png"
@@ -84,49 +84,6 @@ function Tabs() {
     <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
     </div>
     </div>  
-
-  const prevBtns = document.querySelectorAll(".btn-prev");
-  const nextBtns = document.querySelectorAll(".btn-next");
-  const formSteps = document.querySelectorAll(".form-step");
-  const progressSteps = document.querySelectorAll(".progress-step");
-
-  let formStepsNum = 0;
-
-  nextBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      formStepsNum++;
-      updateFormSteps();
-      updateProgressbar();
-    });
-  });
-
-  prevBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      formStepsNum--;
-      updateFormSteps();
-      updateProgressbar();
-    });
-  });
-
-  function updateFormSteps() {
-    formSteps.forEach((formStep) => {
-      formStep.classList.contains("form-step-active") &&
-        formStep.classList.remove("form-step-active");
-    });
-
-  formSteps[formStepsNum].classList.add("form-step-active");
-  }
-
-  function updateProgressbar() {
-    progressSteps.forEach((progressStep, idx) => {
-      if (idx < formStepsNum + 1) {
-        progressStep.classList.add("progress-step-active");
-      } else {
-        progressStep.classList.remove("progress-step-active");
-      }
-    });
-  }
-  
   // ReviewSubmit 
   // const SubmitReview = <div>
   //   <h3>Thanks for your feedback</h3>
@@ -162,12 +119,12 @@ function Tabs() {
         >
           Toilet Info
         </button>
-        {/* <button
+        <button
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
           Review
-        </button> */}
+        </button>
       </div>
 
       <div className="content-tabs">
@@ -219,9 +176,6 @@ function Tabs() {
             <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
           </div>
           <br />
-          {/* <div className="Save">
-          <div><button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button></div>
-          </div> */}
           {/* <div>
             <div className="combine"><h2>Help keep our photos updated</h2><img src={question} alt="information" className="image"/></div>
             <div className="LastUpdateInfo">If you notice the photos are inaccurate, let us know by adding a photo!</div>
@@ -246,11 +200,11 @@ function Tabs() {
           <br />
         </div>
 
-        {/* <div
+        <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
           <Review />
-        </div> */}
+        </div>
       </div>
     </div>
   );
