@@ -111,10 +111,15 @@ export const ReviewPlace = (dataInput) => {
   const instance = axios.create({
     // withCredentials: true,
   });
-  return async (dispatch: Dispatch<PlaceReviewAction>) => {
+  return async (
+    dispatch: Dispatch<PlaceReviewAction>,
+    getState: () => RootState) => {
+    // dispatch({
+    //   type: ActionTypePlaceReview.PLACE_REVIEW_REQUEST,
+    //   payload: dataInput,
+    // });
     dispatch({
-      type: ActionTypePlaceReview.PLACE_REVIEW_SUCCESS,
-      payload: dataInput,
+      type: ActionTypePlaceReview.PLACE_REVIEW_REQUEST
     });
 
     try {

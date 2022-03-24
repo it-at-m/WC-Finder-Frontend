@@ -10,6 +10,11 @@ interface PlaceReviewedNullAction {
     type: ActionTypePlaceReview.PLACE_REVIEW_NULL
 }
 
+interface PlaceReviewedRequestAction {
+    type: ActionTypePlaceReview.PLACE_REVIEW_REQUEST
+}
+
 export type PlaceReviewAction = 
   |  PlaceReviewedSuccessAction
   |  PlaceReviewedNullAction
+  |  PlaceReviewedRequestAction

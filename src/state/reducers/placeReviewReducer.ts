@@ -18,6 +18,8 @@ const reducer = (
     action: PlaceReviewAction 
 ): ReviewState => {
     switch(action.type){
+        case ActionTypePlaceReview.PLACE_REVIEW_REQUEST:
+            return {loading:false, error:null, data:null};
         case ActionTypePlaceReview.PLACE_REVIEW_SUCCESS:
             return {loading:true, error:null, data:action.payload};
         case ActionTypePlaceReview.PLACE_REVIEW_NULL:

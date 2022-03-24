@@ -51,7 +51,6 @@ function updateProgressbar() {
 var [Experience,setExperience] = useState<number>(0);
 function handleExperience(e) {
   setExperience(e.target.value);
-  console.log(e.target.value);
 }
 
 //Clean
@@ -92,18 +91,19 @@ const isMounted = useRef(false);
     if (isMounted.current) {
       ReviewPlace({
         id: 0,
-        experience: Experience,
-        clean: Clean,
+        experience: Number(Experience),
+        clean: Number(Clean),
         findToilet: locate,
         photosUseful: photo,
         infoAccurate: accurate,
         moreExperience: moreinfo
       });
     } else {
-      isMounted.current = false;
+      isMounted.current = true;
     }
+    console.log([Experience,Clean,locate,photo,accurate,moreinfo]);
     // eslint-disable-next-line
-  }, [Experience,Clean,locate,photo,accurate,moreinfo]);
+  }, [Number(Experience),Clean,locate,photo,accurate,moreinfo]);
 
   // Clear Button
   var textarea = document.querySelectorAll("#output")
@@ -127,7 +127,7 @@ const isMounted = useRef(false);
       </div>
 
       {/* <!-- Steps --> */}
-      <div className="form-step form-step-active">
+      {/* <div className="form-step form-step-active"> */}
         <h3>How was your experience?</h3>
         <br />
         <div className="RadioButton" onChange={(e)=>handleExperience(e)}>
@@ -140,8 +140,8 @@ const isMounted = useRef(false);
         </div>
         <br />
         <button className="btn btn-next">Next</button>
-      </div>
-      <div className="form-step">
+      {/* </div> */}
+      {/* <div className="form-step"> */}
         <h3>Was the toilet clean?</h3>
         <br />
         <div className="RadioButton" onChange={(e)=>handleClean(e)}>
@@ -157,8 +157,8 @@ const isMounted = useRef(false);
             <button className="btn btn-prev">Back</button>
             <button className="btn btn-next">Next</button>
         </div>
-      </div>
-      <div className="form-step">
+      {/* </div> */}
+      {/* <div className="form-step"> */}
         <h3>Did you find the toilet easily?</h3>
         <div className="RadioButton" onChange={(e)=>handleLocate(e)}>
           <label className="Text">
@@ -181,22 +181,22 @@ const isMounted = useRef(false);
               <input type="radio" name="choice-radio-5" id="NotAccurateInfo" />No</label>
         </div> 
         <div className="Buttons">
-            <a href="#" className="btn btn-prev" id="Previous">Back</a>
-            <a href="#" className="btn btn-next" id="Next" >Next</a>
+            <button className="btn btn-prev" id="Previous">Back</button>
+            <button className="btn btn-next" id="Next" >Next</button>
         </div>
-      </div>
-      <div className="form-step">
+      {/* </div> */}
+      {/* <div className="form-step"> */}
         <div className="ShortText" onChange={(h)=>handleMore(h)}>
           <label>Can you tell us a little more about your experience? (optional)</label><br />
             <textarea name="paragraph_text" className="Paragraph" id="output" placeholder="Type your content here"></textarea>
         </div>
         <br />
         <div className="Buttons-End">
-          <a href="#" className="btn btn-prev">Back</a>
-          <a href="#" className="btn Submit"  onClick={()=>handleSubmit}>Submit</a>
-          <a href="#" className="btn Cancel" onClick={()=>Clear()}>Clear</a>
+          <button className="btn btn-prev">Back</button>
+          <button className="btn Submit"  onClick={()=>handleSubmit}>Submit</button>
+          <button className="btn Cancel" onClick={()=>Clear()}>Clear</button>
         </div>
-      </div>
+      {/* </div> */}
     </form>
   )
 };
