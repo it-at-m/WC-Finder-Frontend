@@ -139,7 +139,7 @@ export const ReviewPlace = (dataInput) => {
       console.log("error");
       dispatch({
         type: ActionTypePlaceReview.PLACE_REVIEW_NULL,
-        payload: null,
+        payload: err.message,
       });
     }
   };

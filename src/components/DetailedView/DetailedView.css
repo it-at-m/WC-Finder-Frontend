@@ -76,7 +76,7 @@
     padding: 0.5vh;
     padding-right: 0vh;
     top: 45%;
-    position: "none";
+    position: unset;
 }
 
 .previous {

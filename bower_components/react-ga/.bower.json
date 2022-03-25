@@ -1,0 +1,37 @@
+{
+  "name": "react-ga",
+  "version": "3.3.0",
+  "homepage": "https://github.com/react-ga/react-ga",
+  "authors": [
+    "Tay Yang Shun <tay.yang.shun@gmail.com>"
+  ],
+  "description": "React Google Analytics module",
+  "main": "dist/react-ga.min.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "react",
+    "google",
+    "analytics"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "_release": "3.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.3.0",
+    "commit": "05571569aa7ad89cb75129688ca9b9bff26f4538"
+  },
+  "_source": "https://github.com/react-ga/react-ga.git",
+  "_target": "^3.3.0",
+  "_originalSource": "react-ga",
+  "_direct": true
+}
