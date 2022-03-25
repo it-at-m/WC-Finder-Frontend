@@ -8,38 +8,42 @@ const Review = () => {
     const nextBtns = document.querySelectorAll(".btn-next");
     const formSteps = document.querySelectorAll(".form-step");
     const progressSteps = document.querySelectorAll(".progress-step");
-    let formStepsNum = 0;
-
+    let formStepsNumNext = 0;
 const {ReviewPlace} = useActions();
 
-    nextBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            formStepsNum++;
-            updateFormSteps();
-            updateProgressbar();
-        });
-    });
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // console.log("1. Next before Update ",formStepsNumNext);
+    formStepsNumNext++;
+    updateFormSteps();
+    // console.log("3. Next after Update ",formStepsNumNext);
+    updateProgressbar();
+  });
+});
 
-    prevBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            formStepsNum--;
-            updateFormSteps();
-            updateProgressbar();
-        });
-    });
+prevBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // console.log("1. Back before Update ",formStepsNumNext);
+    formStepsNumNext--;
+    updateFormSteps();
+    // console.log("3. Back before Update ",formStepsNumNext);
+    updateProgressbar();
+  });
+});
 
-    function updateFormSteps() {
-        formSteps.forEach((formStep) => {
-            formStep.classList.contains("form-step-active") &&
-            formStep.classList.remove("form-step-active");
-        });
+function updateFormSteps() {
+  formSteps.forEach((formStep) => {
+    console.log("2. Update ",formStepsNumNext);
+    formStep.classList.contains("form-step-active") &&
+      formStep.classList.remove("form-step-active");
+  });
 
-        formSteps[formStepsNum].classList.add("form-step-active");
-    }
+  formSteps[formStepsNumNext].classList.add("form-step-active");
+}
 
     function updateProgressbar() {
         progressSteps.forEach((progressStep, idx) => {
-            if (idx < formStepsNum + 1) {
+            if (idx < formStepsNumNext + 1) {
                 progressStep.classList.add("progress-step-active");
             } else {
                 progressStep.classList.remove("progress-step-active");
@@ -150,7 +154,7 @@ const {ReviewPlace} = useActions();
             </div>
 
             {/* <!-- Steps --> */}
-            {/* <div className="form-step form-step-active"> */}
+            <div className="form-step form-step-active">
             <h3>How was your experience?</h3>
             <br/>
             <div className="RadioButton" onChange={(e) => handleExperience(e)}>
@@ -163,8 +167,8 @@ const {ReviewPlace} = useActions();
             </div>
             <br/>
             <button className="btn btn-next">Next</button>
-            {/* </div> */}
-            {/* <div className="form-step"> */}
+            </div>
+            <div className="form-step"> 
             <h3>Was the toilet clean?</h3>
             <br/>
             <div className="RadioButton" onChange={(e) => handleClean(e)}>
@@ -180,8 +184,8 @@ const {ReviewPlace} = useActions();
                 <button className="btn btn-prev">Back</button>
                 <button className="btn btn-next">Next</button>
             </div>
-            {/* </div> */}
-            {/* <div className="form-step"> */}
+            </div>
+            <div className="form-step">
             <h3>Did you find the toilet easily?</h3>
             <div className="RadioButton" onChange={(e) => handleLocate(e)}>
                 <label className="Text">
@@ -207,8 +211,8 @@ const {ReviewPlace} = useActions();
                 <button className="btn btn-prev" id="Previous">Back</button>
                 <button className="btn btn-next" id="Next">Next</button>
             </div>
-            {/* </div> */}
-            {/* <div className="form-step"> */}
+            </div>
+            <div className="form-step">
             <div className="ShortText" onChange={(h) => handleMore(h)}>
                 <label>Can you tell us a little more about your experience? (optional)</label><br/>
                 <textarea name="paragraph_text" className="Paragraph" id="output"
@@ -220,7 +224,7 @@ const {ReviewPlace} = useActions();
                 <button className="btn Submit" onClick={handleSubmit}>Submit</button>
                 <button className="btn Cancel" onClick={Clear}>Clear</button>
             </div>
-            {/* </div> */}
+            </div>
         </div>
     )
 };

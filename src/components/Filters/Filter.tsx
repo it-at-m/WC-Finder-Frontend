@@ -45,8 +45,7 @@ export default function DoorWidthFunction() {
   
   //For translation
   const {t} = useTranslation();
-
-
+  
   return (
     <div className="overall">
       <div className="root">
