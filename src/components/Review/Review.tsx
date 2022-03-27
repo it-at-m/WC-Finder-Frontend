@@ -4,41 +4,63 @@ import {useActions} from "../../hooks/useActions";
 import "./Review.css";
 
 const Review = () => {
-    const prevBtns = document.querySelectorAll(".btn-prev");
-    const nextBtns = document.querySelectorAll(".btn-next");
     const formSteps = document.querySelectorAll(".form-step");
     const progressSteps = document.querySelectorAll(".progress-step");
     let formStepsNumNext = 0;
+
 const {ReviewPlace} = useActions();
 
-nextBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // console.log("1. Next before Update ",formStepsNumNext);
-    formStepsNumNext++;
-    updateFormSteps();
-    // console.log("3. Next after Update ",formStepsNumNext);
-    updateProgressbar();
-  });
-});
+    function nextBtns() {
+        formStepsNumNext++;
+        updateFormSteps();
+        // console.log("3. Back before Update ",formStepsNumNext);
+        updateProgressbar();
+    }
 
-prevBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // console.log("1. Back before Update ",formStepsNumNext);
-    formStepsNumNext--;
-    updateFormSteps();
-    // console.log("3. Back before Update ",formStepsNumNext);
-    updateProgressbar();
-  });
-});
+    function prevBtns() {
+        formStepsNumNext--;
+        updateFormSteps();
+        // console.log("3. Back before Update ",formStepsNumNext);
+        updateProgressbar();
+    }
+
+// nextBtns.forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     // console.log("1. Next before Update ",formStepsNumNext);
+//     formStepsNumNext++;
+//     updateFormSteps();
+//     // console.log("3. Next after Update ",formStepsNumNext);
+//     updateProgressbar();
+//   });
+// });
+//
+// prevBtns.forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     // console.log("1. Back before Update ",formStepsNumNext);
+//     formStepsNumNext--;
+//     updateFormSteps();
+//     // console.log("3. Back before Update ",formStepsNumNext);
+//     updateProgressbar();
+//   });
+// });
 
 function updateFormSteps() {
-  formSteps.forEach((formStep) => {
-    console.log("2. Update ",formStepsNumNext);
-    formStep.classList.contains("form-step-active") &&
-      formStep.classList.remove("form-step-active");
-  });
 
-  formSteps[formStepsNumNext].classList.add("form-step-active");
+    formSteps.forEach((formStep, idx) => {
+        if (idx < formStepsNumNext + 1) {
+            formStep.classList.add("form-step-active");
+        } else {
+            formStep.classList.contains("form-step-active") &&
+            formStep.classList.remove("form-step-active");
+        }
+    });
+  // formSteps.forEach((formStep) => {
+  //   console.log("2. Update ",formStepsNumNext);
+  //   formStep.classList.contains("form-step-active") &&
+  //     formStep.classList.remove("form-step-active");
+  // });
+
+    // formSteps[formStepsNumNext].classList.add("form-step-active");
 }
 
     function updateProgressbar() {
@@ -166,9 +188,9 @@ function updateFormSteps() {
                     <input type="radio" name="choice-radio-1" id="ExpSad" value={3}/>Sad</label>
             </div>
             <br/>
-            <button className="btn btn-next">Next</button>
+            <button className="btn btn-next" onClick={nextBtns}>Next</button>
             </div>
-            <div className="form-step"> 
+            <div className="form-step">
             <h3>Was the toilet clean?</h3>
             <br/>
             <div className="RadioButton" onChange={(e) => handleClean(e)}>
@@ -181,8 +203,8 @@ function updateFormSteps() {
             </div>
             <br/>
             <div className="Buttons">
-                <button className="btn btn-prev">Back</button>
-                <button className="btn btn-next">Next</button>
+                <button className="btn btn-prev" onClick={prevBtns}>Back</button>
+                <button className="btn btn-next" onClick={nextBtns}>Next</button>
             </div>
             </div>
             <div className="form-step">
@@ -208,8 +230,8 @@ function updateFormSteps() {
                     <input type="radio" name="choice-radio-5" id="NotAccurateInfo" value={0}/>No</label>
             </div>
             <div className="Buttons">
-                <button className="btn btn-prev" id="Previous">Back</button>
-                <button className="btn btn-next" id="Next">Next</button>
+                <button className="btn btn-prev" id="Previous" onClick={prevBtns}>Back</button>
+                <button className="btn btn-next" id="Next" onClick={nextBtns}>Next</button>
             </div>
             </div>
             <div className="form-step">
@@ -220,7 +242,7 @@ function updateFormSteps() {
             </div>
             <br/>
             <div className="Buttons-End">
-                <button className="btn btn-prev">Back</button>
+                <button className="btn btn-prev" onClick={prevBtns}>Back</button>
                 <button className="btn Submit" onClick={handleSubmit}>Submit</button>
                 <button className="btn Cancel" onClick={Clear}>Clear</button>
             </div>
