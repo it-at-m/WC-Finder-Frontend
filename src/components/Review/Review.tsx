@@ -6,12 +6,13 @@ import "./Review.css";
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
     const progressSteps = document.querySelectorAll(".progress-step");
-    let formStepsNumNext = 0;
+    let [formStepsNumNext,setformStepsNumNext] = useState(0);
 
-const {ReviewPlace} = useActions();
+    const {ReviewPlace} = useActions();
 
     function nextBtns() {
         formStepsNumNext++;
+        setformStepsNumNext(formStepsNumNext);
         updateFormSteps();
         // console.log("3. Back before Update ",formStepsNumNext);
         updateProgressbar();
@@ -19,48 +20,22 @@ const {ReviewPlace} = useActions();
 
     function prevBtns() {
         formStepsNumNext--;
+        setformStepsNumNext(formStepsNumNext);
         updateFormSteps();
         // console.log("3. Back before Update ",formStepsNumNext);
         updateProgressbar();
     }
 
-// nextBtns.forEach((btn) => {
-//   btn.addEventListener("click", () => {
-//     // console.log("1. Next before Update ",formStepsNumNext);
-//     formStepsNumNext++;
-//     updateFormSteps();
-//     // console.log("3. Next after Update ",formStepsNumNext);
-//     updateProgressbar();
-//   });
-// });
-//
-// prevBtns.forEach((btn) => {
-//   btn.addEventListener("click", () => {
-//     // console.log("1. Back before Update ",formStepsNumNext);
-//     formStepsNumNext--;
-//     updateFormSteps();
-//     // console.log("3. Back before Update ",formStepsNumNext);
-//     updateProgressbar();
-//   });
-// });
-
 function updateFormSteps() {
+    
+     console.log(formStepsNumNext)
+  formSteps.forEach((formStep) => {
+    console.log("2. Update ",formStepsNumNext);
+    formStep.classList.contains("form-step-active") &&
+      formStep.classList.remove("form-step-active");
+  });
 
-    formSteps.forEach((formStep, idx) => {
-        if (idx < formStepsNumNext + 1) {
-            formStep.classList.add("form-step-active");
-        } else {
-            formStep.classList.contains("form-step-active") &&
-            formStep.classList.remove("form-step-active");
-        }
-    });
-  // formSteps.forEach((formStep) => {
-  //   console.log("2. Update ",formStepsNumNext);
-  //   formStep.classList.contains("form-step-active") &&
-  //     formStep.classList.remove("form-step-active");
-  // });
-
-    // formSteps[formStepsNumNext].classList.add("form-step-active");
+    formSteps[formStepsNumNext].classList.add("form-step-active");
 }
 
     function updateProgressbar() {
@@ -154,10 +129,39 @@ function updateFormSteps() {
 //   }, []);
 
     // Clear Button
-    var textarea = document.querySelectorAll("#output")
+    // function Clear()
+    // {
+    //     const ClearBtn = document.getElementById('#clear');        
+    //     const radioButtons = document.getElementsByName("choice-radio-1");
+    //     // @ts-ignore: Object is possibly 'null'
+    //     ClearBtn.addEventListener("click", () => {
+    //             let selectedSize;
+    //             for (const radioButton of radioButtons) {
+    //                 if (radioButton.checked) {
+                        
+    //                 }
+    //             }
+    //         });
+    // }
 
-    function Clear() {
-        textarea.values();
+    // const Clear = () => {
+    //     document.getElementById('#ExpGood')?.onreset()
+    //     // setExperience(0);
+    //     // setClean(0);
+    //     // setAccurate(2);
+    //     // setLocate(2);
+    //     // setphoto(2);
+    //     // setMoreInfo("");
+    // }
+
+    function clearForm() {
+        function resetForm($input) {
+            $input.find('input: textarea').val('');
+            $input.find('input:radio')
+                 .removeAttr('checked').removeAttr('selected');
+        }
+        
+        resetForm('input[name=choice-radio-1]'); // by name
     }
 
     return (
@@ -181,7 +185,7 @@ function updateFormSteps() {
             <br/>
             <div className="RadioButton" onChange={(e) => handleExperience(e)}>
                 <label className="Text">
-                    <input type="radio" name="choice-radio-1" id="ExpGood" value={1}/>Good</label>
+                    <input type="radio"  name="choice-radio-1" id="ExpGood" value={1}/>Good</label>
                 <label className="Text">
                     <input type="radio" name="choice-radio-1" id="ExpNeutral" value={2}/>Neutral</label>
                 <label className="Text">
@@ -244,7 +248,7 @@ function updateFormSteps() {
             <div className="Buttons-End">
                 <button className="btn btn-prev" onClick={prevBtns}>Back</button>
                 <button className="btn Submit" onClick={handleSubmit}>Submit</button>
-                <button className="btn Cancel" onClick={Clear}>Clear</button>
+                <button id="clear" className="btn Cancel" onClick={clearForm}>Clear</button>
             </div>
             </div>
         </div>

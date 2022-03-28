@@ -161,12 +161,32 @@ input {
 
 .Buttons-End {
     margin-top: 27%;
+    display: flex;
 }
 
 .Submit,
 .Cancel {
-    background-color: var(--primary-color);
-    /* Light shadow */
+    background: #0000ff;
+    border-radius: 15px 15px 0px 0px;
+    font-family: Barlow;
+    font-style: normal;
+    font-size: 18px;
+    display: flex;
+    margin-right: 2%;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 175px;
+    height: 44px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1%;
+    /* background-color: #0000ff;
+     Light shadow 
     box-shadow: 0px 4px 10px rgba(52, 52, 52, 0.05);
     border-radius: 6px;
     width: 270px;
@@ -174,5 +194,5 @@ input {
     cursor: pointer;
     margin-right: 5px;
     width: 35%;
-    top: 10%;
+    top: 10%; */
 }
