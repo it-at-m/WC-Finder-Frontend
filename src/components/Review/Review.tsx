@@ -2,11 +2,16 @@
 import {useEffect, useRef, useState} from "react";
 import {useActions} from "../../hooks/useActions";
 import "./Review.css";
+import { useSelector } from "../../hooks/useTypedSelector";
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
     const progressSteps = document.querySelectorAll(".progress-step");
-    let [formStepsNumNext,setformStepsNumNext] = useState(0);
+    let [formStepsNumNext, setformStepsNumNext] = useState(0);
+
+    const {
+        data: place
+    } = useSelector((state) => state.placeSelected);
 
     const {ReviewPlace} = useActions();
 
@@ -21,6 +26,7 @@ const Review = () => {
         setformStepsNumNext(formStepsNumNext);
         updatePrev();
     }
+
     function updatePrev() {
         formSteps[formStepsNumNext].classList.add("form-step-active");
         formSteps[formStepsNumNext + 1].classList.remove("form-step-active");
@@ -83,7 +89,7 @@ const Review = () => {
     function handleSubmit() {
 
         ReviewPlace({
-            id: 0,
+            id: place?.id,
             experience: Experience,
             clean: Clean,
             findToilet: locate,
@@ -93,53 +99,6 @@ const Review = () => {
         });
     }
 
-
-// // Submit
-// const isMounted = useRef(false);
-//
-//   useEffect(() => {
-//     if (isMounted.current) {
-//       ReviewPlace({
-//         id: 0,
-//         experience: Experience,
-//         clean: Clean,
-//         findToilet: locate,
-//         photosUseful: photo,
-//         infoAccurate: accurate,
-//         moreExperience: moreinfo
-//       });
-//     } else {
-//       isMounted.current = true;
-//     }
-//     console.log([Experience,Clean,locate,photo,accurate,moreinfo]);
-//     // eslint-disable-next-line
-//   }, []);
-
-    // Clear Button
-    // function Clear()
-    // {
-    //     const ClearBtn = document.getElementById('#clear');        
-    //     const radioButtons = document.getElementsByName("choice-radio-1");
-    //     // @ts-ignore: Object is possibly 'null'
-    //     ClearBtn.addEventListener("click", () => {
-    //             let selectedSize;
-    //             for (const radioButton of radioButtons) {
-    //                 if (radioButton.checked) {
-                        
-    //                 }
-    //             }
-    //         });
-    // }
-
-    // const Clear = () => {
-    //     document.getElementById('#ExpGood')?.onreset()
-    //     // setExperience(0);
-    //     // setClean(0);
-    //     // setAccurate(2);
-    //     // setLocate(2);
-    //     // setphoto(2);
-    //     // setMoreInfo("");
-    // }
 
     function clearForm() {
         function resetForm($input) {
