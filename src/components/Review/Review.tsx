@@ -13,40 +13,27 @@ const Review = () => {
     function nextBtns() {
         formStepsNumNext++;
         setformStepsNumNext(formStepsNumNext);
-        updateFormSteps();
-        // console.log("3. Back before Update ",formStepsNumNext);
-        updateProgressbar();
+        updateNext();
     }
 
     function prevBtns() {
         formStepsNumNext--;
         setformStepsNumNext(formStepsNumNext);
-        updateFormSteps();
-        // console.log("3. Back before Update ",formStepsNumNext);
-        updateProgressbar();
+        updatePrev();
+    }
+    function updatePrev() {
+        formSteps[formStepsNumNext].classList.add("form-step-active");
+        formSteps[formStepsNumNext + 1].classList.remove("form-step-active");
+        console.log("3. Update ",formStepsNumNext);
+        progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        progressSteps[formStepsNumNext + 1].classList.remove("progress-step-active");
     }
 
-function updateFormSteps() {
-    
-     console.log(formStepsNumNext)
-  formSteps.forEach((formStep) => {
-    console.log("2. Update ",formStepsNumNext);
-    formStep.classList.contains("form-step-active") &&
-      formStep.classList.remove("form-step-active");
-  });
-
-    formSteps[formStepsNumNext].classList.add("form-step-active");
-}
-
-    function updateProgressbar() {
-        progressSteps.forEach((progressStep, idx) => {
-            if (idx < formStepsNumNext + 1) {
-                progressStep.classList.add("progress-step-active");
-            } else {
-                progressStep.classList.remove("progress-step-active");
-            }
-        });
-
+    function updateNext() {
+        formSteps[formStepsNumNext].classList.add("form-step-active");
+        formSteps[formStepsNumNext - 1].classList.remove("form-step-active");
+        console.log("2. Update ",formStepsNumNext);
+        progressSteps[formStepsNumNext].classList.add("progress-step-active");
     }
 
 //Experience 
