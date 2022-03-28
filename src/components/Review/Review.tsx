@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useActions} from "../../hooks/useActions";
 import "./Review.css";
 import { useSelector } from "../../hooks/useTypedSelector";
+import thanks from "../Tabs/icons/Thanks.png"
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
@@ -39,7 +40,9 @@ const Review = () => {
         formSteps[formStepsNumNext].classList.add("form-step-active");
         formSteps[formStepsNumNext - 1].classList.remove("form-step-active");
         console.log("2. Update ",formStepsNumNext);
-        progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        if(formStepsNumNext<4){
+            progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        }
     }
 
 //Experience 
@@ -97,17 +100,11 @@ const Review = () => {
             infoAccurate: accurate,
             moreExperience: moreinfo
         });
+        nextBtns();
     }
 
-
-    function clearForm() {
-        function resetForm($input) {
-            $input.find('input: textarea').val('');
-            $input.find('input:radio')
-                 .removeAttr('checked').removeAttr('selected');
-        }
-        
-        resetForm('input[name=choice-radio-1]'); // by name
+    function Clear(){
+        setMoreInfo("");
     }
 
     return (
@@ -193,9 +190,16 @@ const Review = () => {
             <br/>
             <div className="Buttons-End">
                 <button className="btn btn-prev" onClick={prevBtns}>Back</button>
-                <button className="btn Submit" onClick={handleSubmit}>Submit</button>
-                <button id="clear" className="btn Cancel" onClick={clearForm}>Clear</button>
+                <button className="btn Submit btn-next" onClick={handleSubmit}>Submit</button>
+                <button id="clear" className="btn Cancel" onClick={Clear}>Clear</button>
+                
             </div>
+            </div>
+            <div className="form-step">
+            <h3 className="Thankyou">Thanks for your feedback</h3>
+            <br />
+            <h4 className="Thankyou">Your feedback would help us <br /> improve our service</h4>
+            <img src={thanks} alt="Thankyou" />
             </div>
         </div>
     )
