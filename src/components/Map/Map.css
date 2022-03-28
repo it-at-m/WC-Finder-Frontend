@@ -108,7 +108,7 @@ div.leaflet-control-attribution.leaflet-control {
 }
 
 .rootLang {
-    float: left;
+    float: right;
     padding: 10px;
     margin-right: 4px;
     border-radius: 5px;

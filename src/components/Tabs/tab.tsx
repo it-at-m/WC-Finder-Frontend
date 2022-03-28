@@ -27,12 +27,6 @@ import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
 import Review from "../Review/Review";
-// import sad from "./icons/SadFace.png"
-// import neutral from "./icons/NuetralFace.png"
-// import happy from "./icons/HappyFace.png"
-// import thanks from "./icons/Thanks.png"
-// import { useActions } from "../../hooks/useActions";
-// import question from "./icons/Question_icon.png"
 
 function Tabs() {
 
@@ -65,7 +59,7 @@ function Tabs() {
   }
 
   //Legends
-  const AllLegends=showLegends?'Show Few Legends':'Show All Legends'
+  const AllLegends=showLegends?'Show Few Legends': "Show All Legends"
   
   const extraContent=<div className="Layout">
     <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br />
@@ -84,13 +78,6 @@ function Tabs() {
     <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
     </div>
     </div>  
-  // ReviewSubmit 
-  // const SubmitReview = <div>
-  //   <h3>Thanks for your feedback</h3>
-  //   <br />
-  //   <h4>Your feedback would help us <br /> improve our service</h4>
-  //   <img src={thanks} alt="Thankyou" />
-  // </div>
 
   //Upload File
   // const [state,setState] = useState();
@@ -111,19 +98,19 @@ function Tabs() {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
-          Overview
+          {t("Overview")}
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-          Toilet Info
+          {t("Toilet Info")}
         </button>
         <button
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-          Review
+          {t("Review")}
         </button>
       </div>
 
@@ -149,10 +136,10 @@ function Tabs() {
           </div>
           </div>
           <div className="DetailInfo">
-            <button className="DetailsContact" onClick={()=>setToggleState(2)}>See More Details</button>
+            <button className="DetailsContact" onClick={()=>setToggleState(2)}>{t("See More Details")}</button>
           </div>
           <div className="LastUpdateInfo">
-            <img src={LastUpdate_logo} className="images" alt="Last Updated" />  Last Updated: {place?.modified}
+            <img src={LastUpdate_logo} className="images" alt="Last Updated" />  {t("Last Updated")}: {place?.modified}
           </div>
           <hr />
           <div className="LayoutTitle">
@@ -169,7 +156,7 @@ function Tabs() {
           <img src={yellow} alt={"LightSwitch"} className="LayoutsImage"></img>     {t("Light Switch")}</div>
           </div>
           <div className="Detail">
-            <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
+            <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
             {showLegends && extraContent}
           </div>
           <div className="GoContainer">
