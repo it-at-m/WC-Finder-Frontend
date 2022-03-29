@@ -45,7 +45,7 @@ const Review = () => {
         }
     }
 
-//Experience
+
     const initialState = {
         Experience: 0,
         Clean: 0,
@@ -161,7 +161,7 @@ const Review = () => {
             <div className="ShortText" onChange={(e) => onChange(e)}>
                 <label>Can you tell us a little more about your experience? (optional)</label><br/>
                 <textarea name="moreinfo" className="Paragraph" id="output"
-                          placeholder="Type your content here"></textarea>
+                          placeholder="Type your content here" value={moreinfo}></textarea>
             </div>
             <br/>
             <div className="Buttons-End">
