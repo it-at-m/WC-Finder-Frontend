@@ -16,12 +16,58 @@ label {
     margin-bottom: 0.5rem;
 }
 
-input {
+input[type='radio'] {
     display: block;
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 0.25rem;
+}
+
+input[type=radio]+img {
+    cursor: pointer;
+}
+
+input[type=radio]:hover+img {
+    outline: 2px solid blue;
+    border-radius: 50%;
+}
+
+input[type=radio]:checked+img {
+    outline: 2px solid blue;
+    border-radius: 50%;
+}
+
+.RadioButton {
+    display: flex;
+    justify-content: space-around;
+}
+
+#CleanGood,
+#CleanNeutral,
+#CleanSad,
+#ExpGood,
+#ExpNeutral,
+#ExpSad {
+    display: none;
+}
+
+input[type=radio1] {
+    display: none;
+}
+
+input[type=radio1]+img {
+    cursor: pointer;
+}
+
+input[type=radio1]:hover+img {
+    outline: 2px solid blue;
+    border-radius: 50%;
+}
+
+input[type=radio1]:checked+label>img {
+    outline: 2px solid blue;
+    border-radius: 50%;
 }
 
 .width-50 {
@@ -160,7 +206,6 @@ input {
 }
 
 .Buttons-End {
-    margin-top: 27%;
     display: flex;
 }
 

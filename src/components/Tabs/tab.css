@@ -503,11 +503,8 @@ button {
     border: 0.5px solid #000000;
     box-sizing: border-box;
     border-radius: 6px;
-    position: absolute;
-    width: 270px;
+    width: 80%;
     height: 160px;
-    left: 21%;
-    top: 48%;
 }
 
 .Cancel {

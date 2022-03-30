@@ -1,8 +1,5 @@
-import { useState } from "react";
-// import {useEffect, useRef} from "react";
+import { useEffect, useState } from "react";
 import "./tab.css";
-// import Review from "../Review/Review"
-// import { ReviewApi } from "../../constants";
 import { apiUri } from "../../constants";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
@@ -34,10 +31,12 @@ function Tabs() {
   const [toggleState, setToggleState] = useState(1);
   const [showLegends, setShowLegends] = useState(false);
 
+  // Toggle Tab
   const toggleTab = (index) => {
     setToggleState(index);
   };
   
+  // Place Selected
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
@@ -61,6 +60,7 @@ function Tabs() {
   //Legends
   const AllLegends=showLegends?'Show Few Legends': "Show All Legends"
   
+  // All the legends
   const extraContent=<div className="Layout">
     <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br />
     <img src={urinal} alt={"Urinal"} ></img>     {t("Urinal")}<br />
@@ -90,10 +90,14 @@ function Tabs() {
   // uploadHandler = () => {
   // console.log(state.selectedFile)
   // }
+  const placeid='1'
 
   return (
     <div className="container">
       <div className="bloc-tabs">
+        {/* {if (placeid!==place.id) {
+          
+        }} */}
         <button
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
