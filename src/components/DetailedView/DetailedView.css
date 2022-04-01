@@ -1,11 +1,12 @@
 .preview__container {
     z-index: 1000;
     position: fixed;
-    width: 33%;
+    width: 31%;
     height: 100vh;
     overflow-y: scroll;
     background-color: white;
     top: 0px;
+    border-radius: 15px 15px 0px 0px;
     right: 100%;
     transition: all 0.2s ease-in-out;
 }
@@ -46,7 +47,7 @@
 }
 
 .preview__picture {
-    height: 40vh;
+    height: 30vh;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

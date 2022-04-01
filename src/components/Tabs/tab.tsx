@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import "./tab.css";
 import { apiUri } from "../../constants";
 import { useSelector } from "../../hooks/useTypedSelector";
@@ -24,23 +24,23 @@ import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
 import Review from "../Review/Review";
+import { changePlace } from "../../state/action-creators";
 
 function Tabs() {
-
   // Toggle between Tabs
-  const [toggleState, setToggleState] = useState(1);
+  let [toggleState, setToggleState] = useState(1);
   const [showLegends, setShowLegends] = useState(false);
 
   // Toggle Tab
   const toggleTab = (index) => {
-    setToggleState(index);
+      setToggleState(index);
   };
   
   // Place Selected
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
-  
+
   //Language
   const {t}=useTranslation();
 
@@ -79,6 +79,13 @@ function Tabs() {
     </div>
     </div>  
 
+    // const { changePlace } = useActions();
+    // const placeid=place?.id;
+    // useEffect(()=>{
+    //   changePlace(placeid);
+    //   setToggleState(1);
+    // });
+
   //Upload File
   // const [state,setState] = useState();
   // const  [selectedFile,IsSelectedFile] = useState();
@@ -90,14 +97,25 @@ function Tabs() {
   // uploadHandler = () => {
   // console.log(state.selectedFile)
   // }
-  const placeid='1'
+  // const placeid= '23'
+  useEffect(()=>{
+    const Change = async() =>{
+      changePlace(place?.id,1);
+    }
+    Change();
+  });
+
+  // function useToggle(initialValue = 1) {
+  //   const [value, setValue] = useState(initialValue);
+  //   const toggle = useCallback(() => {
+  //     setValue(v => 2|3);
+  //   }, []);
+  //   return [value, toggle];
+  // }
 
   return (
     <div className="container">
       <div className="bloc-tabs">
-        {/* {if (placeid!==place.id) {
-          
-        }} */}
         <button
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
@@ -163,6 +181,10 @@ function Tabs() {
             <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
             {showLegends && extraContent}
           </div>
+          <div className="InstructContainer">
+            <a href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
+            <hr/>
+          </div>
           <div className="GoContainer">
             <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
           </div>
@@ -198,7 +220,7 @@ function Tabs() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Tabs;

@@ -28,7 +28,9 @@ const reducer = (
 
     case ActionTypePlaceSelected.PLACE_SELECTED_NULL:
       return { loading: false, error: null, data: null };
-
+    
+    case ActionTypePlaceSelected.PLACE_SELECTED_CHANGED:
+      return { loading: true, error:null, data:null};
     default:
       return state;
   }

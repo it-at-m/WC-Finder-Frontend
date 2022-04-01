@@ -100,17 +100,17 @@ export default function DoorWidthFunction() {
           disableUnderline
         >
           <MenuItem value={0}>{t("DoorWidth")}</MenuItem>
-          <MenuItem id="Door80cm" value={80} className="menuitem">
+          <MenuItem id="Door80cm" value={60} className="menuitem">
+            60cm
+          </MenuItem>
+          <MenuItem id="Door100cm" value={70} className="menuitem">
+            70cm
+          </MenuItem>
+          <MenuItem id="Door120cm" value={80} className="menuitem">
             80cm
           </MenuItem>
-          <MenuItem id="Door100cm" value={100} className="menuitem">
-            100cm
-          </MenuItem>
-          <MenuItem id="Door120cm" value={120} className="menuitem">
-            120cm
-          </MenuItem>
-          <MenuItem id="Door150cm" value={150} className="menuitem">
-            150cm
+          <MenuItem id="Door150cm" value={90} className="menuitem">
+            90cm
           </MenuItem>
         </Select>
       </div>
@@ -137,17 +137,9 @@ export default function DoorWidthFunction() {
           <MenuItem value={41}>
             {t("Ramp")}
           </MenuItem>
-          <MenuItem value={0} className="menuitem">0%</MenuItem>
-          <MenuItem value={1} className="menuitem">1%</MenuItem>
-          <MenuItem value={2} className="menuitem">2%</MenuItem>
-          <MenuItem value={3} className="menuitem">3%</MenuItem>
-          <MenuItem value={4} className="menuitem">4%</MenuItem>
-          <MenuItem value={5} className="menuitem">5%</MenuItem>
-          <MenuItem value={6} className="menuitem">6%</MenuItem>
-          <MenuItem value={7} className="menuitem">7%</MenuItem>
-          <MenuItem value={8} className="menuitem">8%</MenuItem>
-          <MenuItem value={9} className="menuitem">9%</MenuItem>
-          <MenuItem value={10} className="menuitem">10%</MenuItem>
+          <MenuItem value={6} className="menuitem">0-6 %</MenuItem>
+          <MenuItem value={10} className="menuitem">7-10 %</MenuItem>
+          <MenuItem value={30} className="menuitem">Greater than 10% </MenuItem>
         </Select>
       </div>
     </div>

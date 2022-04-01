@@ -114,10 +114,6 @@ export const ReviewPlace = (dataInput) => {
   return async (
     dispatch: Dispatch<PlaceReviewAction>,
     getState: () => RootState) => {
-    // dispatch({
-    //   type: ActionTypePlaceReview.PLACE_REVIEW_REQUEST,
-    //   payload: dataInput,
-    // });
     dispatch({
       type: ActionTypePlaceReview.PLACE_REVIEW_REQUEST
     });
@@ -139,6 +135,39 @@ export const ReviewPlace = (dataInput) => {
       console.log("error");
       dispatch({
         type: ActionTypePlaceReview.PLACE_REVIEW_NULL,
+        payload: err.message,
+      });
+    }
+  };
+};
+
+// Change the place
+export const changePlace = (placeId, toggles) => {
+  return async (
+    dispatch: Dispatch<PlaceSelectedAction>,
+    getState: () => RootState
+  ) => {
+    dispatch({
+      type: ActionTypePlaceSelected.PLACE_SELECTED_CHANGED,
+      toggle: toggles
+    });
+
+    try {
+      const data = await getState().placesList.data.find(
+        (place) => place.id === placeId
+      );
+      dispatch({
+        type: ActionTypePlaceSelected.PLACE_SELECTED_SUCCESS,
+        payload: data!,
+      });
+      dispatch({
+        type: ActionTypePlaceSelected.PLACE_SELECTED_CHANGED,
+        payload: data!,
+        toggle: toggles
+      })
+    } catch (err: any) {
+      dispatch({
+        type: ActionTypePlaceSelected.PLACE_SELECTED_FAIL,
         payload: err.message,
       });
     }

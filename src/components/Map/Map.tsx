@@ -33,7 +33,6 @@ const SearchControl = (props) => {
       map.addControl(searchControl);
       count++;
     }
-
   }, [map, props]);
   return null;
 };
@@ -50,7 +49,7 @@ const Map = () => {
     const fetchData = async () => {
       listPlaces();
     };
-
+    
     fetchData();
     // eslint-disable-next-line
   }, []);
@@ -63,7 +62,7 @@ const Map = () => {
       locationfound(e) {
         setPosition(e.latlng);
         map.flyTo(e.latlng, map.getZoom());
-      },
+      }
     });
     function handleSubmit(e: { preventDefault: () => void }) {
       map.locate();
@@ -132,6 +131,7 @@ const Map = () => {
         {places &&
           places.map((place: Place) => (
             <Marker
+              
               key={place.title}
               position={place.position}
               eventHandlers={{ click: () => selectPlace(place.id) }}
