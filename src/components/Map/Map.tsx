@@ -19,6 +19,7 @@ import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
+import Language from "../Language/Language";
 var count = 0;
 
 const SearchControl = (props) => {
@@ -126,6 +127,7 @@ const Map = () => {
           style={"bar"}
           popupFormat={(result: { label: any }) => result.label}
           />
+        <Language />
         <Filter />
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
         {places &&

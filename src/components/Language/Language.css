@@ -1,0 +1,11 @@
+.rootLang {
+    float: right;
+    padding: 10px;
+    margin-right: 4px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.Lang {
+    z-index: 1000;
+}

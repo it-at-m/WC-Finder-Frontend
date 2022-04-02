@@ -24,6 +24,7 @@ import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
 import Review from "../Review/Review";
+import cross from "./icons/Cross.svg"
 import { changePlace } from "../../state/action-creators";
 
 function Tabs() {
@@ -79,6 +80,9 @@ function Tabs() {
     </div>
     </div>  
 
+    //Cross Button
+    const [crosses,setCross]=useState(true)
+
     // const { changePlace } = useActions();
     // const placeid=place?.id;
     // useEffect(()=>{
@@ -98,6 +102,7 @@ function Tabs() {
   // console.log(state.selectedFile)
   // }
   // const placeid= '23'
+  
   useEffect(()=>{
     const Change = async() =>{
       changePlace(place?.id,1);
@@ -181,9 +186,10 @@ function Tabs() {
             <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
             {showLegends && extraContent}
           </div>
-          <div className="InstructContainer">
-            <a href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
+          <div className={crosses===true?"InstructContainer":"False"}>
             <hr/>
+            <a className="Instruct" href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
+            <img src={cross} alt="cross" className="CrossButton" onClick={()=>setCross(false)}/>
           </div>
           <div className="GoContainer">
             <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>

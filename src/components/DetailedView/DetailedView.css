@@ -51,7 +51,15 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    border-radius: 4px;
+    border-radius: 5px;
+}
+
+.preview__picture__plan {
+    height: 30vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -72,7 +80,7 @@
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.5);
     float: right;
-    margin-top: 128px;
+    margin-top: 78px;
     border-radius: 5px;
     padding: 0.5vh;
     padding-right: 0vh;
@@ -84,7 +92,7 @@
     color: white;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.5);
-    margin-top: 128px;
+    margin-top: 78px;
     border-radius: 5px;
     margin-left: 16px;
     padding: 0.5vh;
