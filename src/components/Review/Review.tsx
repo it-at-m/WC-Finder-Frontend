@@ -10,16 +10,22 @@ import happy_image from "../Tabs/icons/HappyFace.png"
 import { changePlace } from "../../state/action-creators";
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
+import info from "./icons/info.svg"
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
     // const progressSteps = document.querySelectorAll(".progress-step");
     let [formStepsNumNext, setformStepsNumNext] = useState(0);
+    let [step, setStep]=useState(1);
     let [selectedValue,setSelectedValue] = useState('');
     let [cleanVal,setCleanVal]=useState('');
     let [location, setlocation]=useState('');
     let [photos, setPhotos] = useState('');
     let [accuracy, setAccuracy]=useState('');
+    let [layout,setLayout]=useState(false);
+    let [Filter,setFilter] = useState(false);
+    let [direction,setDirection] =useState(false);
+    let [eurokey,setEurokey] =useState(false);
 
     const optionSelectedExperience = (e) => {
         console.log(e.target.value)
@@ -49,6 +55,10 @@ const Review = () => {
         setPhotos('')
         setAccuracy('')
         setlocation('')
+        setLayout(false)
+        setFilter(false)
+        setDirection(false)
+        setEurokey(false)
     }
 
     const cleartext = () => {
@@ -124,16 +134,29 @@ const Review = () => {
         reset();
     }
 
+
+    //No Accuracy Checked
+    const NoAccurate = <div className="AccurateContainer">
+    <div className="SelectButtons">
+        <button className={layout?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setLayout(true)}>Layout</button>
+        <button className={Filter?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setFilter(true)}>Filters</button>
+        <button className={direction?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setFilter(true)}>Directions</button>
+        <br />
+        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setEurokey(true)}>Eurokey Information</button>
+    </div>
+    </div>
+    
     useEffect(()=>{
         const Change = async() =>{
-          changePlace(place?.id,1);
+          changePlace(place?.id,step===3?setStep(1):step);
         }
         Change();
       });
+
     return (
         <div>
             {/* <!-- Steps --> */}
-            <div className="form-step form-step-active">
+            <div className="form-step form-step-active" >
             <div className="Next">
                 <button className="btn btn-next" onClick={nextBtns}>Next</button>
                 <img src={right} alt="right"></img>
@@ -182,6 +205,7 @@ const Review = () => {
             </div>
             <button id="clear" className="btn Cancel" onClick={cleartext}>Clear Text</button>
             </div>
+            
             <div className="form-step">
             <div className="Back">
                 <img src={left} alt="left"></img>
@@ -208,37 +232,31 @@ const Review = () => {
                 <label className="Text">
                     <input type="radio" name="accurate" id="AccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='1'} value={1}/>Yes</label>
                 <label className="Text">
-                    <input type="radio" name="accurate" id="NotAccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='1'} value={0}/>No</label>
+                    <input type="radio" name="accurate" id="NotAccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='0'} value={0}/>No</label>
             </div>
+            {accuracy==='0' && NoAccurate}
             <button className="btn Submit btn-next" onClick={handleSubmit}>Submit</button>
             </div>
             </div>
-            {/* <div className="form-step">
-            <div className="ShortText" onChange={(e) => onChange(e)}>
-                <label>Can you tell us a little more about your experience? (optional)</label><br/>
-                <textarea name="moreinfo" className="Paragraph" id="output"
-                          placeholder="Type your content here" value={moreinfo}></textarea>
+            
+            <div className="form-step" >
+            <div className="Back">
+                <img src={left} alt="left"></img>
+                <button className="btn btn-prev" id="Previous" onClick={prevBtns}>Back</button>
             </div>
-            <br/>
-            <div className="Buttons-End">
-                <button className="btn btn-prev" onClick={prevBtns}>Back</button>
-                <button className="btn Submit btn-next" onClick={handleSubmit}>Submit</button>
-                <button id="clear" className="btn Cancel" onClick={reset}>Clear</button>
-                
-            </div>
-            </div> */}
-            <div className="form-step">
-                <h3 className="Thankyou">Thanks for your feedback</h3>
+            <br />
+            <br />
+            <br />
+                <h3 className="Thankyou">Thanks for your feedback!</h3>
                 <br />
-                <h4 className="Thankyou">Your feedback would help us <br /> improve our service</h4>
+                <p className="Thankyou">Your feedback would help us <br /> improve our service</p>
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
                 <br />
-                {/* <div>
-                <div className="combine"><h2>Help keep our photos updated</h2><img src={question} alt="information" className="image"/></div>
-                    <div className="LastUpdateInfo">If you notice the photos are inaccurate, let us know by adding a photo!</div>
-                    <input type="file" onChange={()=>fileChangedHandler()} />
-                    <button onClick={()=>uploadHandler()}>Upload!</button>
-                </div> */}
+                <div className="PhotosContainer">
+                    <h2>Help us update our photos </h2><img src={info} alt="information" className="image"/>
+                    {/* <input type="file" onChange={()=>fileChangedHandler()} /> */}
+                    <button >Upload!</button>
+                </div>
             </div>
             {/* <!-- Progress bar --> */}
             {/* <br /> */}

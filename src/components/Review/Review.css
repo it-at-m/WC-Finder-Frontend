@@ -266,13 +266,49 @@ input[type=radio1]:checked+label>img {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
+    margin-top: 200px;
     height: 100%;
     color: #FFFFFF;
     width: 100%;
+    top: auto;
+}
+
+.AccurateButton {
+    background: #6F5AF2;
+    opacity: 0.2;
+    border-radius: 2px;
+    color: #000000;
+    margin: 12px 12px 0px 12px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.AccurateButton:hover {
+    background: #6F5AF2;
+    opacity: 1.0;
+}
+
+.AccurateButtonSelected {
+    background: #6F5AF2;
+    opacity: 1.0;
+    border-radius: 2px;
+    color: #000000;
+    margin: 12px 12px 0px 12px;
+    padding: 4px;
+    cursor: pointer;
 }
 
 .Paragraph.placeholder {
     margin-top: 10%;
+}
+
+.AccurateContainer {
+    position: absolute;
+    width: 91%;
+    height: 18%;
+    background: #F4F4F4;
+    top: 60%;
+    border-radius: 5px;
 }
 
 .Thankyou {

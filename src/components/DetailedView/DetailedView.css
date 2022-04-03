@@ -67,12 +67,14 @@
         width: 100%;
         height: 50%;
         top: 50%;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
     }
-    .preview__container__new {
+    /* .preview__container__new {
         width: 100%;
         height: 50%;
         top: 50%;
-    }
+    } */
 }
 
 .next {
