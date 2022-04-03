@@ -10,7 +10,7 @@ import happy_image from "../Tabs/icons/HappyFace.png"
 import { changePlace } from "../../state/action-creators";
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
-import info from "./icons/info.svg"
+//import info from "./icons/info.svg"
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
@@ -26,6 +26,7 @@ const Review = () => {
     let [Filter,setFilter] = useState(false);
     let [direction,setDirection] =useState(false);
     let [eurokey,setEurokey] =useState(false);
+    //const [selectedImage, setSelectedImage] = useState(null);
 
     const optionSelectedExperience = (e) => {
         console.log(e.target.value)
@@ -153,6 +154,16 @@ const Review = () => {
         Change();
       });
 
+    //Image
+    // const fileChangedHandler = (event) => {
+    //     const file = event.target.files[0]
+    //     setSelectedImage(file)
+    //   }
+    
+    // const uploadHandler = () => {
+    //     console.log(selectedImage)
+    // }
+
     return (
         <div>
             {/* <!-- Steps --> */}
@@ -252,11 +263,11 @@ const Review = () => {
                 <p className="Thankyou">Your feedback would help us <br /> improve our service</p>
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
                 <br />
-                <div className="PhotosContainer">
+                {/* <div className="PhotosContainer">
                     <h2>Help us update our photos </h2><img src={info} alt="information" className="image"/>
-                    {/* <input type="file" onChange={()=>fileChangedHandler()} /> */}
-                    <button >Upload!</button>
-                </div>
+                    <input type="file" onChange={()=>fileChangedHandler(selectedImage)} />
+                    <button onClick={uploadHandler}>Upload!</button>
+                </div> */}
             </div>
             {/* <!-- Progress bar --> */}
             {/* <br /> */}
