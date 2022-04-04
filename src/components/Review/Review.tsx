@@ -168,24 +168,7 @@ const Review = () => {
          preview: URL.createObjectURL(e.target.files[0]),
          raw: e.target.files[0]
         })
-       }
-    // const handleUpload = async (e) => {
-    //     e.preventDefault()
-    //     const formData = new FormData()
-    //     formData.append('image', image.raw)
-    //     const config = { headers: 
-    //      {'content-type': 'multipart/form-data'} 
-    //     }
-    //     // await uploadToBackend('endpoint', {image: image.raw}, config)
-    //    }
-    // const fileChangedHandler = (event) => {
-    //     const file = event.target.files[0]
-    //     setSelectedImage(file)
-    //   }
-    
-    // const uploadHandler = () => {
-    //     console.log(selectedImage)
-    // }
+    }
 
     return (
         <div>
