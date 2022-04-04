@@ -175,11 +175,11 @@ function Tabs() {
             <a className="Instruct" href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
             <img src={cross} alt="cross" className="CrossButton" onClick={()=>setCross(false)}/>
           </div>
-          <div className="GoContainer">
-            <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
-          </div>
           <br />
         </div>
+        {toggleState===1?<div className="GoContainer">
+          <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
+        </div>:""}
 
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}

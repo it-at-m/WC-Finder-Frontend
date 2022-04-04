@@ -151,7 +151,7 @@ const Review = () => {
         <button className={Filter?"AccurateButtonSelected":"AccurateButton"} name="Filter" onClick={()=>setFilter(true)} value="true">Filters</button>
         <button className={direction?"AccurateButtonSelected":"AccurateButton"} name="direction" onClick={()=>setDirection(true)} value="true">Directions</button>
         <br />
-        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} name="eurokey" onClick={()=>setEurokey(true)} value="true">Eurokey Information</button>
+        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} name="eurokey" onClick={()=>setEurokey(true)} value="true">Eurokey Requirement</button>
     </div>
     </div>
     
@@ -218,7 +218,7 @@ const Review = () => {
             <div className="ShortText" onChange={(e) => onChange(e)}>
                 <label><h3>Can you tell us a little more about your <br/>experience? (Optional)</h3></label><br/>
                 <textarea name="moreinfo" className="Paragraph" id="output"
-                          placeholder="    Type your comment here" value={moreinfo}></textarea>
+                          placeholder="Type your comment here" value={moreinfo}></textarea>
             </div>
             <button id="clear" className="btn Cancel" onClick={cleartext}>Clear Text</button>
             </div>
@@ -229,7 +229,9 @@ const Review = () => {
                 <button className="btn btn-prev" id="Previous" onClick={prevBtns}>Back</button>
             </div>
             <div>
-            <br/><br/><br/>
+            <br/>
+            <br/>
+            <br/>
             <h3>Did you find the toilet easily?</h3>
             <div className="RadioButton" onChange={(e) => onChange(e)}>
                 <label className="Text">
@@ -271,16 +273,9 @@ const Review = () => {
                 <br />
                 <div className="PhotosContainer">
                     <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
-                    {/* <input type="file" onChange={()=>fileChangedHandler(selectedImage)} /> */}
-                    {/* <img id="target" />
-                    <input type="file" id="select_image" name="image" onClick={readURL(this)} accept="Image/*" /> */}
-                    {/* <input type="file" id="upload-button" onChange={handleChange} /> */}
-                    {/* <button className="AddPhoto" onClick={handleUpload}>Add Photo</button> */}
-
                     <label className="AddPhoto">
                         <input type="file" onChange={handleChange} />Add Photo
                     </label>
-                    
                 </div>
             </div>
             {/* <!-- Progress bar --> */}

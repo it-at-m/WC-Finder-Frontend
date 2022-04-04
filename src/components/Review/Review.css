@@ -294,40 +294,72 @@ input[type='file'] {
 }
 
 .AccurateButton {
-    background: #6F5AF2;
-    opacity: 0.2;
+    background: #E7E5F4;
+    opacity: 1.0;
+    border-radius: 2px;
     border-radius: 2px;
     color: #000000;
-    margin: 12px 12px 0px 12px;
-    padding: 4px;
+    margin: 16px 4px 0px 16px;
+    padding: 4px 8px 4px 8px;
     cursor: pointer;
 }
 
 .AccurateButton:hover {
-    background: #6F5AF2;
+    background: #E7E5F4;
     opacity: 1.0;
 }
 
 .AccurateButtonSelected {
-    background: #6F5AF2;
+    background: #E7E5F4;
+    border: 1px solid #6F5AF2;
     opacity: 1.0;
     border-radius: 2px;
     color: #000000;
-    margin: 12px 12px 0px 12px;
-    padding: 4px;
+    margin: 16px 4px 0px 16px;
+    padding: 4px 8px 4px 8px;
     cursor: pointer;
 }
 
-.Paragraph.placeholder {
-    margin-top: 10%;
+.Paragraph:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px #719ECE;
+    border: 1px solid #6F5AF2;
+    box-sizing: border-box;
+    border-radius: 6px;
 }
+
+textarea {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+
+/* .Paragraph::-webkit-input-placeholder {
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.Paragraph::-moz-input-placeholder {
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.Paragraph:-moz-input-placeholder {
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
+.Paragraph:-ms-input-placeholder {
+    padding-top: 8px;
+    padding-left: 10px;
+} */
 
 .AccurateContainer {
     position: absolute;
     width: 91%;
     height: 18%;
     background: #F4F4F4;
-    top: 60%;
+    top: 65%;
     border-radius: 5px;
 }
 
