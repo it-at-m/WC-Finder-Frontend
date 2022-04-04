@@ -10,7 +10,7 @@ import happy_image from "../Tabs/icons/HappyFace.png"
 import { changePlace } from "../../state/action-creators";
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
-//import info from "./icons/info.svg"
+import info from "./icons/info.svg"
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
@@ -26,7 +26,7 @@ const Review = () => {
     let [Filter,setFilter] = useState(false);
     let [direction,setDirection] =useState(false);
     let [eurokey,setEurokey] =useState(false);
-    //const [selectedImage, setSelectedImage] = useState(null);
+    const [image, setImage] = useState({ preview: '', raw: '' })
 
     const optionSelectedExperience = (e) => {
         console.log(e.target.value)
@@ -109,11 +109,15 @@ const Review = () => {
         locate: 2,
         photo: 2,
         accurate: 2,
-        moreinfo: ""
+        moreinfo: "",
+        layout: false,
+        direction: false,
+        Filter: false,
+        eurokey: false
     };
 
 
-    const [{ Experience, Clean, locate, photo, accurate, moreinfo }, setState] = useState(initialState);
+    let [{ Experience, Clean, locate, photo, accurate, moreinfo}, setState] = useState(initialState);
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -129,7 +133,11 @@ const Review = () => {
             findToilet: locate,
             photosUseful: photo,
             infoAccurate: accurate,
-            moreExperience: moreinfo
+            moreExperience: moreinfo,
+            layouts: layout,
+            filter: Filter,
+            direction: direction,
+            euro: eurokey
         });
         nextBtns();
         reset();
@@ -138,12 +146,12 @@ const Review = () => {
 
     //No Accuracy Checked
     const NoAccurate = <div className="AccurateContainer">
-    <div className="SelectButtons">
-        <button className={layout?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setLayout(true)}>Layout</button>
-        <button className={Filter?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setFilter(true)}>Filters</button>
-        <button className={direction?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setFilter(true)}>Directions</button>
+    <div className="SelectButtons" onChange={(e)=>onChange(e)}>
+        <button className={layout?"AccurateButtonSelected":"AccurateButton"} name="layout" value="true" onClick={()=>setLayout(true)}>Layout</button>
+        <button className={Filter?"AccurateButtonSelected":"AccurateButton"} name="Filter" onClick={()=>setFilter(true)} value="true">Filters</button>
+        <button className={direction?"AccurateButtonSelected":"AccurateButton"} name="direction" onClick={()=>setDirection(true)} value="true">Directions</button>
         <br />
-        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} onClick={()=>setEurokey(true)}>Eurokey Information</button>
+        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} name="eurokey" onClick={()=>setEurokey(true)} value="true">Eurokey Information</button>
     </div>
     </div>
     
@@ -155,6 +163,21 @@ const Review = () => {
       });
 
     //Image
+    const handleChange = (e) => {
+        setImage({
+         preview: URL.createObjectURL(e.target.files[0]),
+         raw: e.target.files[0]
+        })
+       }
+    // const handleUpload = async (e) => {
+    //     e.preventDefault()
+    //     const formData = new FormData()
+    //     formData.append('image', image.raw)
+    //     const config = { headers: 
+    //      {'content-type': 'multipart/form-data'} 
+    //     }
+    //     // await uploadToBackend('endpoint', {image: image.raw}, config)
+    //    }
     // const fileChangedHandler = (event) => {
     //     const file = event.target.files[0]
     //     setSelectedImage(file)
@@ -263,11 +286,19 @@ const Review = () => {
                 <p className="Thankyou">Your feedback would help us <br /> improve our service</p>
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
                 <br />
-                {/* <div className="PhotosContainer">
-                    <h2>Help us update our photos </h2><img src={info} alt="information" className="image"/>
-                    <input type="file" onChange={()=>fileChangedHandler(selectedImage)} />
-                    <button onClick={uploadHandler}>Upload!</button>
-                </div> */}
+                <div className="PhotosContainer">
+                    <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
+                    {/* <input type="file" onChange={()=>fileChangedHandler(selectedImage)} /> */}
+                    {/* <img id="target" />
+                    <input type="file" id="select_image" name="image" onClick={readURL(this)} accept="Image/*" /> */}
+                    {/* <input type="file" id="upload-button" onChange={handleChange} /> */}
+                    {/* <button className="AddPhoto" onClick={handleUpload}>Add Photo</button> */}
+
+                    <label className="AddPhoto">
+                        <input type="file" onChange={handleChange} />Add Photo
+                    </label>
+                    
+                </div>
             </div>
             {/* <!-- Progress bar --> */}
             {/* <br /> */}

@@ -273,6 +273,26 @@ input[type=radio1]:checked+label>img {
     top: auto;
 }
 
+input[type='file'] {
+    display: none;
+}
+
+.AddPhoto {
+    background: #6F5AF2;
+    border-radius: 5px;
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    height: 46%;
+    color: #FFFFFF;
+    width: 79%;
+    justify-content: center;
+    margin-left: 10%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
 .AccurateButton {
     background: #6F5AF2;
     opacity: 0.2;
@@ -311,7 +331,30 @@ input[type=radio1]:checked+label>img {
     border-radius: 5px;
 }
 
+.PhotosContainer {
+    position: absolute;
+    width: 88%;
+    height: 21%;
+    background: #F4F4F4;
+    top: 97%;
+    border-radius: 5px;
+}
+
 .Thankyou {
     justify-content: center;
     text-align: center;
+}
+
+.Valid {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.images {
+    height: 16px;
+    width: 20px;
+    margin-top: 2%;
+    margin-left: 3%;
+    cursor: pointer;
 }

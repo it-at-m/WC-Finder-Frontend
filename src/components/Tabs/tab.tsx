@@ -31,6 +31,7 @@ function Tabs() {
   // Toggle between Tabs
   let [toggleState, setToggleState] = useState(1);
   const [showLegends, setShowLegends] = useState(false);
+  // const [image, setImage] = useState({ preview: '', raw: '' })
 
   // Toggle Tab
   const toggleTab = (index) => {
@@ -82,26 +83,6 @@ function Tabs() {
 
     //Cross Button
     const [crosses,setCross]=useState(true)
-
-    // const { changePlace } = useActions();
-    // const placeid=place?.id;
-    // useEffect(()=>{
-    //   changePlace(placeid);
-    //   setToggleState(1);
-    // });
-
-  //Upload File
-  // const [state,setState] = useState();
-  // const  [selectedFile,IsSelectedFile] = useState();
-
-  // let fileChangedHandler = (event) => {
-  //   setState({ selectedFile: event.target.files })
-  // }
-
-  // uploadHandler = () => {
-  // console.log(state.selectedFile)
-  // }
-  // const placeid= '23'
   
   useEffect(()=>{
     const Change = async() =>{
@@ -110,13 +91,12 @@ function Tabs() {
     Change();
   });
 
-  // function useToggle(initialValue = 1) {
-  //   const [value, setValue] = useState(initialValue);
-  //   const toggle = useCallback(() => {
-  //     setValue(v => 2|3);
-  //   }, []);
-  //   return [value, toggle];
-  // }
+  // const handleChanges = (e) => {
+  //   setImage({
+  //    preview: URL.createObjectURL(e.target.files[0]),
+  //    raw: e.target.files[0]
+  //   })
+  //  }
 
   return (
     <div className="container">
@@ -186,6 +166,10 @@ function Tabs() {
             <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
             {showLegends && extraContent}
           </div>
+          {/* <hr />
+          <label className="AddPhoto">
+            <input type="file" onChange={handleChanges} />Add Photo
+          </label> */}
           <div className={crosses===true?"InstructContainer":"False"}>
             <hr/>
             <a className="Instruct" href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
@@ -195,12 +179,6 @@ function Tabs() {
             <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
           </div>
           <br />
-          {/* <div>
-            <div className="combine"><h2>Help keep our photos updated</h2><img src={question} alt="information" className="image"/></div>
-            <div className="LastUpdateInfo">If you notice the photos are inaccurate, let us know by adding a photo!</div>
-            <input type="file" onChange={()=>fileChangedHandler()} />
-            <button onClick={()=>uploadHandler()}>Upload!</button>
-          </div> */}
         </div>
 
         <div
