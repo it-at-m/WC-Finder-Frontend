@@ -324,54 +324,6 @@ button {
     display: none;
 }
 
-.progressbar {
-    counter-reset: step;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-}
-
-.progressbar::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 100%;
-    background-color: #dcdcdc;
-}
-
-.progressbar::after {
-    background-color: #6F5AF2;
-}
-
-.progress {
-    background-color: #6F5AF2;
-    width: 0%;
-}
-
-.progress-step {
-    width: 2.1875rem;
-    height: 2.1875rem;
-    background-color: #dcdcdc;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.progress-step-active {
-    background-color: #6F5AF2;
-    color: white;
-    z-index: 1000;
-}
-
-.progress-step::before {
-    counter-increment: step;
-    content: counter(step);
-    z-index: 1000;
-}
-
 .Pro {
     display: flex;
     justify-content: space-between;

@@ -14,7 +14,7 @@ import info from "./icons/info.svg"
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
-    // const progressSteps = document.querySelectorAll(".progress-step");
+    const progressSteps = document.querySelectorAll(".progress-step");
     let [formStepsNumNext, setformStepsNumNext] = useState(0);
     let [step, setStep]=useState(1);
     let [selectedValue,setSelectedValue] = useState('');
@@ -22,6 +22,7 @@ const Review = () => {
     let [location, setlocation]=useState('');
     let [photos, setPhotos] = useState('');
     let [accuracy, setAccuracy]=useState('');
+    //let [moreinfo, setmoreinfo]=useState('');
     let [layout,setLayout]=useState(false);
     let [Filter,setFilter] = useState(false);
     let [direction,setDirection] =useState(false);
@@ -62,8 +63,8 @@ const Review = () => {
         setEurokey(false)
     }
 
-    const cleartext = () => {
-        setState(initialState);
+    function cleartext() {
+        setState(prevState => ({ ...prevState, moreinfo: ""}));
     }
 
     const {
@@ -87,19 +88,19 @@ const Review = () => {
     function updatePrev() {
         formSteps[formStepsNumNext].classList.add("form-step-active");
         formSteps[formStepsNumNext + 1].classList.remove("form-step-active");
-        console.log("3. Update ",formStepsNumNext);
-        // progressSteps[formStepsNumNext].classList.add("progress-step-active");
-        // progressSteps[formStepsNumNext + 1].classList.remove("progress-step-active");
+        // console.log("3. Update ",formStepsNumNext);
+        progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        progressSteps[formStepsNumNext + 1].classList.remove("progress-step-active");
     }
 
     function updateNext() {
         formSteps[formStepsNumNext].classList.add("form-step-active");
         formSteps[formStepsNumNext - 1].classList.remove("form-step-active");
         console.log("2. Update ",formStepsNumNext);
-        // progressSteps[formStepsNumNext].classList.add("progress-step-active");
-        // if(formStepsNumNext<1){
-        //     progressSteps[formStepsNumNext].classList.add("progress-step-active");
-        // }
+        progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        if(formStepsNumNext<1){
+            progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        }
     }
 
 
@@ -116,8 +117,7 @@ const Review = () => {
         eurokey: false
     };
 
-
-    let [{ Experience, Clean, locate, photo, accurate, moreinfo}, setState] = useState(initialState);
+    let [{ Experience, Clean, locate, photo, accurate, moreinfo }, setState] = useState(initialState);
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -215,7 +215,7 @@ const Review = () => {
             </div>
 
             <br />
-            <div className="ShortText" onChange={(e) => onChange(e)}>
+            <div className="ShortText" onChange={(e)=>onChange(e)}>
                 <label><h3>Can you tell us a little more about your <br/>experience? (Optional)</h3></label><br/>
                 <textarea name="moreinfo" className="Paragraph" id="output"
                           placeholder="Type your comment here" value={moreinfo}></textarea>
@@ -255,6 +255,7 @@ const Review = () => {
             </div>
             {accuracy==='0' && NoAccurate}
             <button className="btn Submit btn-next" onClick={handleSubmit}>Submit</button>
+            <br />
             </div>
             </div>
             
@@ -279,12 +280,10 @@ const Review = () => {
                 </div>
             </div>
             {/* <!-- Progress bar --> */}
-            {/* <br /> */}
-            {/* <div className="progressbar">
-                <div className="progress" id="progress"></div>
+            <div className="progressbar">
                 <div className="progress-step progress-step-active"></div>
                 <div className="progress-step"></div>
-            </div> */}
+            </div>
         </div>
     )
 };
