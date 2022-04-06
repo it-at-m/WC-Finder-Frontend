@@ -137,8 +137,7 @@ const Map = () => {
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
         {places &&
           places.map((place: Place) => (
-            <Marker
-              
+            <Marker    
               key={place.title}
               position={place.position}
               eventHandlers={{ click: () => selectPlace(place.id) }}
@@ -151,6 +150,6 @@ const Map = () => {
       </MapContainer>
     </div>
   );
-          }
+}
 
 export default Map;
