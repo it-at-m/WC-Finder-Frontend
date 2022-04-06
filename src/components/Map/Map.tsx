@@ -138,7 +138,6 @@ const Map = () => {
         {places &&
           places.map((place: Place) => (
             <Marker
-              
               key={place.title}
               position={place.position}
               eventHandlers={{ click: () => selectPlace(place.id) }}
