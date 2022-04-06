@@ -266,7 +266,7 @@ button {
     padding-bottom: 2%;
     padding-top: 2%;
     position: sticky;
-    bottom: 47px;
+    bottom: 0px;
     background: rgba(255, 255, 255, 255);
 }
 
@@ -291,7 +291,7 @@ button {
     padding-top: 2%;
     position: -webkit-sticky;
     position: sticky;
-    bottom: 108px;
+    bottom: 69px;
     background: #FFFFFF;
     box-shadow: 0px 0px 1px 1px #2e2e2e;
 }
@@ -316,8 +316,10 @@ button {
 
 .CrossButton {
     float: right;
-    margin-top: 2%;
+    margin-top: 1%;
     cursor: pointer;
+    height: 13px;
+    width: 26px;
 }
 
 .Save {

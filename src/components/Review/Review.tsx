@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState} from "react";
+import {  useState} from "react";
 import {useActions} from "../../hooks/useActions";
 import "./Review.css";
 import { useSelector } from "../../hooks/useTypedSelector";
@@ -11,9 +11,8 @@ import happy_image from "../Tabs/icons/HappyFace.png"
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
 import { useTranslation } from "react-i18next";
-import info from "./icons/info.svg"
-import { PhotoApi } from "../../constants";
-// import axios from 'axios';
+// import info from "./icons/info.svg"
+// import { ReviewPhotoStore } from "../../state/action-creators";
 
 const Review = () => {
 
@@ -33,9 +32,20 @@ const Review = () => {
     let [Filter,setFilter] = useState(false);
     let [direction,setDirection] =useState(false);
     let [eurokey,setEurokey] =useState(false);
-    const [image, setImage] = useState({ photo: '', raw: '',name:'' })
+    //const [image, setImage] = useState({ photo: '', raw: '',name:'' })
     // const [selectedFile,setSelectedFile]=useState(null)
+    // const isMounted = useRef(false);
 
+    // const { ReviewPhotoStore } = useActions();
+    // const handleUpload= (e) => {
+    //     if (isMounted.current) {
+    //         ReviewPhotoStore({
+    //             name: place?.title,
+    //             photo: selectedFile
+    //         });
+    // } else {
+    //   isMounted.current = true;
+    // }}
     const optionSelectedExperience = (e) => {
         setSelectedValue(e.target.value)
     }
@@ -172,30 +182,51 @@ const Review = () => {
     //   });
 
     //Image
-    const handleChange = (e) => {
-        //setSelectedFile(e.target.files[0])
-        setImage({
-         photo: URL.createObjectURL(e.target.files[0]),
-         raw: e.target.files[0],
-         name: (place?.title)===undefined?'':place?.title
-        })
-    }
+    // const handleChange = (e) => {
+    //     setSelectedFile(e.target.files[0])
+    //     // setImage({
+    //     //  photo: URL.createObjectURL(e.target.files[0]),
+    //     //  raw: e.target.files[0],
+    //     //  name: (place?.title)===undefined?'':place?.title
+    //     // })
+    // }
 
-    const handleUpload = (e) => {
-        //const formData = new FormData();
+    // const handleUpload = (e) => {
+    //     const formData = new FormData();
+        
     
-      // Update the formData object
-    //   formData.append(
-    //     "myFile",
-    //     selectedFile,
-    //     selectedFile.name
-    //   );
-        setImage({
-            photo: '',
-            raw:'',
-            name:''
-        })
-    }
+    //     formData.append('File', selectedFile===null?'':selectedFile);
+    //     axios.post('https://backend.inclus.de/loadphoto',
+    //     {
+    //         method:'POST',
+    //         body: formData,
+    //         headers:{
+    //             name: (place?.title)===undefined?'':place?.title,
+    //             ContentType: "multipart/form-data"
+    //         }
+    //     })
+    //     .then(res=>{
+    //         console.log(res)
+    //     })
+    // //     console.log(formData)
+	// // 	fetch(
+	// // 		'https://backend.inclus.de/loadphoto',
+	// // 		{
+	// // 			method: 'POST',
+	// // 			body: formData,
+    // //             headers: {name: (place?.title)===undefined?'':place?.title,
+    // //                 photo: selectedFile.photo,
+    // //                 ContentType: "multipart/form-data"}
+	// // 		}
+	// // 	)
+	// // 		.then((response) => response.json)
+	// // 		.then((result) => {
+	// // 			console.log('Success:', result);
+	// // 		})
+	// // 		.catch((error) => {
+	// // 			console.error('Error:', error);
+	// // 		});
+	// };
 
     return (
         <div>
@@ -300,14 +331,16 @@ const Review = () => {
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
                 <br />
                 <br />
-                <div className="PhotosContainer">
+                {/* <div className="PhotosContainer">
                     <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
+                    
                     <label className="AddPhoto">
                         <input type="file" onChange={handleChange}/>Add Photo
                     </label>
-                    {image.photo!==''?<div className="imageName">Image name: {image.name}</div>:''}
-                    <button onClick={handleUpload} formAction={PhotoApi} formMethod="POST" formEncType="multipart/form-data" >Upload</button>
-                </div>
+                    {/* {selectedFile.photo!==''?<div className="imageName">Image name: {selectedFile.name}</div>:''} */}
+                    {/* <button formMethod="POST" onClick={handleUpload}  formEncType="multipart/form-data" >Upload</button>
+                    
+                </div> */} 
                 {/* <div className="PhotosContainer">
                     <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
                     <label className="AddPhoto">
