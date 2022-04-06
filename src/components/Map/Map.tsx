@@ -20,7 +20,7 @@ import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
 import Language from "../Language/Language";
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
 var count = 0;
 
 const SearchControl = (props) => {
@@ -99,8 +99,8 @@ const Map = () => {
   }
 
   //Tracking
-  ReactGA.initialize('UA-223747245-1');
-  ReactGA.pageview('/');
+  // ReactGA.initialize('UA-223747245-1');
+  // ReactGA.pageview('/');
     //For translation
   const {t} = useTranslation();
   return (
