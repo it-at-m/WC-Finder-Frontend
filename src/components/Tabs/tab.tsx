@@ -64,16 +64,16 @@ function Tabs() {
   
   // All the legends
   const extraContent=<div className="Layout">
-    <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br />
-    <img className="ImageIcon" src={urinal} alt={"Urinal"} ></img>    {t("Urinal")}<br />
-    <img className="ImageIcon" src={sink} alt={"Sink"} ></img>     {t("Sink")}<br />
-    <img className="ImageIcon"src={flex} alt={"Flexible Handrails"}></img> {t("Flexible Handrails")}<br />
-    <img className="ImageIcon" src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}<br />
-    <img className="ImageIcon" src={stand} alt={"StandupAid"} ></img>     {t("Standup Aid")}<br />
-    <img className="ImageIcon" src={mobile} alt={"Mobile Ceil"} ></img>     {t("Mobile ceiling lift")}<br />
-    <img className="ImageIcon" src={water} alt={"Water filter"} ></img>     {t("Water Filter with activated carbon")}<br />
-    <img className="ImageIcon" src={turning} alt={"Turning space"} ></img>     {t("Turning space in the room and infront of the toilet bowl")}<br />
-    <img className="ImageIcon" src={barrier} alt={"Shower"} ></img>     {t("Barrier-free shower")}<br />
+    <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br /><br />
+    <img className="ImageIcon" src={urinal} alt={"Urinal"} ></img>    {t("Urinal")}<br /><br />
+    <img className="ImageIcon" src={sink} alt={"Sink"} ></img>     {t("Sink")}<br /><br />
+    <img className="ImageIcon"src={flex} alt={"Flexible Handrails"}></img> {t("Flexible Handrails")}<br /><br />
+    <img className="ImageIcon" src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}<br /><br />
+    <img className="ImageIcon" src={stand} alt={"StandupAid"} ></img>     {t("Standup Aid")}<br /><br />
+    <img className="ImageIcon" src={mobile} alt={"Mobile Ceil"} ></img>     {t("Mobile ceiling lift")}<br /><br />
+    <img className="ImageIcon" src={water} alt={"Water filter"} ></img>     {t("Water Filter with activated carbon")}<br /><br />
+    <img className="ImageIcon" src={turning} alt={"Turning space"} ></img>     {t("Turning space in the room and infront of the toilet bowl")}<br /><br />
+    <img className="ImageIcon" src={barrier} alt={"Shower"} ></img>     {t("Barrier-free shower")}<br /><br />
     <img className="ImageIcon" src={door} alt={"Door Handle"} ></img>     {t("Door/ WC Bowl handle")}</div>
     <div className="Detail">
     <br />
@@ -157,29 +157,26 @@ function Tabs() {
           }}
           ></div>
           <div className="Layout">
-          <div className="EachLayer"><img src={blue} className="LayoutsImage" alt={"ToiletFlush"}></img>    {t("Toilet Flush or tap")}<br />
-          <img src={red} alt={"EmergencyCall"} className="LayoutsImage"></img>      {t("Emergency call button or cord")}<br />
-          <img src={green} alt={"DoorButton"} className="LayoutsImage"></img>    {t("Door button open or close")}<br />
-          <img src={yellow} alt={"LightSwitch"} className="LayoutsImage"></img>     {t("Light Switch")}</div>
+          <div className="EachLayer"><img src={blue} className="LayoutsImage" alt={"ToiletFlush"}></img>    {t("Toilet Flush or tap")}<br /><br />
+          <img src={red} alt={"EmergencyCall"} className="LayoutsImage"></img>      {t("Emergency call button or cord")}<br /><br />
+          <img src={green} alt={"DoorButton"} className="LayoutsImage"></img>    {t("Door button open or close")}<br /><br />
+          <img src={yellow} alt={"LightSwitch"} className="LayoutsImage"></img>     {t("Light Switch")}<br /><br /></div>
           </div>
           <div className="Detail">
             <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
             {showLegends && extraContent}
           </div>
-          {/* <hr />
-          <label className="AddPhoto">
-            <input type="file" onChange={handleChanges} />Add Photo
-          </label> */}
-          <div className={crosses===true?"InstructContainer":"False"}>
-            <hr/>
-            <a className="Instruct" href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
-            <img src={cross} alt="cross" className="CrossButton" onClick={()=>setCross(false)}/>
-          </div>
-          <br />
         </div>
-        {toggleState===1?<div className="GoContainer">
+        {toggleState===1?
+        <>
+        <div className={crosses===true?"InstructContainer":"False"}>
+        <a className="Instruct" href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
+        <img src={cross} alt="cross" className="CrossButton" onClick={()=>setCross(false)}/>
+      </div>
+      <br />
+        <div className="GoContainer">
           <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
-        </div>:""}
+        </div></>:""}
 
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
