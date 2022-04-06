@@ -99,18 +99,15 @@ export default function DoorWidthFunction() {
           id="DoorWidth"
           disableUnderline
         >
-          <MenuItem value={0}>{t("DoorWidth")}</MenuItem>
-          <MenuItem id="Door80cm" value={60} className="menuitem">
-            60cm
+          <MenuItem value={0}>{t("Minimal Door Width")}</MenuItem>
+          <MenuItem id="Door90cm" value={90} className="menuitem">
+            min. 90cm
           </MenuItem>
-          <MenuItem id="Door100cm" value={70} className="menuitem">
-            70cm
+          <MenuItem id="Door100cm" value={100} className="menuitem">
+            min. 100cm
           </MenuItem>
-          <MenuItem id="Door120cm" value={80} className="menuitem">
-            80cm
-          </MenuItem>
-          <MenuItem id="Door150cm" value={90} className="menuitem">
-            90cm
+          <MenuItem id="Door110cm" value={110} className="menuitem">
+            min. 110cm
           </MenuItem>
         </Select>
       </div>
@@ -137,9 +134,9 @@ export default function DoorWidthFunction() {
           <MenuItem value={41}>
             {t("Ramp")}
           </MenuItem>
-          <MenuItem value={6} className="menuitem">0-6 %</MenuItem>
-          <MenuItem value={10} className="menuitem">7-10 %</MenuItem>
-          <MenuItem value={30} className="menuitem">Greater than 10% </MenuItem>
+          <MenuItem value={0} className="menuitem">No Ramp (0 %)</MenuItem>
+          <MenuItem value={6} className="menuitem">Accessible Ramp (1 - 6 %)</MenuItem>
+          <MenuItem value={10} className="menuitem">Steep Ramps (&gt; 6%)</MenuItem>
         </Select>
       </div>
     </div>

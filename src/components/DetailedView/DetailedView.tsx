@@ -7,7 +7,6 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState } from "react";
 import Tab from "../Tabs/tab";
-import up from "./icon/up.png"
 
 const DetailedView = () => {
   //data
@@ -21,13 +20,11 @@ const DetailedView = () => {
 
   // Images in Preview
   const [nextImage,setNextImage] = useState<boolean>(false)
-  const [phone, setPhone]=useState(false)
 
   return (
     <div
       className={`preview__container preview__container--${place && "active"}`}
     >
-      {phone===true?<img src={up} alt={up}></img>:""}
       <div className="preview__close" onClick={() => nullSelectPlace()}>
         <AiFillCloseCircle>
         </AiFillCloseCircle>

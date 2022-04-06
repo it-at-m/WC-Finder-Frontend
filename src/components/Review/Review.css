@@ -240,6 +240,7 @@ input[type=radio1]:checked+label>img {
     font-weight: 500;
     font-size: 18px;
     margin-top: 200px;
+    margin-bottom: 4%;
     height: 100%;
     color: #FFFFFF;
     width: 100%;
@@ -332,7 +333,7 @@ textarea {
     width: 91%;
     height: 18%;
     background: #F4F4F4;
-    top: 65%;
+    top: 68%;
     border-radius: 5px;
 }
 

@@ -10,11 +10,12 @@ import happy_image from "../Tabs/icons/HappyFace.png"
 import { changePlace } from "../../state/action-creators";
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
-import info from "./icons/info.svg"
+import { useTranslation } from "react-i18next";
+// import info from "./icons/info.svg"
 
 const Review = () => {
     const formSteps = document.querySelectorAll(".form-step");
-    const progressSteps = document.querySelectorAll(".progress-step");
+    //const progressSteps = document.querySelectorAll(".progress-step");
     let [formStepsNumNext, setformStepsNumNext] = useState(0);
     let [step, setStep]=useState(1);
     let [selectedValue,setSelectedValue] = useState('');
@@ -27,10 +28,9 @@ const Review = () => {
     let [Filter,setFilter] = useState(false);
     let [direction,setDirection] =useState(false);
     let [eurokey,setEurokey] =useState(false);
-    const [image, setImage] = useState({ preview: '', raw: '' })
+    //const [image, setImage] = useState({ preview: '', raw: '' })
 
     const optionSelectedExperience = (e) => {
-        console.log(e.target.value)
         setSelectedValue(e.target.value)
     }
 
@@ -89,18 +89,18 @@ const Review = () => {
         formSteps[formStepsNumNext].classList.add("form-step-active");
         formSteps[formStepsNumNext + 1].classList.remove("form-step-active");
         // console.log("3. Update ",formStepsNumNext);
-        progressSteps[formStepsNumNext].classList.add("progress-step-active");
-        progressSteps[formStepsNumNext + 1].classList.remove("progress-step-active");
+        // progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        // progressSteps[formStepsNumNext + 1].classList.remove("progress-step-active");
     }
 
     function updateNext() {
         formSteps[formStepsNumNext].classList.add("form-step-active");
         formSteps[formStepsNumNext - 1].classList.remove("form-step-active");
         console.log("2. Update ",formStepsNumNext);
-        progressSteps[formStepsNumNext].classList.add("progress-step-active");
-        if(formStepsNumNext<1){
-            progressSteps[formStepsNumNext].classList.add("progress-step-active");
-        }
+        // progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        // if(formStepsNumNext<2){
+        //     progressSteps[formStepsNumNext].classList.add("progress-step-active");
+        // }
     }
 
 
@@ -143,15 +143,20 @@ const Review = () => {
         reset();
     }
 
+    //Language
+    const {t}=useTranslation();
 
     //No Accuracy Checked
-    const NoAccurate = <div className="AccurateContainer">
+    const NoAccurate =<div>
+        <p>{t("We are sorry you found our information inaccurate! Can you please tell us which one below was not accurate?")}</p>
+    <div className="AccurateContainer">
     <div className="SelectButtons" onChange={(e)=>onChange(e)}>
-        <button className={layout?"AccurateButtonSelected":"AccurateButton"} name="layout" value="true" onClick={()=>setLayout(true)}>Layout</button>
-        <button className={Filter?"AccurateButtonSelected":"AccurateButton"} name="Filter" onClick={()=>setFilter(true)} value="true">Filters</button>
-        <button className={direction?"AccurateButtonSelected":"AccurateButton"} name="direction" onClick={()=>setDirection(true)} value="true">Directions</button>
+        <button className={layout?"AccurateButtonSelected":"AccurateButton"} name="layout" value="true" onClick={()=>setLayout(true)}>{t("Layout")}</button>
+        <button className={Filter?"AccurateButtonSelected":"AccurateButton"} name="Filter" onClick={()=>setFilter(true)} value="true">{t("Filters")}</button>
+        <button className={direction?"AccurateButtonSelected":"AccurateButton"} name="direction" onClick={()=>setDirection(true)} value="true">{t("Directions")}</button>
         <br />
-        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} name="eurokey" onClick={()=>setEurokey(true)} value="true">Eurokey Requirement</button>
+        <button className={eurokey?"AccurateButtonSelected":"AccurateButton"} name="eurokey" onClick={()=>setEurokey(true)} value="true">{t("Eurokey Requirement")}</button>
+    </div>
     </div>
     </div>
     
@@ -163,23 +168,25 @@ const Review = () => {
       });
 
     //Image
-    const handleChange = (e) => {
-        setImage({
-         preview: URL.createObjectURL(e.target.files[0]),
-         raw: e.target.files[0]
-        })
-    }
+    // const handleChange = (e) => {
+    //     setImage({
+    //      preview: URL.createObjectURL(e.target.files[0]),
+    //      raw: e.target.files[0]
+    //     })
+    // }
+
+    
 
     return (
         <div>
             {/* <!-- Steps --> */}
             <div className="form-step form-step-active" >
             <div className="Next">
-                <button className="btn btn-next" onClick={nextBtns}>Next</button>
+                <button className="btn btn-next" onClick={nextBtns}>{t("Next")}</button>
                 <img src={right} alt="right"></img>
             </div>
             <br />
-            <h3 className="Exp">How was your experience?</h3>
+            <h3 className="Exp">{t("How was your experience?")}</h3>
             <br/>
             <div className="RadioButton" onChange={(e) => onChange(e)}>
                 <label>
@@ -197,7 +204,7 @@ const Review = () => {
             </div>
             <br/>
 
-            <h3>Was the toilet clean?</h3>
+            <h3>{t("Was the toilet clean?")}</h3>
             <br/>
             <div className="RadioButton" onChange={(e) => onChange(e)}>
                 <label>
@@ -216,45 +223,45 @@ const Review = () => {
 
             <br />
             <div className="ShortText" onChange={(e)=>onChange(e)}>
-                <label><h3>Can you tell us a little more about your <br/>experience? (Optional)</h3></label><br/>
+                <label><h3>{t("Can you tell us a little more about your")} <br/>{t("experience? (Optional)")}</h3></label><br/>
                 <textarea name="moreinfo" className="Paragraph" id="output"
-                          placeholder="Type your comment here" value={moreinfo}></textarea>
+                          placeholder={t("Type your comment here")} value={moreinfo}></textarea>
             </div>
-            <button id="clear" className="btn Cancel" onClick={cleartext}>Clear Text</button>
+            <button id="clear" className="btn Cancel" onClick={cleartext}>{t("Clear Text")}</button>
             </div>
             
             <div className="form-step">
             <div className="Back">
                 <img src={left} alt="left"></img>
-                <button className="btn btn-prev" id="Previous" onClick={prevBtns}>Back</button>
+                <button className="btn btn-prev" id="Previous" onClick={prevBtns}>{t("Back")}</button>
             </div>
             <div>
             <br/>
             <br/>
             <br/>
-            <h3>Did you find the toilet easily?</h3>
+            <h3>{t("Did you find the toilet easily?")}</h3>
             <div className="RadioButton" onChange={(e) => onChange(e)}>
                 <label className="Text">
-                    <input type="radio" name="locate" id="Found" onChange={optionSelectedLocate} checked={location==='1'} value={1}/>Yes</label>
+                    <input type="radio" name="locate" id="Found" onChange={optionSelectedLocate} checked={location==='1'} value={1}/>{t("Yes")}</label>
                 <label className="Text">
-                    <input type="radio" name="locate" id="NotFound" onChange={optionSelectedLocate} checked={location==='0'} value={0}/>No</label>
+                    <input type="radio" name="locate" id="NotFound" onChange={optionSelectedLocate} checked={location==='0'} value={0}/>{t("No")}</label>
             </div>
-            <h3>Were the photos sufficient?</h3>
+            <h3>{t("Were the photos sufficient?")}</h3>
             <div className="RadioButton" onChange={(e) => onChange(e)}>
                 <label className="Text">
-                    <input type="radio" name="photo" id="PhotosUseful" onChange={optionSelectedPhoto} checked={photos==='1'} value={1}/>Yes</label>
+                    <input type="radio" name="photo" id="PhotosUseful" onChange={optionSelectedPhoto} checked={photos==='1'} value={1}/>{t("Yes")}</label>
                 <label className="Text">
-                    <input type="radio" name="photo" id="PhotosNotUseful" onChange={optionSelectedPhoto} checked={photos==='0'} value={0}/>No</label>
+                    <input type="radio" name="photo" id="PhotosNotUseful" onChange={optionSelectedPhoto} checked={photos==='0'} value={0}/>{t("No")}</label>
             </div>
-            <h3>Was the information accurate?</h3>
+            <h3>{t("Was the information accurate?")}</h3>
             <div className="RadioButton" onChange={(e) => onChange(e)}>
                 <label className="Text">
-                    <input type="radio" name="accurate" id="AccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='1'} value={1}/>Yes</label>
+                    <input type="radio" name="accurate" id="AccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='1'} value={1}/>{t("Yes")}</label>
                 <label className="Text">
-                    <input type="radio" name="accurate" id="NotAccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='0'} value={0}/>No</label>
+                    <input type="radio" name="accurate" id="NotAccurateInfo" onChange={optionSelectedAccurate} checked={accuracy==='0'} value={0}/>{t("No")}</label>
             </div>
             {accuracy==='0' && NoAccurate}
-            <button className="btn Submit btn-next" onClick={handleSubmit}>Submit</button>
+            <button className="btn Submit btn-next" onClick={handleSubmit}>{t("Submit")}</button>
             <br />
             </div>
             </div>
@@ -262,28 +269,28 @@ const Review = () => {
             <div className="form-step" >
             <div className="Back">
                 <img src={left} alt="left"></img>
-                <button className="btn btn-prev" id="Previous" onClick={prevBtns}>Back</button>
+                <button className="btn btn-prev" id="Previous" onClick={prevBtns}>{t("Back")}</button>
             </div>
             <br />
             <br />
             <br />
-                <h3 className="Thankyou">Thanks for your feedback!</h3>
+                <h3 className="Thankyou">{t("Thanks for your feedback!")}</h3>
                 <br />
-                <p className="Thankyou">Your feedback would help us <br /> improve our service</p>
+                <p className="Thankyou">{t("Your feedback would help us")} <br /> {t("improve our service")}</p>
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
-                <br />
+                {/* <br />
                 <div className="PhotosContainer">
                     <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
                     <label className="AddPhoto">
                         <input type="file" onChange={handleChange} />Add Photo
                     </label>
-                </div>
+                </div> */}
             </div>
             {/* <!-- Progress bar --> */}
-            <div className="progressbar">
+            {/* <div className="progressbar">
                 <div className="progress-step progress-step-active"></div>
                 <div className="progress-step"></div>
-            </div>
+            </div> */}
         </div>
     )
 };
