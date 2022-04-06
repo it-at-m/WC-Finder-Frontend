@@ -337,6 +337,14 @@ textarea {
     border-radius: 5px;
 }
 
+#avatar {
+    z-index: 1000;
+}
+
+.imageName {
+    margin-top: 10%;
+}
+
 .InAct {
     font-family: 'Barlow';
     font-style: normal;
