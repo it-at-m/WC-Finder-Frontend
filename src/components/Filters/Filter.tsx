@@ -134,9 +134,9 @@ export default function DoorWidthFunction() {
           <MenuItem value={41}>
             {t("Ramp")}
           </MenuItem>
-          <MenuItem value={0} className="menuitem">No Ramp (0 %)</MenuItem>
-          <MenuItem value={6} className="menuitem">Accessible Ramp (1 - 6 %)</MenuItem>
-          <MenuItem value={10} className="menuitem">Steep Ramps (&gt; 6%)</MenuItem>
+          <MenuItem value={0} className="menuitem">{t("No Ramp")} (0 %)</MenuItem>
+          <MenuItem value={6} className="menuitem">{t("Accessible Ramp")} (1 - 6 %)</MenuItem>
+          <MenuItem value={10} className="menuitem">{t("Steep Ramp")} (&gt; 6%)</MenuItem>
         </Select>
       </div>
     </div>
