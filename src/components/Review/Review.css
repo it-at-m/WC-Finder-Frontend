@@ -337,6 +337,16 @@ textarea {
     border-radius: 5px;
 }
 
+.InAct {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    /* or 18px */
+    color: #000000;
+}
+
 .PhotosContainer {
     position: absolute;
     width: 88%;

@@ -114,6 +114,7 @@ div.leaflet-control-attribution.leaflet-control {
     border-radius: 5px;
     z-index: 1000;
     position: relative;
+    margin-top: 3%;
 }
 
 .root {

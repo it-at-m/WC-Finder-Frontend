@@ -148,7 +148,7 @@ const Review = () => {
 
     //No Accuracy Checked
     const NoAccurate =<div>
-        <p>{t("We are sorry you found our information inaccurate! Can you please tell us which one below was not accurate?")}</p>
+        <p className="Inact">{t("We are sorry you found our information inaccurate! Can you please tell us which one below was not accurate?")}</p>
     <div className="AccurateContainer">
     <div className="SelectButtons" onChange={(e)=>onChange(e)}>
         <button className={layout?"AccurateButtonSelected":"AccurateButton"} name="layout" value="true" onClick={()=>setLayout(true)}>{t("Layout")}</button>

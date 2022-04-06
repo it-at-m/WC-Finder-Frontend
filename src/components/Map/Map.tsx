@@ -132,8 +132,8 @@ const Map = () => {
           style={"bar"}
           popupFormat={(result: { label: any }) => result.label}
           />
-        <Language />
         <Filter />
+        <Language />
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
         {places &&
           places.map((place: Place) => (
