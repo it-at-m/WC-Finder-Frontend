@@ -150,6 +150,6 @@ const Map = () => {
       </MapContainer>
     </div>
   );
-          }
+}
 
 export default Map;
