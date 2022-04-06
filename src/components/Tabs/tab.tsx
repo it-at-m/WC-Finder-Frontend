@@ -65,16 +65,16 @@ function Tabs() {
   // All the legends
   const extraContent=<div className="Layout">
     <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br />
-    <img src={urinal} alt={"Urinal"} ></img>     {t("Urinal")}<br />
-    <img src={sink} alt={"Sink"} ></img>     {t("Sink")}<br />
-    <img src={flex} alt={"Flexible Handrails"}></img>     {t("Flexible Handrails")}<br />
-    <img src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}<br />
-    <img src={stand} alt={"StandupAid"} ></img>     {t("Standup Aid")}<br />
-    <img src={mobile} alt={"Mobile Ceil"} ></img>     {t("Mobile ceiling lift")}<br />
-    <img src={water} alt={"Water filter"} ></img>     {t("Water Filter with activated carbon")}<br />
-    <img src={turning} alt={"Turning space"} ></img>     {t("Turning space in the room and infront of the toilet bowl")}<br />
-    <img src={barrier} alt={"Shower"} ></img>     {t("Barrier-free shower")}<br />
-    <img src={door} alt={"Door Handle"} ></img>     {t("Door/ WC Bowl handle")}</div>
+    <img className="ImageIcon" src={urinal} alt={"Urinal"} ></img>    {t("Urinal")}<br />
+    <img className="ImageIcon" src={sink} alt={"Sink"} ></img>     {t("Sink")}<br />
+    <img className="ImageIcon"src={flex} alt={"Flexible Handrails"}></img> {t("Flexible Handrails")}<br />
+    <img className="ImageIcon" src={fix} alt={"Fixed Handrails"}></img>     {t("Fixed Handrails")}<br />
+    <img className="ImageIcon" src={stand} alt={"StandupAid"} ></img>     {t("Standup Aid")}<br />
+    <img className="ImageIcon" src={mobile} alt={"Mobile Ceil"} ></img>     {t("Mobile ceiling lift")}<br />
+    <img className="ImageIcon" src={water} alt={"Water filter"} ></img>     {t("Water Filter with activated carbon")}<br />
+    <img className="ImageIcon" src={turning} alt={"Turning space"} ></img>     {t("Turning space in the room and infront of the toilet bowl")}<br />
+    <img className="ImageIcon" src={barrier} alt={"Shower"} ></img>     {t("Barrier-free shower")}<br />
+    <img className="ImageIcon" src={door} alt={"Door Handle"} ></img>     {t("Door/ WC Bowl handle")}</div>
     <div className="Detail">
     <br />
     <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>

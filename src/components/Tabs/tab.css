@@ -329,6 +329,11 @@ button {
     justify-content: space-between;
 }
 
+.ImageIcon {
+    height: 100%;
+    width: 10%
+}
+
 .Photo {
     background: #11875E;
     font-family: Barlow;
