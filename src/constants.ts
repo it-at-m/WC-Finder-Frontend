@@ -9,7 +9,7 @@ const toiletIcon = L.icon({
 });
 
 
-const apiUri = "http://backend.inclus.de/";
+const apiUri = "https://backend.inclus.de/";
 
 const trackerIcon = L.icon({
   iconSize: [48, 48],
