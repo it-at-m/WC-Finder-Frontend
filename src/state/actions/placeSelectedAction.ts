@@ -17,8 +17,13 @@ interface PlaceSelectedNullAction {
   type: ActionTypePlaceSelected.PLACE_SELECTED_NULL;
 }
 
+interface PlaceSelectedChangeAction {
+  type: ActionTypePlaceSelected.PLACE_SELECTED_CHANGED;
+}
+
 export type PlaceSelectedAction =
   | PlaceSelectedRequestAction
   | PlaceSelectedSuccessAction
+  | PlaceSelectedChangeAction
   | PlaceSelectedFailAction
   | PlaceSelectedNullAction;

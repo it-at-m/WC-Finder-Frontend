@@ -32,8 +32,7 @@ const DetailedView = () => {
       <br />
       <div className="preview__title">{place?.title}</div>
       <div className="preview__address">{place?.address}, {place?.zip_code} {place?.city}</div>
-      <div
-        className="preview__picture"
+      <div className={nextImage===true?'preview__picture':'preview__picture__plan'}
         style={{
           backgroundImage: nextImage
               ? `url(${apiUri}/get_layout/${place?.plan})`

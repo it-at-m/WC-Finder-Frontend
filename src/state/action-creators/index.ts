@@ -111,10 +111,11 @@ export const ReviewPlace = (dataInput) => {
   const instance = axios.create({
     // withCredentials: true,
   });
-  return async (dispatch: Dispatch<PlaceReviewAction>) => {
+  return async (
+    dispatch: Dispatch<PlaceReviewAction>,
+    getState: () => RootState) => {
     dispatch({
-      type: ActionTypePlaceReview.PLACE_REVIEW_SUCCESS,
-      payload: dataInput,
+      type: ActionTypePlaceReview.PLACE_REVIEW_REQUEST
     });
 
     try {
@@ -134,7 +135,40 @@ export const ReviewPlace = (dataInput) => {
       console.log("error");
       dispatch({
         type: ActionTypePlaceReview.PLACE_REVIEW_NULL,
-        payload: null,
+        payload: err.message,
+      });
+    }
+  };
+};
+
+// Change the place
+export const changePlace = (placeId, toggles) => {
+  return async (
+    dispatch: Dispatch<PlaceSelectedAction>,
+    getState: () => RootState
+  ) => {
+    dispatch({
+      type: ActionTypePlaceSelected.PLACE_SELECTED_CHANGED,
+      toggle: toggles
+    });
+
+    try {
+      const data = await getState().placesList.data.find(
+        (place) => place.id === placeId
+      );
+      dispatch({
+        type: ActionTypePlaceSelected.PLACE_SELECTED_SUCCESS,
+        payload: data!,
+      });
+      dispatch({
+        type: ActionTypePlaceSelected.PLACE_SELECTED_CHANGED,
+        payload: data!,
+        toggle: toggles
+      })
+    } catch (err: any) {
+      dispatch({
+        type: ActionTypePlaceSelected.PLACE_SELECTED_FAIL,
+        payload: err.message,
       });
     }
   };

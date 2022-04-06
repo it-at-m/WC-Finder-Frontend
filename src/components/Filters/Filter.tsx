@@ -45,8 +45,7 @@ export default function DoorWidthFunction() {
   
   //For translation
   const {t} = useTranslation();
-
-
+  
   return (
     <div className="overall">
       <div className="root">
@@ -100,18 +99,15 @@ export default function DoorWidthFunction() {
           id="DoorWidth"
           disableUnderline
         >
-          <MenuItem value={0}>{t("DoorWidth")}</MenuItem>
-          <MenuItem id="Door80cm" value={80} className="menuitem">
-            80cm
+          <MenuItem value={0}>{t("Minimal Door Width")}</MenuItem>
+          <MenuItem id="Door90cm" value={90} className="menuitem">
+            min. 90cm
           </MenuItem>
           <MenuItem id="Door100cm" value={100} className="menuitem">
-            100cm
+            min. 100cm
           </MenuItem>
-          <MenuItem id="Door120cm" value={120} className="menuitem">
-            120cm
-          </MenuItem>
-          <MenuItem id="Door150cm" value={150} className="menuitem">
-            150cm
+          <MenuItem id="Door110cm" value={110} className="menuitem">
+            min. 110cm
           </MenuItem>
         </Select>
       </div>
@@ -138,17 +134,9 @@ export default function DoorWidthFunction() {
           <MenuItem value={41}>
             {t("Ramp")}
           </MenuItem>
-          <MenuItem value={0} className="menuitem">0%</MenuItem>
-          <MenuItem value={1} className="menuitem">1%</MenuItem>
-          <MenuItem value={2} className="menuitem">2%</MenuItem>
-          <MenuItem value={3} className="menuitem">3%</MenuItem>
-          <MenuItem value={4} className="menuitem">4%</MenuItem>
-          <MenuItem value={5} className="menuitem">5%</MenuItem>
-          <MenuItem value={6} className="menuitem">6%</MenuItem>
-          <MenuItem value={7} className="menuitem">7%</MenuItem>
-          <MenuItem value={8} className="menuitem">8%</MenuItem>
-          <MenuItem value={9} className="menuitem">9%</MenuItem>
-          <MenuItem value={10} className="menuitem">10%</MenuItem>
+          <MenuItem value={0} className="menuitem">No Ramp (0 %)</MenuItem>
+          <MenuItem value={6} className="menuitem">Accessible Ramp (1 - 6 %)</MenuItem>
+          <MenuItem value={10} className="menuitem">Steep Ramps (&gt; 6%)</MenuItem>
         </Select>
       </div>
     </div>

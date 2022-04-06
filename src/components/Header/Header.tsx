@@ -26,9 +26,10 @@ const Header = () => {
             DE
           </option>
         </select>
-      <button className="header" onClick={()=>window.open("https://forms.gle/D3AbbSA4GGQ6TMzu9")}>
+      {/* <button className="header" onClick={()=>window.open("https://forms.gle/D3AbbSA4GGQ6TMzu9")}>
         {t("Beta Testing Survey")} - inclus
-      </button>
+      </button> */}
+      <button className="header" onClick={()=>window.open("https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7")}>{t("Introduction")}</button>
     </div>
   );
 };

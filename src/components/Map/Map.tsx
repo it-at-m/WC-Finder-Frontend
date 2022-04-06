@@ -19,6 +19,8 @@ import { useActions } from "../../hooks/useActions";
 import { Place } from "../../state/state-types/place";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
+import Language from "../Language/Language";
+import ReactGA from 'react-ga';
 var count = 0;
 
 const SearchControl = (props) => {
@@ -33,7 +35,6 @@ const SearchControl = (props) => {
       map.addControl(searchControl);
       count++;
     }
-
   }, [map, props]);
   return null;
 };
@@ -50,7 +51,7 @@ const Map = () => {
     const fetchData = async () => {
       listPlaces();
     };
-
+    
     fetchData();
     // eslint-disable-next-line
   }, []);
@@ -63,7 +64,7 @@ const Map = () => {
       locationfound(e) {
         setPosition(e.latlng);
         map.flyTo(e.latlng, map.getZoom());
-      },
+      }
     });
     function handleSubmit(e: { preventDefault: () => void }) {
       map.locate();
@@ -96,6 +97,10 @@ const Map = () => {
       </>
     );
   }
+
+  //Tracking
+  ReactGA.initialize('UA-223747245-1');
+  ReactGA.pageview('/');
     //For translation
   const {t} = useTranslation();
   return (
@@ -127,11 +132,13 @@ const Map = () => {
           style={"bar"}
           popupFormat={(result: { label: any }) => result.label}
           />
+        <Language />
         <Filter />
         <ZoomControl position="bottomright" zoomInText="+" zoomOutText="-" />
         {places &&
           places.map((place: Place) => (
             <Marker
+              
               key={place.title}
               position={place.position}
               eventHandlers={{ click: () => selectPlace(place.id) }}

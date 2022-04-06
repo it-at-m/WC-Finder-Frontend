@@ -108,11 +108,12 @@ div.leaflet-control-attribution.leaflet-control {
 }
 
 .rootLang {
-    float: left;
-    padding: 10px;
+    float: right;
+    padding: 4px;
     margin-right: 4px;
     border-radius: 5px;
     z-index: 1000;
+    position: relative;
 }
 
 .root {

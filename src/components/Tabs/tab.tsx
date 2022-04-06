@@ -1,8 +1,5 @@
-import { useState } from "react";
-// import {useEffect, useRef} from "react";
+import {useEffect, useState } from "react";
 import "./tab.css";
-// import Review from "../Review/Review"
-// import { ReviewApi } from "../../constants";
 import { apiUri } from "../../constants";
 import { useSelector } from "../../hooks/useTypedSelector";
 import { useTranslation } from "react-i18next";
@@ -10,7 +7,7 @@ import key_logo from "../Preview/icons/eurokey.svg";
 import handrails_logo from "../Preview/icons/handrailS.svg"
 import door_logo from "../Preview/icons/door width.svg"
 import ramp_logo from "../Preview/icons/ramp.svg"
-import LastUpdate_logo from "./icons/LastUpdate.png"
+import LastUpdate_logo from "./icons/LastUpdate.svg"
 import blue from "../Preview/icons/BlueDot.svg"
 import red from "../Preview/icons/RedDot.svg"
 import green from "../Preview/icons/GreenDot.svg"
@@ -26,28 +23,26 @@ import turning from "../Preview/icons/Turning.png"
 import barrier from "../Preview/icons/BarrierFree.png"
 import toiletIcon from "../Preview/icons/Toilet bowl.png"
 import door from "../Preview/icons/Door.png"
-// import Review from "../Review/Review";
-// import sad from "./icons/SadFace.png"
-// import neutral from "./icons/NuetralFace.png"
-// import happy from "./icons/HappyFace.png"
-// import thanks from "./icons/Thanks.png"
-// import { useActions } from "../../hooks/useActions";
-// import question from "./icons/Question_icon.png"
+import Review from "../Review/Review";
+import cross from "./icons/Cross.svg"
+import { changePlace } from "../../state/action-creators";
 
 function Tabs() {
-
   // Toggle between Tabs
-  const [toggleState, setToggleState] = useState(1);
+  let [toggleState, setToggleState] = useState(1);
   const [showLegends, setShowLegends] = useState(false);
+  // const [image, setImage] = useState({ preview: '', raw: '' })
 
+  // Toggle Tab
   const toggleTab = (index) => {
-    setToggleState(index);
+      setToggleState(index);
   };
   
+  // Place Selected
   const {
     data: place
   } = useSelector((state) => state.placeSelected);
-  
+
   //Language
   const {t}=useTranslation();
 
@@ -65,8 +60,9 @@ function Tabs() {
   }
 
   //Legends
-  const AllLegends=showLegends?'Show Few Legends':'Show All Legends'
+  const AllLegends=showLegends?'Show Few Legends': "Show All Legends"
   
+  // All the legends
   const extraContent=<div className="Layout">
     <div className="EachLayer"><img src={toiletIcon} alt={"Toilet Bowl"} ></img>    {t("WC Toilet Bowl")}<br />
     <img src={urinal} alt={"Urinal"} ></img>     {t("Urinal")}<br />
@@ -85,67 +81,22 @@ function Tabs() {
     </div>
     </div>  
 
-  const prevBtns = document.querySelectorAll(".btn-prev");
-  const nextBtns = document.querySelectorAll(".btn-next");
-  const formSteps = document.querySelectorAll(".form-step");
-  const progressSteps = document.querySelectorAll(".progress-step");
-
-  let formStepsNum = 0;
-
-  nextBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      formStepsNum++;
-      updateFormSteps();
-      updateProgressbar();
-    });
-  });
-
-  prevBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      formStepsNum--;
-      updateFormSteps();
-      updateProgressbar();
-    });
-  });
-
-  function updateFormSteps() {
-    formSteps.forEach((formStep) => {
-      formStep.classList.contains("form-step-active") &&
-        formStep.classList.remove("form-step-active");
-    });
-
-  formSteps[formStepsNum].classList.add("form-step-active");
-  }
-
-  function updateProgressbar() {
-    progressSteps.forEach((progressStep, idx) => {
-      if (idx < formStepsNum + 1) {
-        progressStep.classList.add("progress-step-active");
-      } else {
-        progressStep.classList.remove("progress-step-active");
-      }
-    });
-  }
+    //Cross Button
+    const [crosses,setCross]=useState(true)
   
-  // ReviewSubmit 
-  // const SubmitReview = <div>
-  //   <h3>Thanks for your feedback</h3>
-  //   <br />
-  //   <h4>Your feedback would help us <br /> improve our service</h4>
-  //   <img src={thanks} alt="Thankyou" />
-  // </div>
+  useEffect(()=>{
+    const Change = async() =>{
+      changePlace(place?.id,1);
+    }
+    Change();
+  });
 
-  //Upload File
-  // const [state,setState] = useState();
-  // const  [selectedFile,IsSelectedFile] = useState();
-
-  // let fileChangedHandler = (event) => {
-  //   setState({ selectedFile: event.target.files })
-  // }
-
-  // uploadHandler = () => {
-  // console.log(state.selectedFile)
-  // }
+  // const handleChanges = (e) => {
+  //   setImage({
+  //    preview: URL.createObjectURL(e.target.files[0]),
+  //    raw: e.target.files[0]
+  //   })
+  //  }
 
   return (
     <div className="container">
@@ -154,20 +105,20 @@ function Tabs() {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
-          Overview
+          {t("Overview")}
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-          Toilet Info
+          {t("Toilet Info")}
         </button>
-        {/* <button
+        <button
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-          Review
-        </button> */}
+          {t("Review")}
+        </button>
       </div>
 
       <div className="content-tabs">
@@ -192,10 +143,10 @@ function Tabs() {
           </div>
           </div>
           <div className="DetailInfo">
-            <button className="DetailsContact" onClick={()=>setToggleState(2)}>See More Details</button>
+            <button className="DetailsContact" onClick={()=>setToggleState(2)}>{t("See More Details")}</button>
           </div>
           <div className="LastUpdateInfo">
-            <img src={LastUpdate_logo} className="images" alt="Last Updated" />  Last Updated: {place?.modified}
+            <img src={LastUpdate_logo} className="images" alt="Last Updated" />  {t("Last Updated")}: {place?.modified}
           </div>
           <hr />
           <div className="LayoutTitle">
@@ -212,23 +163,23 @@ function Tabs() {
           <img src={yellow} alt={"LightSwitch"} className="LayoutsImage"></img>     {t("Light Switch")}</div>
           </div>
           <div className="Detail">
-            <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
+            <button className={showLegends===true? "LegendsAll" :"DetailsContact"} onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
             {showLegends && extraContent}
           </div>
-          <div className="GoContainer">
-            <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
+          {/* <hr />
+          <label className="AddPhoto">
+            <input type="file" onChange={handleChanges} />Add Photo
+          </label> */}
+          <div className={crosses===true?"InstructContainer":"False"}>
+            <hr/>
+            <a className="Instruct" href="https://defiant-frog-ca1.notion.site/Anleitung-to-save-webapp-to-Homescreen-23a173a74ab446ba92b80b4f7a0dcac7">{t("Instructions to save app on screen")}</a>
+            <img src={cross} alt="cross" className="CrossButton" onClick={()=>setCross(false)}/>
           </div>
           <br />
-          {/* <div className="Save">
-          <div><button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button></div>
-          </div> */}
-          {/* <div>
-            <div className="combine"><h2>Help keep our photos updated</h2><img src={question} alt="information" className="image"/></div>
-            <div className="LastUpdateInfo">If you notice the photos are inaccurate, let us know by adding a photo!</div>
-            <input type="file" onChange={()=>fileChangedHandler()} />
-            <button onClick={()=>uploadHandler()}>Upload!</button>
-          </div> */}
         </div>
+        {toggleState===1?<div className="GoContainer">
+          <button className="GoButton" onClick={()=> window.open("https://www.google.com/maps/search/?api=1&query="+place?.position, "_blank")}>{t("Go")}</button>
+        </div>:""}
 
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
@@ -246,14 +197,14 @@ function Tabs() {
           <br />
         </div>
 
-        {/* <div
+        <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
           <Review />
-        </div> */}
+        </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Tabs;
