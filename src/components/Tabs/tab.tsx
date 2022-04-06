@@ -60,7 +60,7 @@ function Tabs() {
   }
 
   //Legends
-  const AllLegends=showLegends?'Show Few Legends': "Show All Legends"
+  const AllLegends=showLegends?"Show Few Legends": "Show All Legends"
   
   // All the legends
   const extraContent=<div className="Layout">
@@ -77,7 +77,7 @@ function Tabs() {
     <img className="ImageIcon" src={door} alt={"Door Handle"} ></img>     {t("Door/ WC Bowl handle")}</div>
     <div className="Detail">
     <br />
-    <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{AllLegends}</button>
+    <button className="DetailsContact" onClick={()=>{setShowLegends(!showLegends)}}>{t(AllLegends)}</button>
     </div>
     </div>  
 
