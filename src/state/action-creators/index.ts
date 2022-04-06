@@ -2,9 +2,12 @@ import { Dispatch } from "redux";
 
 import axios from "axios";
 import { PlacesListAction } from "../actions/placesListAction";
+import { PlaceReviewPhotoAction } from "../actions/placeReviewPhotoAction";
 import { ActionTypePlacesList } from "../action-types/placesListTypes";
+import { ActionTypePlaceReviewPhoto } from "../action-types/placeReviewPhotoType";
 import { Place } from "../state-types/place";
-import { apiUri,filterApi,ReviewApi } from "../../constants";
+import { Images } from "../state-types/image";
+import { apiUri,filterApi,ReviewApi,PhotoApi } from "../../constants";
 import { PlaceSelectedAction } from "../actions/placeSelectedAction";
 import { RootState } from "..";
 import { ActionTypePlaceSelected } from "../action-types/placeSelectedType";
@@ -168,6 +171,36 @@ export const changePlace = (placeId, toggles) => {
     } catch (err: any) {
       dispatch({
         type: ActionTypePlaceSelected.PLACE_SELECTED_FAIL,
+        payload: err.message,
+      });
+    }
+  };
+};
+
+//Photo Store
+export const ReviewPhotoStore = (dataInput) => {
+  const instance = axios.create({
+    // withCredentials: true,
+  });
+  return async (dispatch: Dispatch<PlaceReviewPhotoAction>) => {
+    dispatch({
+      type: ActionTypePlaceReviewPhoto.PLACE_REVIEW_PHOTO_REQUEST
+    });
+
+    try {
+      const { data }: any = await instance.post(
+        PhotoApi,
+        dataInput
+      );
+      const image: Images = data;
+      dispatch({
+        type: ActionTypePlaceReviewPhoto.PLACE_REVIEW_PHOTO_SUCCESS,
+        payload: image,
+      });
+    } catch (err: any) {
+      console.log("error");
+      dispatch({
+        type: ActionTypePlaceReviewPhoto.PLACE_REVIEW_PHOTO_NULL,
         payload: err.message,
       });
     }
