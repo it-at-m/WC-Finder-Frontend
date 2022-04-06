@@ -9,7 +9,7 @@ const toiletIcon = L.icon({
 });
 
 
-const apiUri = "http://backend.inclus.de/";
+const apiUri = "https://backend.inclus.de/";
 
 const trackerIcon = L.icon({
   iconSize: [48, 48],
@@ -18,6 +18,7 @@ const trackerIcon = L.icon({
 
 const filterApi = apiUri + "filter/";
 const ReviewApi = apiUri + "review";
+const PhotoApi = apiUri + "loadphoto";
 
 const GA_TRACKING_CODE = 'UA-223747245-1';
-export { apiUri, toiletIcon, trackerIcon,filterApi,ReviewApi,GA_TRACKING_CODE };
+export { apiUri, toiletIcon, trackerIcon,filterApi,ReviewApi,GA_TRACKING_CODE, PhotoApi };

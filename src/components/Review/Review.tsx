@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState} from "react";
+import { useState} from "react";
 import {useActions} from "../../hooks/useActions";
 import "./Review.css";
 import { useSelector } from "../../hooks/useTypedSelector";
@@ -7,28 +7,33 @@ import thanks from "../Tabs/icons/thanks.svg"
 import sad_image from "../Tabs/icons/SadFace.png"
 import neutral_image from "../Tabs/icons/NuetralFace.png"
 import happy_image from "../Tabs/icons/HappyFace.png"
-import { changePlace } from "../../state/action-creators";
+// import { changePlace } from "../../state/action-creators";
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
 import { useTranslation } from "react-i18next";
-// import info from "./icons/info.svg"
+import info from "./icons/info.svg"
+import { PhotoApi } from "../../constants";
 
 const Review = () => {
+
+    const {
+        data: place
+    } = useSelector((state) => state.placeSelected);
     const formSteps = document.querySelectorAll(".form-step");
     //const progressSteps = document.querySelectorAll(".progress-step");
     let [formStepsNumNext, setformStepsNumNext] = useState(0);
-    let [step, setStep]=useState(1);
+    // let [step, setStep]=useState(1);
     let [selectedValue,setSelectedValue] = useState('');
     let [cleanVal,setCleanVal]=useState('');
     let [location, setlocation]=useState('');
     let [photos, setPhotos] = useState('');
     let [accuracy, setAccuracy]=useState('');
-    //let [moreinfo, setmoreinfo]=useState('');
     let [layout,setLayout]=useState(false);
     let [Filter,setFilter] = useState(false);
     let [direction,setDirection] =useState(false);
     let [eurokey,setEurokey] =useState(false);
-    //const [image, setImage] = useState({ preview: '', raw: '' })
+    const [image, setImage] = useState({ photo: '', raw: '',name:'' })
+    // const []
 
     const optionSelectedExperience = (e) => {
         setSelectedValue(e.target.value)
@@ -67,9 +72,7 @@ const Review = () => {
         setState(prevState => ({ ...prevState, moreinfo: ""}));
     }
 
-    const {
-        data: place
-    } = useSelector((state) => state.placeSelected);
+    
 
     const {ReviewPlace} = useActions();
 
@@ -160,22 +163,29 @@ const Review = () => {
     </div>
     </div>
     
-    useEffect(()=>{
-        const Change = async() =>{
-          changePlace(place?.id,step===3?setStep(1):step);
-        }
-        Change();
-      });
+    // useEffect(()=>{
+    //     const Change = async() =>{
+    //       changePlace(place?.id,step===3?setStep(1):step);
+    //     }
+    //     Change();
+    //   });
 
     //Image
-    // const handleChange = (e) => {
-    //     setImage({
-    //      preview: URL.createObjectURL(e.target.files[0]),
-    //      raw: e.target.files[0]
-    //     })
-    // }
+    const handleChange = (e) => {
+        setImage({
+         photo: URL.createObjectURL(e.target.files[0]),
+         raw: e.target.files[0],
+         name: (place?.title)===undefined?'':place?.title
+        })
+    }
 
-    
+    const handleUpload = (e) => {
+        setImage({
+            photo: '',
+            raw:'',
+            name:''
+        })
+    }
 
     return (
         <div>
@@ -278,16 +288,26 @@ const Review = () => {
                 <br />
                 <p className="Thankyou">{t("Your feedback would help us")} <br /> {t("improve our service")}</p>
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
-                {/* <br />
+                <br />
+                <br />
                 <div className="PhotosContainer">
                     <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
                     <label className="AddPhoto">
-                        <input type="file" onChange={handleChange} />Add Photo
+                        <input type="file" onChange={handleChange}/>Add Photo
                     </label>
+                    {image.photo!==''?<div className="imageName">Image name: {image.name}</div>:''}
+                    <button onClick={handleUpload} formAction={PhotoApi} formMethod="POST" formEncType="multipart/form-data" >Upload</button>
+                </div>
+                {/* <div className="PhotosContainer">
+                    <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
+                    <label className="AddPhoto">
+                        <input type="file" onChange={handleChange} accept="image/*">Add Photo</input>
+                    {/* formAction={apiUri} formMethod="POST" formEncType="multipart/form-data" */}
+                    {/* </label>
                 </div> */}
             </div>
             {/* <!-- Progress bar --> */}
-            {/* <div className="progressbar">
+            {/* <div className="progressbar"
                 <div className="progress-step progress-step-active"></div>
                 <div className="progress-step"></div>
             </div> */}

@@ -127,7 +127,7 @@ const Map = () => {
           animateZoom={true}
           autoClose={false}
           keepResult={true}
-          searchLabel= {t("Where  are you going?")}
+          searchLabel= {t("Where are you going?")}
           // eslint-disable-next-line react/style-prop-object
           style={"bar"}
           popupFormat={(result: { label: any }) => result.label}
