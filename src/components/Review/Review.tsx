@@ -13,6 +13,7 @@ import left from "./icons/LeftArrow.svg"
 import { useTranslation } from "react-i18next";
 import info from "./icons/info.svg"
 import { PhotoApi } from "../../constants";
+// import axios from 'axios';
 
 const Review = () => {
 
@@ -33,7 +34,7 @@ const Review = () => {
     let [direction,setDirection] =useState(false);
     let [eurokey,setEurokey] =useState(false);
     const [image, setImage] = useState({ photo: '', raw: '',name:'' })
-    // const []
+    // const [selectedFile,setSelectedFile]=useState(null)
 
     const optionSelectedExperience = (e) => {
         setSelectedValue(e.target.value)
@@ -172,6 +173,7 @@ const Review = () => {
 
     //Image
     const handleChange = (e) => {
+        //setSelectedFile(e.target.files[0])
         setImage({
          photo: URL.createObjectURL(e.target.files[0]),
          raw: e.target.files[0],
@@ -180,6 +182,14 @@ const Review = () => {
     }
 
     const handleUpload = (e) => {
+        //const formData = new FormData();
+    
+      // Update the formData object
+    //   formData.append(
+    //     "myFile",
+    //     selectedFile,
+    //     selectedFile.name
+    //   );
         setImage({
             photo: '',
             raw:'',
