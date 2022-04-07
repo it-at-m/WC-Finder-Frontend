@@ -11,6 +11,7 @@ import happy_image from "../Tabs/icons/HappyFace.png"
 import right from "./icons/RightArrow.svg"
 import left from "./icons/LeftArrow.svg"
 import { useTranslation } from "react-i18next";
+// import ImageUpload  from "../ImageUpload/ImageUpload"
 // import info from "./icons/info.svg"
 // import { ReviewPhotoStore } from "../../state/action-creators";
 
@@ -331,6 +332,7 @@ const Review = () => {
                 <img src={thanks} alt="Thankyou" className="ImageThank"/>
                 <br />
                 <br />
+                {/* <ImageUpload /> */}
                 {/* <div className="PhotosContainer">
                     <div className="Valid"><h3>Help us update our photos </h3><img src={info} alt="information" className="images"/></div>
                     

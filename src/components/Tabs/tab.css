@@ -266,24 +266,9 @@ button {
     padding-bottom: 2%;
     padding-top: 2%;
     position: sticky;
-    bottom: 0px;
+    bottom: 0%;
     background: rgba(255, 255, 255, 255);
 }
-
-
-/* @media only screen and (max-width: 768px) {
-    .GoContainer {
-        box-shadow: 0px -1px 8px 3px rgba(0, 0, 0, 0.14);
-        justify-content: center;
-        text-align: -webkit-center;
-        display: block;
-        padding-bottom: 2%;
-        padding-top: 2%;
-        position: sticky;
-        bottom: 12px;
-        background: rgba(255, 255, 255, 255);
-    }
-} */
 
 .InstructContainer {
     display: block;
@@ -291,7 +276,7 @@ button {
     padding-top: 2%;
     position: -webkit-sticky;
     position: sticky;
-    bottom: 69px;
+    bottom: 10%;
     background: #FFFFFF;
     box-shadow: 0px 0px 1px 1px #2e2e2e;
 }
@@ -318,8 +303,9 @@ button {
     float: right;
     margin-top: 1%;
     cursor: pointer;
-    height: 13px;
-    width: 26px;
+    height: 3%;
+    margin-right: 2%;
+    width: 2%;
 }
 
 .Save {
