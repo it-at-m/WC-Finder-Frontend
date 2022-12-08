@@ -1,4 +1,4 @@
-# Frontend WC-Finder LHM-ITM
+# WC-Finder-Frontend
 
 This project is about creating an application for disabled people to find a suitable toilet.
 version: 0.1.0
