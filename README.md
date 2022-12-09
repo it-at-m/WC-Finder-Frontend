@@ -3,6 +3,8 @@
 This project is about creating an application for disabled people to find a suitable toilet.
 version: 0.1.0
 
+You can find the backend repo here: https://github.com/it-at-m/WC-Finder-Backend
+
 ## Available Scripts
 
 In the project directory, you can run:
